@@ -1,6 +1,5 @@
-
 const LandingPage = () => {
-  return <div></div>
-}
+  return <div>live site</div>;
+};
 
-export default LandingPage
+export default LandingPage;

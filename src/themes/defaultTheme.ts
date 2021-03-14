@@ -1,0 +1,45 @@
+import responsiveFontSizes from "@material-ui/core/styles/responsiveFontSizes";
+import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+import { red } from "@material-ui/core/colors";
+
+//Color scheme
+const primaryMain = "#556cd6";
+const primaryDark = "#1C3AC4";
+const primaryLight = "#c5c9eb";
+
+// Create a theme instance.
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: primaryMain,
+      dark: primaryDark,
+      light: primaryLight,
+    },
+    secondary: {
+      main: "#19857b",
+    },
+    error: {
+      main: red.A400,
+    },
+    background: {
+      default: "#fff",
+    },
+  },
+  props: {
+    // Name of the component ⚛️
+    MuiButtonBase: {
+      // The properties to apply
+      disableRipple: true, // No more ripple, on the whole application 💣!
+    },
+  },
+  overrides: {
+    MuiCssBaseline: {
+      "@global": {
+        html: { height: "100vh" },
+        body: { height: "100%"},
+      },
+    },
+  },
+});
+
+export default responsiveFontSizes(theme);

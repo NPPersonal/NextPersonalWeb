@@ -1,10 +1,14 @@
-import Typography from "@material-ui/core/Typography/Typography";
 import React from "react";
+import Section from "../components/units/Section/Section";
+import PageLayout from "../layout/PageLayout";
 
 
 const LandingPage = () => {
   return (
-    <Typography variant='h1'>Site is live</Typography>
+    <PageLayout>
+      <Section id='home'>
+      </Section>
+    </PageLayout>
   );
 };
 

@@ -1,18 +1,33 @@
 import Typography from "@material-ui/core/Typography/Typography";
+import { GetStaticProps } from "next/types/index";
 import React from "react";
 import ParallaxHero from "../components/units/ParallaxHero/ParallaxHero";
 import Section from "../components/units/Section/Section";
 import PageLayout from "../layout/PageLayout";
 
+type IPageProps = {
+  heroBgImageURL: string,
+}
 
-const LandingPage = () => {
+export const getStaticProps: GetStaticProps<IPageProps> = async () => {
+  return {
+    props:{
+      heroBgImageURL: 'https://img00.deviantart.net/2bd0/i/2009/276/c/9/magic_forrest_wallpaper_by_goergen.jpg',
+    }
+  }
+}
+
+const LandingPage = (props:IPageProps) => {
+  const {
+    heroBgImageURL,
+  } = props;
 
   return (
     <PageLayout maxWidth='xl' disableGutters>
       <Section id='home'>
         <ParallaxHero
         py={30}
-        bgImage='https://img00.deviantart.net/2bd0/i/2009/276/c/9/magic_forrest_wallpaper_by_goergen.jpg'
+        bgImage={heroBgImageURL}
         maskColor='#000'
         maskOpacity={0.6}
         color='#fff'

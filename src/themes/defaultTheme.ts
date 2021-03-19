@@ -1,29 +1,31 @@
 import responsiveFontSizes from "@material-ui/core/styles/responsiveFontSizes";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
-import { red } from "@material-ui/core/colors";
 
-//Color scheme
-const primaryMain = "#556cd6";
-const primaryDark = "#1C3AC4";
-const primaryLight = "#c5c9eb";
+/**
+ * Color scheme reference https://visme.co/blog/website-color-schemes/
+ * 
+ * No. 27 Gorgeous Contrast
+ * 
+ * Dark & Light color generator https://hihayk.github.io/scale/#4/6/50/80/-51/67/20/14/474B4F/71/75/79/white
+ */
 
 // Create a theme instance.
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: primaryMain,
-      dark: primaryDark,
-      light: primaryLight,
+      main: '#222629',
     },
     secondary: {
-      main: "#19857b",
+      main: '#474B4F',
     },
-    error: {
-      main: red.A400,
+    info:{
+      main: '#86C232',
     },
     background: {
-      default: "#fff",
+      default: "#222629",
     },
+    contrastThreshold: 3,
+    tonalOffset: 0.2,
   },
   props: {
     // Name of the component ⚛️

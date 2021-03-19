@@ -1,3 +1,4 @@
+import useTheme from "@material-ui/core/styles/useTheme";
 import Typography from "@material-ui/core/Typography/Typography";
 import { GetStaticProps } from "next/types/index";
 import React from "react";
@@ -18,6 +19,7 @@ export const getStaticProps: GetStaticProps<IPageProps> = async () => {
 }
 
 const LandingPage = (props:IPageProps) => {
+  const theme = useTheme();
   const {
     heroBgImageURL,
   } = props;
@@ -28,9 +30,9 @@ const LandingPage = (props:IPageProps) => {
         <ParallaxHero
         py={30}
         bgImage={heroBgImageURL}
-        maskColor='#000'
-        maskOpacity={0.6}
-        color='#fff'
+        maskColor={theme.palette.primary.dark}
+        maskOpacity={0.7}
+        color={theme.palette.primary.contrastText}
         >
           <React.Fragment>
             <Typography variant='h6' align='center' paragraph>Welcome</Typography>

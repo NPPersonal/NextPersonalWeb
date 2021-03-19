@@ -8,7 +8,6 @@ type PersoninfoProps = React.ComponentProps<typeof React.Component> & {
     location: string,
     email:string,
     emailColor?: string,
-    color?: string,
 }
 const Personinfo:React.FC<PersoninfoProps> = (props:PersoninfoProps) => {
     const {
@@ -17,7 +16,6 @@ const Personinfo:React.FC<PersoninfoProps> = (props:PersoninfoProps) => {
         location,
         email,
         emailColor = 'blue',
-        color = 'black'
         
     } = props;
 
@@ -41,7 +39,6 @@ const Personinfo:React.FC<PersoninfoProps> = (props:PersoninfoProps) => {
     ]
     return (
         <ListItems
-        itemColor={color}
         items={items}
         />
     );

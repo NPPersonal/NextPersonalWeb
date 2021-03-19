@@ -16,7 +16,6 @@ const Brief:React.FC<BriefProps> = (props:BriefProps) => {
         personNameColor = 'blue',
         occupation,
         brief,
-        briefColor = 'black',
         ...rest
     } = props;
 
@@ -27,7 +26,7 @@ const Brief:React.FC<BriefProps> = (props:BriefProps) => {
                 <Box component='span' color={personNameColor}>{personName}</Box>
                 <Box component='span'>{occupation}</Box>
             </Typography>
-            <Box pt={2} color={briefColor}>
+            <Box pt={2}>
                 <Typography variant='h6' paragraph style={{whiteSpace:'pre-line'}}>{brief}</Typography>
             </Box>
         </Box>

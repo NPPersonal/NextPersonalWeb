@@ -64,13 +64,12 @@ const LandingPage = (props:IPageProps) => {
 
   return (
     <PageLayout maxWidth='xl' disableGutters>
-      <Section id='home'>
+      <Section id='home' color={theme.palette.primary.contrastText}>
         <ParallaxHero
         py={30}
         bgImage={heroBgImageURL}
         maskColor={theme.palette.primary.dark}
         maskOpacity={0.8}
-        color={theme.palette.primary.contrastText}
         >
           <React.Fragment>
             <Typography variant='h6' align='center' paragraph>Welcome</Typography>
@@ -79,7 +78,8 @@ const LandingPage = (props:IPageProps) => {
           </React.Fragment>
         </ParallaxHero> 
       </Section>
-      <Section id='about' bgcolor={theme.palette.secondary.dark}>
+      <Section id='about' bgcolor={theme.palette.secondary.dark} 
+      color={theme.palette.secondary.contrastText}>
         <Box py={10}>
           <Container>
             <Header 
@@ -97,12 +97,10 @@ const LandingPage = (props:IPageProps) => {
                 personNameColor={theme.palette.info.main}
                 occupation={occupation}
                 brief={brief}
-                briefColor={theme.palette.secondary.contrastText}
                 />
               </Grid>
               <Grid item xs={12} sm={4}>
                 <Personinfo 
-                color={theme.palette.secondary.contrastText}
                 personName={personName}
                 age={age}
                 location={location}

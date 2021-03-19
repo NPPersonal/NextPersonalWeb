@@ -11,12 +11,10 @@ type ItemProps = {
 
 type ListItemProps = React.ComponentProps<typeof List> & {
     items: ItemProps[],
-    itemColor?: string,
 }
 const ListItems:React.FC<ListItemProps> = (props:ListItemProps) => {
     const {
         items,
-        itemColor = 'black',
         ...rest
     } = props;
 
@@ -25,7 +23,7 @@ const ListItems:React.FC<ListItemProps> = (props:ListItemProps) => {
            {items.map((item, i)=>{
                return (
                 <ListItem key={i} divider>
-                    <Box color={itemColor}>
+                    <Box>
                         <Typography variant='h6' component='span'>{item.label}</Typography>
                         <Typography component='span'>{item.value}</Typography>
                     </Box>

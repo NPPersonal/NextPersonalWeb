@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from './Header';
+import Header from './OverlapHeader';
 
 export default {
-    title: 'Header',
+    title: 'Overlap',
 }
 
 export const Default = ()=>{

@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography/Typography";
 import { GetStaticProps } from "next/types/index";
 import React from "react";
 import Brief from "../components/concrete/Brief/Brief";
-import Header from "../components/concrete/Header/Header";
+import Header from "../components/concrete/OverlapHeader/OverlapHeader";
 import Personinfo from "../components/concrete/PersonInfo/Personinfo";
 import ParallaxHero from "../components/units/ParallaxHero/ParallaxHero";
 import Section from "../components/units/Section/Section";

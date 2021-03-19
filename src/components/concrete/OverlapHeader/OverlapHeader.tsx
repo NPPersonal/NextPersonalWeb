@@ -3,7 +3,7 @@ import Box from '@material-ui/core/Box/Box';
 import React from 'react';
 import UpperCaseText from '../../units/UpperCaseText/UpperCaseText';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import style from './HeaderStyle';
+import style from './OverlapHeaderStyle';
 
 type HeaderProps = React.ComponentProps<typeof Box> & {
     text: string,

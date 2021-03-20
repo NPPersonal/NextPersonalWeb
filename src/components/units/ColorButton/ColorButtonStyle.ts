@@ -5,6 +5,7 @@ type StyleProps = {
     color:string,
     activeColor:string,
     hoverColor:string,
+    titleColor:string,
     px:string | number,
     py:string | number,
     shadow:boolean,
@@ -37,5 +38,8 @@ export default createStyles({
             0px 1px 10px 0px rgba(0,0,0,0.12)
             ` : 'none',
         },
+    }),
+    label:(props:StyleProps)=>({
+        color:props.titleColor,
     })
 })

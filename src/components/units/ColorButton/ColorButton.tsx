@@ -11,6 +11,7 @@ type ColorButtonProps = ButtonWithoutColorProps & {
     color?: string,
     activeColor?: string,
     hoverColor?: string,
+    titleColor?: string,
     px?: string | number,
     py?: string | number,
     shadow?: boolean,
@@ -35,6 +36,7 @@ const ColorButton:React.FC<ColorButtonProps> = (props:ColorButtonProps) => {
         color = 'grey',
         activeColor = 'grey',
         hoverColor = 'lightgrey',
+        titleColor = 'black',
         px = 20,
         py = 8,
         shadow = true,
@@ -46,13 +48,15 @@ const ColorButton:React.FC<ColorButtonProps> = (props:ColorButtonProps) => {
         color,
         activeColor,
         hoverColor,
+        titleColor,
         px,
         py,
         shadow
     });
 
     const buttonClasses = {
-        root:classes.root
+        root:classes.root,
+        label:classes.label,
     }
 
     return (

@@ -34,3 +34,16 @@ export const Color = ()=>{
         </ColorButton>
     )
 }
+
+export const TitleColor = ()=>{
+    return (
+        <ColorButton 
+        disableRipple
+        color='lightblue'
+        hoverColor='cyan'
+        titleColor='purple'
+        >
+            Download CV
+        </ColorButton>
+    )
+}

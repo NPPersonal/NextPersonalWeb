@@ -2,7 +2,7 @@ import React from 'react';
 import LinkTo from '../../units/LinkTo/LinkTo';
 import ListItems from '../../units/ListItems/ListItems';
 
-type PersoninfoProps = React.ComponentProps<typeof React.Component> & {
+type PersoninfoProps = React.HtmlHTMLAttributes<HTMLElement> & {
     personName: string,
     age: string,
     location: string,
@@ -16,7 +16,7 @@ const Personinfo:React.FC<PersoninfoProps> = (props:PersoninfoProps) => {
         location,
         email,
         emailColor = 'blue',
-        
+        ...rest
     } = props;
 
     const items = [
@@ -40,6 +40,7 @@ const Personinfo:React.FC<PersoninfoProps> = (props:PersoninfoProps) => {
     return (
         <ListItems
         items={items}
+        {...rest}
         />
     );
 };

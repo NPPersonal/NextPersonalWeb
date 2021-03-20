@@ -100,7 +100,7 @@ const LandingPage = (props:IPageProps) => {
                 />
               </Grid>
               <Grid item xs={12} sm={4}>
-                <Personinfo 
+                <Personinfo
                 personName={personName}
                 age={age}
                 location={location}

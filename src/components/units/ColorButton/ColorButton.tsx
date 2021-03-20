@@ -26,6 +26,9 @@ type ColorButtonProps = ButtonWithoutColorProps & {
  * 
  * Padding horizontal and vertical
  * 
+ * Wrapped Material-UI `Button`
+ * https://material-ui.com/components/buttons/#button
+ * 
  * @param {ColorButtonProps} props 
  * @returns 
  */

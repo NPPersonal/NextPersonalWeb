@@ -23,6 +23,9 @@ type HeaderProps = React.ComponentProps<typeof Box> & {
  * 
  * Caption with bottom line
  * 
+ * Wrapped Material-UI `Box` 
+ * https://material-ui.com/components/box/#box
+ * 
  * @param {HeaderProps} props 
  * @returns 
  */

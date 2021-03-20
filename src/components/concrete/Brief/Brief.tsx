@@ -10,6 +10,21 @@ type BriefProps = React.ComponentProps<typeof Box> & {
     briefColor?: string,
 }
 
+/**
+ * Component Brief
+ * 
+ * Use for self introduction
+ * 
+ * Customizable color for person name
+ * 
+ * Customizable color for brief
+ * 
+ * Wrapped Material-UI `Box`
+ * https://material-ui.com/components/box/#box
+ * 
+ * @param {BriefProps} props 
+ * @returns 
+ */
 const Brief:React.FC<BriefProps> = (props:BriefProps) => {
     const {
         personName,

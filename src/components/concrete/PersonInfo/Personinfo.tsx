@@ -1,15 +1,27 @@
 import React from 'react';
 import LinkTo from '../../units/LinkTo/LinkTo';
-import ListItems from '../../units/ListItems/ListItems';
+import ListItems, { ListItemProps } from '../../units/ListItems/ListItems';
 
-type PersoninfoProps = React.HtmlHTMLAttributes<HTMLElement> & {
+type ListItemsWithoutItemsProps = Omit<ListItemProps, 'items'>
+type PersonInfoProps = React.HtmlHTMLAttributes<HTMLElement> & ListItemsWithoutItemsProps & {
     personName: string,
     age: string,
     location: string,
     email:string,
     emailColor?: string,
 }
-const Personinfo:React.FC<PersoninfoProps> = (props:PersoninfoProps) => {
+
+/**
+ * Component PersonInfo
+ * 
+ * Display person info as list
+ * 
+ * Wrapped `ListItems` component
+ * 
+ * @param {PersonInfoProps} props 
+ * @returns 
+ */
+const PersonInfo:React.FC<PersonInfoProps> = (props:PersonInfoProps) => {
     const {
         personName,
         age,
@@ -45,4 +57,4 @@ const Personinfo:React.FC<PersoninfoProps> = (props:PersoninfoProps) => {
     );
 };
 
-export default Personinfo;
+export default PersonInfo;

@@ -21,11 +21,11 @@ type ParallaxHeroProps = React.ComponentProps<typeof Box> & {
  * 
  * A parallax background image with child content
  * 
- * Parallax background image 
+ * Use `react-parallax`
  * https://github.com/rrutsche/react-parallax
  * 
  * 
- * Wrapped Material-UI Box 
+ * Wrapped Material-UI `Box`
  * https://material-ui.com/components/box/
  * 
  * @param {HeroProps} props 

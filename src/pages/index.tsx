@@ -4,7 +4,7 @@ import { GetStaticProps } from "next/types/index";
 import React from "react";
 import Brief from "../components/concrete/Brief/Brief";
 import Header from "../components/concrete/OverlapHeader/OverlapHeader";
-import Personinfo from "../components/concrete/PersonInfo/Personinfo";
+import PersonInfo from "../components/concrete/PersonInfo/PersonInfo";
 import ColorButton from "../components/units/ColorButton/ColorButton";
 import ParallaxHero from "../components/units/ParallaxHero/ParallaxHero";
 import Section from "../components/units/Section/Section";
@@ -77,7 +77,7 @@ const LandingPage = (props:IPageProps) => {
           </React.Fragment>
         </ParallaxHero> 
       </Section>
-      <Section id='about' bgcolor={theme.palette.secondary.dark} 
+      <Section id='about-me' bgcolor={theme.palette.secondary.dark} 
       color={theme.palette.secondary.contrastText}>
         <AboutLayout
         pt={10}
@@ -100,12 +100,13 @@ const LandingPage = (props:IPageProps) => {
           />
         }
         personInfo={
-          <Personinfo
+          <PersonInfo
           personName={personName}
           age={age}
           location={location}
           email={email}
           emailColor={theme.palette.info.main}
+          dividerColor={theme.palette.secondary.light}
           />
         }
         cvDownloadButton={

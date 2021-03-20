@@ -8,7 +8,7 @@ type SectionProps = React.ComponentProps<typeof Box>;
  * 
  * Take ReactNode as child content
  * 
- * Wrapped Material-UI Box
+ * Wrapped Material-UI `Box`
  * https://material-ui.com/components/box/
  * 
  * @param {SectionProps} props 

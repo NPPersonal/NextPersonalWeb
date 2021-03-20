@@ -10,6 +10,21 @@ type LinkToProps = React.ComponentProps<typeof React.Component> & {
   color?: string;
 };
 
+/**
+ * Component LinkTo
+ * 
+ * Display link as text
+ * 
+ * Customizable color
+ * 
+ * Enable underline or not
+ * 
+ * Wrapped Next.JS `Link` 
+ * https://nextjs.org/docs/api-reference/next/link
+ * 
+ * @param {LinkToProps} props 
+ * @returns 
+ */
 const LinkTo: React.FC<LinkToProps> = (props: LinkToProps) => {
   const { text, linkTo, shallow = false, display = "inline", underline, color='blue' } = props;
   return (

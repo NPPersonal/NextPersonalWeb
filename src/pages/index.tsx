@@ -1,8 +1,10 @@
+import Box from "@material-ui/core/Box/Box";
 import useTheme from "@material-ui/core/styles/useTheme";
 import Typography from "@material-ui/core/Typography/Typography";
-import { GetStaticProps } from "next/types/index";
 import React from "react";
+import { GetStaticProps } from "next/types/index";
 import Brief from "../components/concrete/Brief/Brief";
+import Counter from "../components/concrete/Counter/Counter";
 import Header from "../components/concrete/OverlapHeader/OverlapHeader";
 import PersonInfo from "../components/concrete/PersonInfo/PersonInfo";
 import ColorButton from "../components/units/ColorButton/ColorButton";
@@ -10,20 +12,7 @@ import ParallaxHero from "../components/units/ParallaxHero/ParallaxHero";
 import Section from "../components/units/Section/Section";
 import AboutLayout from "../layout/AboutLayout";
 import PageLayout from "../layout/PageLayout";
-
-type IPageProps = {
-  hero:{
-    heroBgImageURL: string,
-  },
-  about:{
-    personName: string,
-    occupation: string,
-    brief: string,
-    age: string,
-    location: string,
-    email: string,
-  }
-}
+import { IPageProps } from "../pageUtils/LaningPage";
 
 export const getStaticProps: GetStaticProps<IPageProps> = async () => {
   return {
@@ -41,7 +30,29 @@ export const getStaticProps: GetStaticProps<IPageProps> = async () => {
         I help you build brand for your business at an affordable price. Thousands of clients have procured exceptional results while working with our dedicated team. when an unknown printer took a galley of type and scrambled it to make a type specimen book.
 
         Delivering work within time and budget which meets client’s requirements is our moto. Lorem Ipsum has been the industry's standard dummy text ever when an unknown printer took a galley.
-        `
+        `,
+        experiences: [
+          {
+            number: 10,
+            suffix: '+',
+            title: 'Years Coding'
+          },
+          {
+            number: 6,
+            suffix: '+',
+            title: 'Years IOS'
+          },
+          {
+            number: 1,
+            suffix: '+',
+            title: 'Year React.JS'
+          },
+          {
+            number: 7,
+            suffix: '',
+            title: 'Years Workout'
+          }
+        ]
       }
     }
   }
@@ -57,7 +68,8 @@ const LandingPage = (props:IPageProps) => {
       age,
       location,
       email,
-      brief
+      brief,
+      experiences
     }
   } = props;
 
@@ -119,6 +131,13 @@ const LandingPage = (props:IPageProps) => {
             <Typography variant='h6'>Download CV</Typography>
           </ColorButton>
         }
+        experiences={experiences.map(exp=>(
+          <Box p={2}>
+            <Counter start={0} end={exp.number} suffix={exp.suffix} caption={
+              <Typography variant='h6' align='center'>{exp.title}</Typography>
+            } />
+          </Box>
+        ))}
         />
       </Section>
       <div style={{width:'100%', height:'1700px'}} />

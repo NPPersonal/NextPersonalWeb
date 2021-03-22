@@ -8,6 +8,7 @@ type AboutLayoutProps = React.ComponentProps<typeof Box> & {
     brief: React.ReactNode,
     personInfo: React.ReactNode,
     cvDownloadButton: React.ReactNode,
+    experiences: React.ReactNode[],
 }
 const AboutLayout:React.FC<AboutLayoutProps> = (props:AboutLayoutProps) => {
     const {
@@ -15,6 +16,7 @@ const AboutLayout:React.FC<AboutLayoutProps> = (props:AboutLayoutProps) => {
         brief,
         personInfo,
         cvDownloadButton,
+        experiences,
         ...rest
     } = props;
 
@@ -33,6 +35,15 @@ const AboutLayout:React.FC<AboutLayoutProps> = (props:AboutLayoutProps) => {
                 </Box>
               </Grid>
             </Grid>
+            <Box mt={4}>
+            <Grid container justify='center'>
+              {experiences.map((exp, i)=>(
+                <Grid key={i} item xs={6} sm={3}>
+                  {exp}
+                </Grid>
+              ))}
+            </Grid>
+            </Box>
           </Container>
         </Box>
     );

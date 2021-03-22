@@ -170,6 +170,7 @@ const LandingPage = (props:LaningPageProps) => {
 
   return (
     <PageLayout maxWidth='xl' disableGutters>
+      {/* Home section */}
       <Section id='home' color={theme.palette.primary.contrastText}>
         <ParallaxHero
         py={30}
@@ -184,6 +185,7 @@ const LandingPage = (props:LaningPageProps) => {
           </React.Fragment>
         </ParallaxHero> 
       </Section>
+      {/* About Me section */}
       <Section id='about-me' bgcolor={theme.palette.secondary.dark} 
       color={theme.palette.secondary.contrastText}>
         <AboutLayout
@@ -236,6 +238,7 @@ const LandingPage = (props:LaningPageProps) => {
         ))}
         />
       </Section>
+      {/* Skills section */}
       <Section id='skills' bgcolor={theme.palette.secondary.main}
       color={theme.palette.secondary.contrastText}
       >

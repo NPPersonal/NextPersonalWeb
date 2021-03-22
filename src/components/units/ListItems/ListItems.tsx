@@ -13,6 +13,7 @@ type ItemProps = {
 
 export type ListItemProps = React.ComponentProps<typeof List> & {
     items: ItemProps[],
+    divider?: boolean,
     dividerColor?: string,
 }
 
@@ -23,6 +24,7 @@ export type ListItemProps = React.ComponentProps<typeof List> & {
  * 
  * Divider between each items
  * 
+ * Enable/disable divider
  * Customizable divider color
  * 
  * Wrapped Material-UI `List`
@@ -34,6 +36,7 @@ export type ListItemProps = React.ComponentProps<typeof List> & {
 const ListItems:React.FC<ListItemProps> = (props:ListItemProps) => {
     const {
         items,
+        divider = true,
         dividerColor = 'grey',
         ...rest
     } = props;
@@ -50,7 +53,7 @@ const ListItems:React.FC<ListItemProps> = (props:ListItemProps) => {
        <List {...rest}>
            {items.map((item, i)=>{
                return (
-                <ListItem key={i} classes={listItemClasses} divider={i!==items.length-1}>
+                <ListItem key={i} classes={listItemClasses} divider={divider?i!==items.length-1:false}>
                     <Box>
                         <Typography variant='h6' component='span'>{item.label}</Typography>
                         <Typography component='span'>{item.value}</Typography>

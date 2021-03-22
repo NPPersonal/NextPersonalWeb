@@ -53,7 +53,7 @@ const Header:React.FC<HeaderProps> = (props:HeaderProps) => {
                 <Box className={classes.caption} color={captionColor}>
                     <Typography variant='h3' noWrap={noWrap}>
                         {caption}
-                        <Box width={lineWidth} height={lineHeight} bgcolor={lineColor} 
+                        <Box mt={1} width={lineWidth} height={lineHeight} bgcolor={lineColor} 
                         marginLeft='auto' marginRight='auto' borderRadius='4px' />
                     </Typography>
                 </Box>

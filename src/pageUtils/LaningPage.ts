@@ -1,4 +1,4 @@
-export type IPageProps = {
+export type LaningPageProps = {
     hero:{
       heroBgImageURL: string,
     },
@@ -14,6 +14,15 @@ export type IPageProps = {
         suffix: string,
         title: string,
       }[]
+    },
+    skill:{
+        group:{
+            title: string,
+            skills:{
+                title: string,
+                value: number,
+            }[]
+        }[]
     }
 }
 

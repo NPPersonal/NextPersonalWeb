@@ -12,9 +12,11 @@ import ParallaxHero from "../components/units/ParallaxHero/ParallaxHero";
 import Section from "../components/units/Section/Section";
 import AboutLayout from "../layout/AboutLayout";
 import PageLayout from "../layout/PageLayout";
-import { IPageProps } from "../pageUtils/LaningPage";
+import { LaningPageProps } from "../pageUtils/LaningPage";
+import SkillLayout from "../layout/SkillLayout";
+import SkillSet from "../components/concrete/SkillSet/SkillSet";
 
-export const getStaticProps: GetStaticProps<IPageProps> = async () => {
+export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
   return {
     props:{
       hero:{
@@ -53,12 +55,102 @@ export const getStaticProps: GetStaticProps<IPageProps> = async () => {
             title: 'Years Workout'
           }
         ]
+      },
+      skill:{
+        group:[
+          {
+            title:'Web Development',
+            skills:[
+              {
+                title: 'HTML/CSS',
+                value: 78
+              },
+              {
+                title: 'JavaScript',
+                value: 78
+              },
+              {
+                title: 'React.JS',
+                value: 83
+              },
+              {
+                title: 'Next.JS',
+                value: 88
+              }
+            ]
+          },
+          {
+            title:'IOS Development',
+            skills:[
+              {
+                title: 'Objective-C',
+                value: 80
+              },
+              {
+                title: 'Swift',
+                value: 77
+              },
+              {
+                title: 'IOS Framework',
+                value: 86
+              },
+            ]
+          },
+          {
+            title:'Machine Learning',
+            skills:[
+              {
+                title: 'Python',
+                value: 55
+              },
+              {
+                title: 'Scikit-Learn',
+                value: 50
+              },
+            ]
+          },
+          {
+            title:'DevOps',
+            skills:[
+              {
+                title: 'Git',
+                value: 89
+              },
+              {
+                title: 'Travis-CI',
+                value: 50
+              },
+              {
+                title: 'Circle.CI',
+                value: 38
+              },
+              {
+                title: 'CocoaPods',
+                value: 79
+              },
+              {
+                title: 'NPM',
+                value: 79
+              },
+              {
+                title: 'Miniconda',
+                value: 62
+              },
+            ]
+          }
+        ]
       }
     }
   }
 }
 
-const LandingPage = (props:IPageProps) => {
+/**
+ * Landing Page
+ * 
+ * @param {LaningPageProps} props 
+ * @returns 
+ */
+const LandingPage = (props:LaningPageProps) => {
   const theme = useTheme();
   const {
     hero:{ heroBgImageURL},
@@ -69,7 +161,10 @@ const LandingPage = (props:IPageProps) => {
       location,
       email,
       brief,
-      experiences
+      experiences,
+    },
+    skill:{
+      group,
     }
   } = props;
 
@@ -92,11 +187,12 @@ const LandingPage = (props:IPageProps) => {
       <Section id='about-me' bgcolor={theme.palette.secondary.dark} 
       color={theme.palette.secondary.contrastText}>
         <AboutLayout
-        pt={10}
+        py={10}
         header={
-          <Header 
+          <Header
+          mb={4} 
           text='About me'
-          textColor={theme.palette.secondary.main} 
+          textColor={theme.palette.secondary.light} 
           caption='Know Me More'
           captionColor={theme.palette.secondary.contrastText}
           lineColor={theme.palette.info.main}
@@ -137,6 +233,40 @@ const LandingPage = (props:IPageProps) => {
               <Typography variant='h6' align='center'>{exp.title}</Typography>
             } />
           </Box>
+        ))}
+        />
+      </Section>
+      <Section id='skills' bgcolor={theme.palette.secondary.main}
+      color={theme.palette.secondary.contrastText}
+      >
+        <SkillLayout
+        py={10} 
+        header={
+          <Header
+          mb={4} 
+          text='Summary'
+          textColor={theme.palette.secondary.light} 
+          caption='I Have Learned'
+          captionColor={theme.palette.secondary.contrastText}
+          lineColor={theme.palette.info.main}
+          />
+        }
+        skillGroup={group.map((g)=>(
+          <SkillSet
+          mb={8}
+          barColor={theme.palette.info.main}
+          barMaskColor={theme.palette.secondary.dark}
+          key={g.title} 
+          header={
+            <Typography variant='h3' align='center'>{g.title}</Typography>
+          }
+          skills={g.skills.map(s=>{
+            return {
+              title:<Typography variant='h5'>{s.title}</Typography>,
+              value:s.value
+            }
+          })}
+          />
         ))}
         />
       </Section>

@@ -8,9 +8,16 @@ type StyleProps = {
     theme:Theme,
 }
 export default createStyles({
+    wrapper:{
+        '& a:last-of-type':{
+            marginRight: 0,
+        },
+        '& a:first-of-type':{
+            marginLeft: 0,
+        }
+    },
     link:(props:StyleProps)=>({
-        marginLeft: props.theme.spacing(1),
-        marginRight: props.theme.spacing(1)
+        marginRight: props.theme.spacing(2)
     }),
     svgIcon:(props:StyleProps)=>({
         color: props.iconColor,

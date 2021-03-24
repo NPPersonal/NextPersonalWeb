@@ -1,4 +1,18 @@
 export type LaningPageProps = {
+    common:{
+      contact:{
+        location: string,
+        phone: string,
+        mobile: string,
+        email: string,
+      },
+      socialLinks:{
+        github: string,
+        linkedIn: string,
+        medium: string,
+        facebook: string,
+      }
+    },
     hero:{
       heroBgImageURL: string,
     },

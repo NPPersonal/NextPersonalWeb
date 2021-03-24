@@ -74,7 +74,7 @@ const SocialLinks:React.FC<SocialLinksProps> = (props:SocialLinksProps) => {
 
     return (
         <Box {...rest}>
-            <Box display='flex' flexDirection='center'>
+            <Box className={classes.wrapper} display='flex' flexDirection='center'>
                 {!github? null :
                     <a className={classes.link} href={github.link} target='_blank'>
                         <Tooltip classes={toolTipClasses} arrow placement={toolTipPlacement} 

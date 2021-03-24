@@ -15,10 +15,32 @@ import PageLayout from "../layout/PageLayout";
 import { LaningPageProps } from "../pageUtils/LaningPage";
 import SkillLayout from "../layout/SkillLayout";
 import SkillSet from "../components/concrete/SkillSet/SkillSet";
+import ContactLayout from "../layout/ContactLayout";
+import ListItems from "../components/units/ListItems/ListItems";
+import PhoneIcon from '../assets/icons/phone-solid.inline.svg';
+import MobileIcon from '../assets/icons/mobile-alt-solid.inline.svg';
+import EmailIcon from '../assets/icons/envelope-solid.inline.svg';
+import SvgIconColor from "../components/units/SvgIconColor/SvgIconColor";
+import SocialLinks from "../components/concrete/SocialLinks/SocialLinks";
+import ContactForm from "../components/concrete/ContactForm/ContactForm";
 
 export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
   return {
     props:{
+      common:{
+        contact:{
+          location: 'No. 46, Dongcheng 1st St., North Dist., Taichung City 404001, Taiwan (R.O.C.)',
+          phone: '(04) 2231-6495',
+          mobile: '(09) 52669-909',
+          email: 'tomneo2004@gmail.com'
+        },
+        socialLinks:{
+          github:'https://github.com/tomneo2004/',
+          linkedIn: 'https://www.linkedin.com/in/ming-chung-hung-38125a117/',
+          medium: 'https://tomneo2004.medium.com/',
+          facebook: 'https://www.facebook.com/punch.nelson'
+        }
+      },
       hero:{
         heroBgImageURL: 'https://img00.deviantart.net/2bd0/i/2009/276/c/9/magic_forrest_wallpaper_by_goergen.jpg',
       },
@@ -153,6 +175,10 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
 const LandingPage = (props:LaningPageProps) => {
   const theme = useTheme();
   const {
+    common:{
+      contact,
+      socialLinks,
+    },
     hero:{ heroBgImageURL},
     about:{
       personName,
@@ -271,6 +297,101 @@ const LandingPage = (props:LaningPageProps) => {
           })}
           />
         ))}
+        />
+      </Section>
+      {/* Contact section */}
+      <Section id='contact' bgcolor={theme.palette.secondary.dark}
+      color={theme.palette.secondary.contrastText}
+      >
+        <ContactLayout
+        py={10} 
+        header={
+          <Header
+          mb={4} 
+          text='Contact'
+          textColor={theme.palette.secondary.light} 
+          caption='Get In Touch'
+          captionColor={theme.palette.secondary.contrastText}
+          lineColor={theme.palette.info.main}
+          />
+        } 
+        location={
+          <Box>
+            <Typography variant='h4'>Location</Typography>
+            <Typography variant='h6'>{contact.location}</Typography>
+          </Box>
+        }
+        contact={
+          <ListItems
+          items={[
+            {
+              label: (
+                <SvgIconColor color={theme.palette.info.main}>
+                  <PhoneIcon />
+                </SvgIconColor>
+              ),
+              value: (
+                <Box ml={1}>
+                  <Typography variant='h6'>{contact.phone}</Typography>
+                </Box>
+              )
+            },
+            {
+              label: (
+                <SvgIconColor color={theme.palette.info.main}>
+                  <MobileIcon />
+                </SvgIconColor>
+              ),
+              value: (
+                <Box ml={1}>
+                  <Typography variant='h6'>{contact.mobile}</Typography>
+                </Box>
+              )
+            },
+            {
+              label: (
+                <SvgIconColor color={theme.palette.info.main}>
+                  <EmailIcon />
+                </SvgIconColor>
+              ),
+              value: (
+                <Box ml={1}>
+                  <Typography variant='h6'>{contact.email}</Typography>
+                </Box>
+              )
+            }
+          ]}
+          />
+        }
+        socialLinks={
+          <SocialLinks 
+          github={{
+              link:socialLinks.github,
+              toolTip:'Github'
+          }}
+          linkedin={{
+              link:socialLinks.linkedIn,
+              toolTip:'Linked In'
+          }}
+          medium={{
+              link:socialLinks.medium,
+              toolTip:'Medium'
+          }}
+          facebook={{
+              link:socialLinks.facebook,
+              toolTip:'Facebook'
+          }}
+          />
+        }
+        contactForm={
+          <ContactForm 
+          px={2} 
+          textColor={theme.palette.secondary.contrastText}
+          fieldBorderColor={theme.palette.secondary.main}
+          fieldBgColor={theme.palette.secondary.main}
+          fieldFocusColor={theme.palette.info.main}
+          />
+        }
         />
       </Section>
       <div style={{width:'100%', height:'1700px'}} />

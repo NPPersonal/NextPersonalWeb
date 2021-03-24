@@ -1,4 +1,3 @@
-import Typography from '@material-ui/core/Typography/Typography';
 import Box from '@material-ui/core/Box/Box';
 import List from '@material-ui/core/List/List';
 import ListItem from '@material-ui/core/ListItem/ListItem';
@@ -13,6 +12,7 @@ type ItemProps = {
 
 export type ListItemProps = React.ComponentProps<typeof List> & {
     items: ItemProps[],
+    disableGutters?: boolean,
     divider?: boolean,
     dividerColor?: string,
 }
@@ -36,8 +36,9 @@ export type ListItemProps = React.ComponentProps<typeof List> & {
 const ListItems:React.FC<ListItemProps> = (props:ListItemProps) => {
     const {
         items,
-        divider = true,
+        divider = false,
         dividerColor = 'grey',
+        disableGutters = true,
         ...rest
     } = props;
 
@@ -53,10 +54,11 @@ const ListItems:React.FC<ListItemProps> = (props:ListItemProps) => {
        <List {...rest}>
            {items.map((item, i)=>{
                return (
-                <ListItem key={i} classes={listItemClasses} divider={divider?i!==items.length-1:false}>
-                    <Box>
-                        <Typography variant='h6' component='span'>{item.label}</Typography>
-                        <Typography component='span'>{item.value}</Typography>
+                <ListItem key={i} classes={listItemClasses} disableGutters={disableGutters} 
+                divider={divider?i!==items.length-1:false}>
+                    <Box display='flex' alignItems='center'>
+                        {item.label}
+                        {item.value}
                     </Box>
                 </ListItem>
                )

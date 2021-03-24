@@ -1,3 +1,5 @@
+import { Typography } from '@material-ui/core';
+import Box from '@material-ui/core/Box/Box';
 import React from 'react';
 import LinkTo from '../../units/LinkTo/LinkTo';
 import ListItems, { ListItemProps } from '../../units/ListItems/ListItems';
@@ -33,24 +35,43 @@ const PersonInfo:React.FC<PersonInfoProps> = (props:PersonInfoProps) => {
 
     const items = [
         {
-            label: 'Name: ',
-            value: personName
+            label: <Typography variant='h5'>Name: </Typography>,
+            value: (
+                <Box ml={1}>
+                <Typography variant='h5'>{personName}</Typography>
+                </Box>
+            )
         },
         {
-            label: 'Age: ',
-            value: age
+            label: <Typography variant='h5'>Age: </Typography>,
+            value: (
+                <Box ml={1}>
+                    <Typography variant='h5'>{age}</Typography>
+                </Box>
+            )
         },
         {
-            label: 'From: ',
-            value: location
+            label: <Typography variant='h5'>From: </Typography>,
+            value: (
+                <Box ml={1}>
+                    <Typography variant='h5'>{location}</Typography>
+                </Box>
+            )
         },
         {
-            label: 'E-mail: ',
-            value: <LinkTo linkTo={`mailto:${email}`} text={email} color={emailColor} />
+            label: <Typography variant='h5'>E-mail: </Typography>,
+            value: (
+                <Box ml={1}>
+                    <Typography variant='h5'>
+                        <LinkTo linkTo={`mailto:${email}`} text={email} color={emailColor} />
+                    </Typography>    
+                </Box>
+            )
         }
     ]
     return (
         <ListItems
+        divider
         items={items}
         {...rest}
         />

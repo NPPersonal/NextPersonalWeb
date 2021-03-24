@@ -2,9 +2,9 @@ import axios from "axios";
 
 const api = `${process.env.NEXT_PUBLIC_API_ROUTE}/contact`;
 
-export const sendContactMail = async (sender:string, name:string, content:string)=>{
+export const sendContactMail = async (senderEmail:string, name:string, content:string)=>{
     const data = {
-        sender,
+        sender:senderEmail,
         name,
         content,
     }

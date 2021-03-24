@@ -3,12 +3,13 @@ import Grid from '@material-ui/core/Grid/Grid';
 import useTheme from '@material-ui/core/styles/useTheme';
 import TextField from '@material-ui/core/TextField/TextField';
 import Typography from '@material-ui/core/Typography/Typography';
-import { FormikValues, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import React from 'react';
 import ColorButton from '../../units/ColorButton/ColorButton';
 import * as yup from 'yup';
 import style from './ContactFormStyle';
-import { makeStyles } from '@material-ui/core';
+import { sendContactMail } from '../../../utils/mail/SentMail';
+import makeStyles from '@material-ui/core/styles/makeStyles';
 
 
 type ContactFormProps = React.ComponentProps<typeof Box> & {
@@ -49,9 +50,23 @@ const ContactForm:React.FC<ContactFormProps> = (props:ContactFormProps) => {
             message: ''
         },
         validationSchema: valiationSchema,
-        onSubmit: (values:FormikValues)=>{
-            console.log(values);
-            formik.setSubmitting(false)
+        onSubmit: ({name, email, message})=>{
+            sendContactMail(email, name, message)
+            .then(data=>{
+                console.log(data);
+                formik.setSubmitting(false);
+                formik.resetForm({
+                    values:{
+                        name:'',
+                        email:'',
+                        message:''
+                    }
+                })
+            })
+            .catch(error=>{
+                console.log(error);
+                formik.setSubmitting(false);
+            })
         },
     })
 

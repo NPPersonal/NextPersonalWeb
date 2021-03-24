@@ -76,44 +76,44 @@ const SocialLinks:React.FC<SocialLinksProps> = (props:SocialLinksProps) => {
         <Box {...rest}>
             <Box display='flex' flexDirection='center'>
                 {!github? null :
-                    <Tooltip classes={toolTipClasses} arrow placement={toolTipPlacement} 
-                    title={github.toolTip}>
-                        <a href={github.link} target='_blank'>
+                    <a className={classes.link} href={github.link} target='_blank'>
+                        <Tooltip classes={toolTipClasses} arrow placement={toolTipPlacement} 
+                        title={github.toolTip}>
                             <SvgIcon classes={svgClasses} fontSize={iconSize}>
-                                <GithubIcon />
+                                    <GithubIcon />
                             </SvgIcon>
-                        </a>
-                    </Tooltip>
+                        </Tooltip>
+                    </a>
                 }
                 {!linkedin? null :
-                    <Tooltip classes={toolTipClasses} arrow placement={toolTipPlacement} 
-                    title={linkedin.toolTip}>
-                        <a href={linkedin.link} target='_blank'>
+                    <a className={classes.link} href={linkedin.link} target='_blank'>
+                        <Tooltip classes={toolTipClasses} arrow placement={toolTipPlacement} 
+                        title={linkedin.toolTip}>
                             <SvgIcon classes={svgClasses} fontSize={iconSize}>
                                 <LinkedInIcon />
                             </SvgIcon>
-                        </a>
-                    </Tooltip>
+                        </Tooltip>
+                    </a>
                 }
                 {!medium? null :
-                    <Tooltip classes={toolTipClasses} arrow placement={toolTipPlacement} 
-                    title={medium.toolTip}>
-                        <a href={medium.link} target='_blank'>
+                    <a className={classes.link} href={medium.link} target='_blank'>
+                        <Tooltip classes={toolTipClasses} arrow placement={toolTipPlacement} 
+                        title={medium.toolTip}>
                             <SvgIcon classes={svgClasses} fontSize={iconSize}>
                                 <MediumIcon />
                             </SvgIcon>
-                        </a>
-                    </Tooltip>
+                        </Tooltip>
+                    </a>
                 }
                 {!facebook? null :
-                    <Tooltip classes={toolTipClasses} arrow placement={toolTipPlacement} 
-                    title={facebook.toolTip}>
-                        <a href={facebook.link} target='_blank'>
+                    <a className={classes.link} href={facebook.link} target='_blank'>
+                        <Tooltip classes={toolTipClasses} arrow placement={toolTipPlacement} 
+                        title={facebook.toolTip}>
                             <SvgIcon classes={svgClasses} fontSize={iconSize}>
                                 <FacebookIcon />
                             </SvgIcon>
-                        </a>
-                    </Tooltip>
+                        </Tooltip>
+                    </a>
                 }
             </Box>
         </Box>

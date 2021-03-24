@@ -8,10 +8,12 @@ type StyleProps = {
     theme:Theme,
 }
 export default createStyles({
+    link:(props:StyleProps)=>({
+        marginLeft: props.theme.spacing(1),
+        marginRight: props.theme.spacing(1)
+    }),
     svgIcon:(props:StyleProps)=>({
         color: props.iconColor,
-        paddingLeft: props.theme.spacing(1),
-        paddingRight: props.theme.spacing(1)
     }),
     tooltip:(props:StyleProps)=>({
         backgroundColor: props.toolTipColor

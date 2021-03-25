@@ -4,7 +4,6 @@ import nodemailer from 'nodemailer';
 import { MailOptions } from "nodemailer/lib/json-transport";
 
 const transporter = nodemailer.createTransport({
-    pool: true,
     host: process.env.MAIL_SMTP,
     port: Number(process.env.MAIL_SMTP_PORT) || 0,
     auth: {
@@ -48,6 +47,7 @@ export default async function handler(
     }
 
     const info = await transporter.sendMail(message);
+    transporter.close();
     return info;
   });
 }

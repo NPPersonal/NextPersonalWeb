@@ -30,6 +30,7 @@ export default async function nextRequestHandler(
 
     return Promise.resolve();
   } catch (error) {
+    console.log(error);
     if (errorHandler) {
       errorHandler(error, res);
     } else {

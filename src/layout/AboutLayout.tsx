@@ -24,17 +24,19 @@ const AboutLayout:React.FC<AboutLayoutProps> = (props:AboutLayoutProps) => {
         <Box {...rest}>
           <Container>
             {header}
-            <Grid container justify='center'>
-              <Grid item xs={12} sm={8}>
+            <Box p={4}>
+            <Grid container justify='center' spacing={8}>
+              <Grid item xs={12} sm={7} md={6}>
                 {brief}
               </Grid>
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={12} sm={5} md={6}>
                 <Box display='flex' flexDirection='column' alignItems='center'>  
                 {personInfo}
                 {cvDownloadButton}
                 </Box>
               </Grid>
             </Grid>
+            </Box>
             <Box mt={4}>
             <Grid container justify='center'>
               {experiences.map((exp, i)=>(

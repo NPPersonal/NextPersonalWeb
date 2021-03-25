@@ -13,6 +13,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import LinearProgressColor from '../../units/LinearProgressColor/LinearProgressColor';
 import TickMotion from '../../framer/TickMotion/TickMotion';
 import CrossMotion from '../../framer/CrossMotion/CrossMotion';
+import { useMediaQuery } from '@material-ui/core';
 
 
 type ContactFormProps = React.ComponentProps<typeof Box> & {
@@ -42,6 +43,7 @@ const ContactForm:React.FC<ContactFormProps> = (props:ContactFormProps) => {
     } = props;
 
     const theme = useTheme();
+    const matchSM = useMediaQuery(theme.breakpoints.down('sm'));
     const [submitState, setSubmitState] = React.useState<{
         submitted:boolean,
         error:any
@@ -146,8 +148,8 @@ const ContactForm:React.FC<ContactFormProps> = (props:ContactFormProps) => {
             <Typography variant='h4'>Send Me A Message</Typography>
             <form onSubmit={formik.handleSubmit}>
                 <Grid container>
-                    <Grid item sm={12} lg={6}>
-                        <Box ml={0} my={2} mr={2}>
+                    <Grid item sm={12} md={6}>
+                        <Box ml={0} mt={2} mr={matchSM?0:2}>
                             <TextField
                             className={classes.root}
                             id='name' 
@@ -162,8 +164,8 @@ const ContactForm:React.FC<ContactFormProps> = (props:ContactFormProps) => {
                             />
                         </Box>
                     </Grid>
-                    <Grid item sm={12} lg={6}>
-                        <Box ml={0} my={2} mr={0}>
+                    <Grid item sm={12} md={6}>
+                        <Box ml={0} mt={2} mr={0}>
                             <TextField 
                             className={classes.root}
                             id='email' 
@@ -179,7 +181,7 @@ const ContactForm:React.FC<ContactFormProps> = (props:ContactFormProps) => {
                         </Box>
                     </Grid>
                     <Grid item xs={12}>
-                        <Box ml={0} mb={2} mr={0}>
+                        <Box ml={0} mt={2} mb={2} mr={0}>
                         <TextField 
                         className={classes.root}
                         id='message' 

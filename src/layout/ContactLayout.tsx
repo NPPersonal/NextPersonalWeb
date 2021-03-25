@@ -25,18 +25,20 @@ const ContactLayout:React.FC<ContactLayoutProps> = (props:ContactLayoutProps) =>
         <Box {...rest}>
             <Container>
                 {header}
+                <Box p={2}>
                 <Grid container spacing={4}>
-                    <Grid item xs={12} lg={4}>
+                    <Grid item sm={12} md={4}>
                         <Box display='flex' flexDirection='column'>
                             {location}
                             {contact}
                             {socialLinks}
                         </Box>
                     </Grid>
-                    <Grid item xs={12} lg={8}>
+                    <Grid item sm={12} md={8}>
                     {contactForm}
                     </Grid>
                 </Grid>
+                </Box>
             </Container>
         </Box>
     );

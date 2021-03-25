@@ -5,7 +5,7 @@ import style from './LinearProgressColorStyle';
 
 type ProgressWithoutColorProps = Omit<LinearProgressProps, 'color'>;
 
-type LinearProgressColorProps = ProgressWithoutColorProps & {
+export type LinearProgressColorProps = ProgressWithoutColorProps & {
     barColor?:string,
     barMaskColor?:string,
     barRadius?: string|number,

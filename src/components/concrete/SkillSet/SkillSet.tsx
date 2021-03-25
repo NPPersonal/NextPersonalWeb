@@ -3,7 +3,7 @@
 import Box from '@material-ui/core/Box/Box';
 import Grid from '@material-ui/core/Grid/Grid';
 import React from 'react';
-import Skill, {SkillProps} from '../../units/Skill/Skill';
+import Skill, {SkillProps} from '../Skill/Skill';
 
 type SkillPartialProps = Omit<SkillProps, 'header'|'value'>;
 
@@ -18,6 +18,20 @@ type SkillSetProps = React.ComponentProps<typeof Box> & SkillPartialProps & {
         value: number,
     }[]
 }
+
+/**
+ * Component SkillSet
+ * 
+ * Display a set of skill in `Grid` layout
+ * 
+ * Wrapped Material-UI `Box`
+ * https://material-ui.com/components/box/
+ * 
+ * Adopted `Skill` component
+ * 
+ * @param {SkillProps} props 
+ * @returns 
+ */
 const SkillSet:React.FC<SkillSetProps> = (props:SkillSetProps) => {
     const {
         header,
@@ -42,7 +56,8 @@ const SkillSet:React.FC<SkillSetProps> = (props:SkillSetProps) => {
                         }
                         value={skill.value}
                         barColor={barColor}
-                        barMaskColor={barMaskColor} 
+                        barMaskColor={barMaskColor}
+                        barHeight='8px' 
                         />
                     </Grid>
                 ))}

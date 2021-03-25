@@ -1,8 +1,8 @@
 import React from 'react';
 import {motion, Transition, Variants} from 'framer-motion';
-import { springTransition } from './Transition';
+import { orchestrate, springTransition } from '../Transition';
 
-type TickMotionProps = {
+type CrossMotionProps = {
     color?:string,
     delay?:number,
     strokeWidth?:string|number,
@@ -12,7 +12,7 @@ type TickMotionProps = {
     transition?: Transition,
 }
 
-const TickMotion:React.FC<TickMotionProps> = (props:TickMotionProps) => {
+const CrossMotion:React.FC<CrossMotionProps> = (props:CrossMotionProps) => {
     const {
         color = '#7700FF',
         delay = 0.2,
@@ -20,15 +20,24 @@ const TickMotion:React.FC<TickMotionProps> = (props:TickMotionProps) => {
         strokeLinecap = 'round',
         strokeLinejoin = 'round',
         transform = 'translate(50, 50)',
-        transition = springTransition(350, 50, delay)
+        transition = springTransition(350, 50, 0, 1, 0, 0.8, orchestrate(delay, 0.2))
     } = props;
 
-    const variant:Variants = {
-        init:{pathLength: 0},
-        enter:{pathLength: 1, transition: transition}
+    const svgVariant:Variants = {
+        init:{},
+        enter:{
+            transition
+        }
     }
+
+    const strikeVariant:Variants = {
+        init:{pathLength: 0},
+        enter:{pathLength: 1}
+    }
+
     return (
         <motion.svg
+        variants={svgVariant}
         initial='init'
         animate='enter'
         viewBox='0 0  430 400'
@@ -37,17 +46,30 @@ const TickMotion:React.FC<TickMotionProps> = (props:TickMotionProps) => {
             transform={transform}
             >
                 <motion.path
-                d="M 0 128.666 L 128.658 257.373 L 341.808 0"
+                d="M 0 0 L 257.373 257.373"
                 fill="transparent"
                 strokeWidth={strokeWidth}
                 stroke={color}
                 strokeLinecap={strokeLinecap}
                 strokeLinejoin={strokeLinejoin}
-                variants={variant}
+                variants={strikeVariant}
+                />
+            </motion.g>
+            <motion.g
+            transform={transform}
+            >
+                <motion.path
+                d="M 257.373 0 L 0 257.373"
+                fill="transparent"
+                strokeWidth={strokeWidth}
+                stroke={color}
+                strokeLinecap={strokeLinecap}
+                strokeLinejoin={strokeLinejoin}
+                variants={strikeVariant}
                 />
             </motion.g>
         </motion.svg>
     );
 };
 
-export default TickMotion;
+export default CrossMotion;

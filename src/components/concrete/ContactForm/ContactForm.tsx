@@ -10,6 +10,7 @@ import * as yup from 'yup';
 import style from './ContactFormStyle';
 import { sendContactMail } from '../../../utils/mail/SentMail';
 import makeStyles from '@material-ui/core/styles/makeStyles';
+import LinearProgressColor from '../../units/LinearProgressColor/LinearProgressColor';
 
 
 type ContactFormProps = React.ComponentProps<typeof Box> & {
@@ -19,6 +20,16 @@ type ContactFormProps = React.ComponentProps<typeof Box> & {
     fieldBorderColor?:string,
 };
 
+/**
+ * Component ContactForm
+ * 
+ * Display a contact form and manage form submission
+ * 
+ * Submission is using `/src/utils/mail/SentMail.ts`
+ * 
+ * @param {ContactFormProps} props 
+ * @returns 
+ */
 const ContactForm:React.FC<ContactFormProps> = (props:ContactFormProps) => {
     const {
         textColor = 'white',
@@ -134,7 +145,11 @@ const ContactForm:React.FC<ContactFormProps> = (props:ContactFormProps) => {
                     <Grid item xs={12}>
                         <Box display='flex' justifyContent='center'>
                             {formik.isSubmitting?
-                                <Typography variant='h5' align='center'>Sending Message...</Typography>
+                                <LinearProgressColor 
+                                barColor={theme.palette.info.main} 
+                                barMaskColor={theme.palette.info.dark}
+                                barWidth='100%'
+                                />
                                 :
                                 <ColorButton
                                 type='submit' 

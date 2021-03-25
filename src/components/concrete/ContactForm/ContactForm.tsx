@@ -11,6 +11,8 @@ import style from './ContactFormStyle';
 import { sendContactMail } from '../../../utils/mail/SentMail';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import LinearProgressColor from '../../units/LinearProgressColor/LinearProgressColor';
+import TickMotion from '../../framer/TickMotion/TickMotion';
+import CrossMotion from '../../framer/CrossMotion/CrossMotion';
 
 
 type ContactFormProps = React.ComponentProps<typeof Box> & {
@@ -40,6 +42,13 @@ const ContactForm:React.FC<ContactFormProps> = (props:ContactFormProps) => {
     } = props;
 
     const theme = useTheme();
+    const [submitState, setSubmitState] = React.useState<{
+        submitted:boolean,
+        error:any
+    }>({
+        submitted: false,
+        error: undefined,
+    });
 
     const valiationSchema = yup.object({
         name: yup
@@ -72,14 +81,20 @@ const ContactForm:React.FC<ContactFormProps> = (props:ContactFormProps) => {
                         email:'',
                         message:''
                     }
-                })
+                });
+                setSubmitState({submitted:true, error:undefined});
             })
             .catch(error=>{
                 console.log(error);
                 formik.setSubmitting(false);
+                setSubmitState({submitted:false, error:error});
             })
         },
     })
+
+    const handleTryAgain = ()=>{
+        setSubmitState({submitted:false, error:undefined})
+    }
 
     const classes = makeStyles(style)({
         textColor,
@@ -87,6 +102,44 @@ const ContactForm:React.FC<ContactFormProps> = (props:ContactFormProps) => {
         fieldFocusColor,
         fieldBorderColor
     })
+
+    if(submitState.submitted && !submitState.error){
+        return (
+            <Box display='flex' flexDirection='column' justifyContent='center' alignItems='center'>
+                <Box width={100} height={100}>
+                    <TickMotion color={theme.palette.success.main} />
+                </Box>
+                <Box pt={2}>
+                    <Typography variant='h5'>Thank you for getting in thouch with me</Typography>
+                </Box>
+            </Box>
+        )
+    }
+
+    if(submitState.error){
+        return (
+            <Box display='flex' flexDirection='column' justifyContent='center' alignItems='center'>
+                <Box width={100} height={100}>
+                    <CrossMotion color={theme.palette.error.main} />
+                </Box>
+                <Box pt={2}>
+                    <Typography variant='h5'>Looks like message did not send</Typography>
+                </Box>
+                <Box pt={2}>
+                    <ColorButton
+                    px={40}
+                    disableRipple 
+                    color={theme.palette.info.main} 
+                    hoverColor={theme.palette.info.dark}
+                    titleColor={theme.palette.secondary.contrastText}
+                    onClick={handleTryAgain}
+                    >
+                        Try Again
+                    </ColorButton>
+                </Box>
+            </Box>
+        )
+    }
 
     return (
        <Box {...rest}>

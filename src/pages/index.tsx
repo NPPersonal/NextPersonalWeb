@@ -206,7 +206,14 @@ const LandingPage = (props:LaningPageProps) => {
       anchor='left' 
       color={theme.palette.primary.main}
       >
-        <Box>
+        <Box 
+        display='flex' 
+        flexDirection='column' 
+        justifyContent='space-between' 
+        alignItems='center'
+        height='100%'
+        py={2}
+        >
           <Typography variant='h6'>
           <List>
             <ListItem dense>
@@ -255,6 +262,25 @@ const LandingPage = (props:LaningPageProps) => {
             </ListItem>
           </List>
           </Typography>
+          <SocialLinks 
+          iconSize='small'
+          github={{
+              link:socialLinks.github,
+              toolTip:'Github'
+          }}
+          linkedin={{
+              link:socialLinks.linkedIn,
+              toolTip:'Linked In'
+          }}
+          medium={{
+              link:socialLinks.medium,
+              toolTip:'Medium'
+          }}
+          facebook={{
+              link:socialLinks.facebook,
+              toolTip:'Facebook'
+          }}
+          />
         </Box>
       </DrawerColor>
       {/* Home section */}

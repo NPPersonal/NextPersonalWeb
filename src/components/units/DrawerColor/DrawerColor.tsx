@@ -27,7 +27,7 @@ const DrawerColor:React.FC<DrawerColorPorps> = (props:DrawerColorPorps) => {
         {...rest}
         classes={drawerClasses}
         >
-            <Container>
+            <Container className={classes.container}>
                 {children}
             </Container>
         </Drawer>

@@ -32,6 +32,8 @@ type ScrollLinkProps = ScrollLinkWithoutProps & {
  * 
  * Customizable underline height
  * 
+ * MouseOver present underline
+ * 
  * Wrapped react-scroll `Link`
  * https://www.npmjs.com/package/react-scroll
  * @param props 
@@ -47,9 +49,14 @@ const ScrollLink:React.FC<ScrollLinkProps> = (props:ScrollLinkProps) => {
     } = props;
 
     const [active, setActive] = React.useState<boolean>(false);
+    const [underline, setUnderline] = React.useState<boolean>(false);
 
     const toggleLinkActive = ()=>{
         setActive(state=>!state);
+    }
+
+    const toggleUnderline = ()=>{
+        setUnderline(state=>!state);
     }
 
     const classes = makeStyles(style)({
@@ -57,6 +64,7 @@ const ScrollLink:React.FC<ScrollLinkProps> = (props:ScrollLinkProps) => {
         activeColor,
         isActive: active,
         underlineHeight,
+        isUnderline: underline,
     })
 
     return (
@@ -65,6 +73,8 @@ const ScrollLink:React.FC<ScrollLinkProps> = (props:ScrollLinkProps) => {
         className={classes.link}
         onSetActive={toggleLinkActive}
         onSetInactive={toggleLinkActive}
+        onMouseOver={toggleUnderline}
+        onMouseOut={toggleUnderline}
         >
         {children}
         </Link>

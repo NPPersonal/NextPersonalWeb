@@ -7,5 +7,8 @@ type StyleProps = {
 export default createStyles({
     paper:(props:StyleProps)=>({
         backgroundColor: props.color,
-    })
+    }),
+    container:{
+        height:'100%',
+    }
 })

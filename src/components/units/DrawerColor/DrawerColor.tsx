@@ -5,20 +5,33 @@ import React from 'react';
 import style from './DrawerStyle';
 
 type DrawerColorPorps = React.ComponentProps<typeof Drawer> & {
+    drawerWidth?: number,
     color?:string,
 }
+
+/**
+ * Component DrawerColor
+ * 
+ * Customizable drawer color and width
+ * 
+ * @param props 
+ * @returns 
+ */
 const DrawerColor:React.FC<DrawerColorPorps> = (props:DrawerColorPorps) => {
     const {
         children,
+        drawerWidth = 240,
         color = 'grey',
         ...rest
     } = props;
 
     const classes = makeStyles(style)({
+        drawerWidth,
         color,
     });
 
     const drawerClasses = {
+        root: classes.root,
         paper: classes.paper,
     }
     

@@ -148,7 +148,7 @@ const ContactForm:React.FC<ContactFormProps> = (props:ContactFormProps) => {
             <Typography variant='h4'>Send Me A Message</Typography>
             <form onSubmit={formik.handleSubmit}>
                 <Grid container>
-                    <Grid item sm={12} md={6}>
+                    <Grid item xs={12} md={6}>
                         <Box ml={0} mt={2} mr={matchSM?0:2}>
                             <TextField
                             className={classes.root}
@@ -164,7 +164,7 @@ const ContactForm:React.FC<ContactFormProps> = (props:ContactFormProps) => {
                             />
                         </Box>
                     </Grid>
-                    <Grid item sm={12} md={6}>
+                    <Grid item xs={12} md={6}>
                         <Box ml={0} mt={2} mr={0}>
                             <TextField 
                             className={classes.root}

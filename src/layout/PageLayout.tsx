@@ -1,7 +1,11 @@
+import Box from '@material-ui/core/Box/Box';
 import Container from '@material-ui/core/Container/Container';
+import Hidden from '@material-ui/core/Hidden/Hidden';
 import React from 'react';
 
-type PageLayoutProps = React.ComponentProps<typeof Container>;
+type PageLayoutProps = React.ComponentProps<typeof Container> & {
+    drawer?:React.ReactNode
+};
 
 /**
  * PageLayout use to layout each page
@@ -17,10 +21,16 @@ type PageLayoutProps = React.ComponentProps<typeof Container>;
 const PageLayout:React.FC<PageLayoutProps> = (props:PageLayoutProps) => {
     const {
         children,
+        drawer,
         ...rest
     } = props;
     return (
-        <Container {...rest}>{children}</Container>
+        <Box display='flex'>
+            <Hidden smDown>
+                {drawer}
+            </Hidden>
+            <Container {...rest}>{children}</Container>
+        </Box>
     );
 };
 

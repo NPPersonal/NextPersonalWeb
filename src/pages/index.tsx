@@ -27,6 +27,7 @@ import List from "@material-ui/core/List/List";
 import ListItem from "@material-ui/core/ListItem/ListItem";
 import DrawerColor from "../components/units/DrawerColor/DrawerColor";
 import ScrollLink from "../components/units/ScrollLink/ScrollLink";
+import Container from "@material-ui/core/Container/Container";
 
 export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
   return {
@@ -199,90 +200,94 @@ const LandingPage = (props:LaningPageProps) => {
   } = props;
 
   return (
-    <PageLayout maxWidth='xl' disableGutters>
-      {/* Permanent drawer */}
+    <PageLayout 
+    maxWidth='xl' 
+    disableGutters
+    drawer={
       <DrawerColor 
-      variant='permanent' 
-      anchor='left' 
-      color={theme.palette.primary.main}
-      >
-        <Box 
-        display='flex' 
-        flexDirection='column' 
-        justifyContent='space-between' 
-        alignItems='center'
-        height='100%'
-        py={2}
+        variant='permanent' 
+        anchor='left' 
+        color={theme.palette.primary.main}
         >
-          <Typography variant='h6'>
-          <List>
-            <ListItem dense>
-              <ScrollLink 
-              to='home' 
-              spy={true} 
-              smooth={true}
-              color={theme.palette.primary.contrastText}
-              activeColor={theme.palette.info.main}
-              >
-                Home
-              </ScrollLink>
-            </ListItem>
-            <ListItem dense>
-              <ScrollLink 
-              to='about-me' 
-              spy={true} 
-              smooth={true}
-              color={theme.palette.primary.contrastText}
-              activeColor={theme.palette.info.main}
-              >
-                About Me
-              </ScrollLink>
-            </ListItem>
-            <ListItem dense>
-              <ScrollLink 
-              to='skills' 
-              spy={true} 
-              smooth={true}
-              color={theme.palette.primary.contrastText}
-              activeColor={theme.palette.info.main}
-              >
-                Skills
-              </ScrollLink>
-            </ListItem>
-            <ListItem dense>
-              <ScrollLink 
-              to='contact' 
-              spy={true} 
-              smooth={true}
-              color={theme.palette.primary.contrastText}
-              activeColor={theme.palette.info.main}
-              >
-                Contact
-              </ScrollLink>
-            </ListItem>
-          </List>
-          </Typography>
-          <SocialLinks 
-          iconSize='small'
-          github={{
-              link:socialLinks.github,
-              toolTip:'Github'
-          }}
-          linkedin={{
-              link:socialLinks.linkedIn,
-              toolTip:'Linked In'
-          }}
-          medium={{
-              link:socialLinks.medium,
-              toolTip:'Medium'
-          }}
-          facebook={{
-              link:socialLinks.facebook,
-              toolTip:'Facebook'
-          }}
-          />
-        </Box>
-      </DrawerColor>
+          <Box 
+          display='flex' 
+          flexDirection='column' 
+          justifyContent='space-between' 
+          alignItems='center'
+          height='100%'
+          py={2}
+          >
+            <Typography variant='h6'>
+              <List>
+                <ListItem dense>
+                  <ScrollLink 
+                  to='home' 
+                  spy={true} 
+                  smooth={true}
+                  color={theme.palette.primary.contrastText}
+                  activeColor={theme.palette.info.main}
+                  >
+                    Home
+                  </ScrollLink>
+                </ListItem>
+                <ListItem dense>
+                  <ScrollLink 
+                  to='about-me' 
+                  spy={true} 
+                  smooth={true}
+                  color={theme.palette.primary.contrastText}
+                  activeColor={theme.palette.info.main}
+                  >
+                    About Me
+                  </ScrollLink>
+                </ListItem>
+                <ListItem dense>
+                  <ScrollLink 
+                  to='skills' 
+                  spy={true} 
+                  smooth={true}
+                  color={theme.palette.primary.contrastText}
+                  activeColor={theme.palette.info.main}
+                  >
+                    Skills
+                  </ScrollLink>
+                </ListItem>
+                <ListItem dense>
+                  <ScrollLink 
+                  to='contact' 
+                  spy={true} 
+                  smooth={true}
+                  color={theme.palette.primary.contrastText}
+                  activeColor={theme.palette.info.main}
+                  >
+                    Contact
+                  </ScrollLink>
+                </ListItem>
+              </List>
+            </Typography>
+            <SocialLinks 
+            iconSize='small'
+            github={{
+                link:socialLinks.github,
+                toolTip:'Github'
+            }}
+            linkedin={{
+                link:socialLinks.linkedIn,
+                toolTip:'Linked In'
+            }}
+            medium={{
+                link:socialLinks.medium,
+                toolTip:'Medium'
+            }}
+            facebook={{
+                link:socialLinks.facebook,
+                toolTip:'Facebook'
+            }}
+            />
+          </Box>
+        </DrawerColor>
+    }
+    >
       {/* Home section */}
       <Section id='home' color={theme.palette.primary.contrastText}>
         <ParallaxHero
@@ -481,7 +486,21 @@ const LandingPage = (props:LaningPageProps) => {
         }
         />
       </Section>
-      <div style={{width:'100%', height:'1700px'}} />
+      {/* Footer */}
+      <Section id='footer' bgcolor={theme.palette.secondary.main}>
+        <Container>
+          <Box p={4} color={theme.palette.secondary.contrastText}>
+            <Typography variant='h6' component='span'>Powered by </Typography>
+            <Box component='span' color={theme.palette.info.main}>
+              <Typography variant='h6' component='span'>Next.JS</Typography>
+            </Box>
+            <Typography variant='h6' component='span'>. Created by </Typography>
+            <Box component='span' color={theme.palette.info.main}>
+              <Typography variant='h6' component='span'>{personName}</Typography>
+            </Box>
+          </Box>
+        </Container>
+      </Section>
     </PageLayout>
   );
 };

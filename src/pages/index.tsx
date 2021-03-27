@@ -27,7 +27,6 @@ import List from "@material-ui/core/List/List";
 import ListItem from "@material-ui/core/ListItem/ListItem";
 import DrawerColor from "../components/units/DrawerColor/DrawerColor";
 import ScrollLink from "../components/units/ScrollLink/ScrollLink";
-import Container from "@material-ui/core/Container/Container";
 
 export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
   return {
@@ -488,8 +487,11 @@ const LandingPage = (props:LaningPageProps) => {
       </Section>
       {/* Footer */}
       <Section id='footer' bgcolor={theme.palette.secondary.main}>
-        <Container>
-          <Box p={4} color={theme.palette.secondary.contrastText}>
+          <Box
+          py={4}
+          textAlign='center'
+          color={theme.palette.secondary.contrastText}
+          >
             <Typography variant='h6' component='span'>Powered by </Typography>
             <Box component='span' color={theme.palette.info.main}>
               <Typography variant='h6' component='span'>Next.JS</Typography>
@@ -499,7 +501,6 @@ const LandingPage = (props:LaningPageProps) => {
               <Typography variant='h6' component='span'>{personName}</Typography>
             </Box>
           </Box>
-        </Container>
       </Section>
     </PageLayout>
   );

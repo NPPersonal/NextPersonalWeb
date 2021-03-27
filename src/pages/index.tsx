@@ -9,7 +9,7 @@ import Header from "../components/concrete/OverlapHeader/OverlapHeader";
 import PersonInfo from "../components/concrete/PersonInfo/PersonInfo";
 import ColorButton from "../components/units/ColorButton/ColorButton";
 import ParallaxHero from "../components/units/ParallaxHero/ParallaxHero";
-import Section from "../components/units/Section/Section";
+import Section from "../components/units/ScrollSection/ScrollSection";
 import AboutLayout from "../layout/AboutLayout";
 import PageLayout from "../layout/PageLayout";
 import { LaningPageProps } from "../pageUtils/LaningPage";
@@ -23,6 +23,10 @@ import EmailIcon from '../assets/icons/envelope-solid.inline.svg';
 import SvgIconColor from "../components/units/SvgIconColor/SvgIconColor";
 import SocialLinks from "../components/concrete/SocialLinks/SocialLinks";
 import ContactForm from "../components/concrete/ContactForm/ContactForm";
+import List from "@material-ui/core/List/List";
+import ListItem from "@material-ui/core/ListItem/ListItem";
+import DrawerColor from "../components/units/DrawerColor/DrawerColor";
+import ScrollLink from "../components/units/ScrollLink/ScrollLink";
 
 export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
   return {
@@ -196,6 +200,63 @@ const LandingPage = (props:LaningPageProps) => {
 
   return (
     <PageLayout maxWidth='xl' disableGutters>
+      {/* Permanent drawer */}
+      <DrawerColor 
+      variant='permanent' 
+      anchor='left' 
+      color={theme.palette.primary.main}
+      >
+        <Box>
+          <Typography variant='h6'>
+          <List>
+            <ListItem dense>
+              <ScrollLink 
+              to='home' 
+              spy={true} 
+              smooth={true}
+              color={theme.palette.primary.contrastText}
+              activeColor={theme.palette.info.main}
+              >
+                Home
+              </ScrollLink>
+            </ListItem>
+            <ListItem dense>
+              <ScrollLink 
+              to='about-me' 
+              spy={true} 
+              smooth={true}
+              color={theme.palette.primary.contrastText}
+              activeColor={theme.palette.info.main}
+              >
+                About Me
+              </ScrollLink>
+            </ListItem>
+            <ListItem dense>
+              <ScrollLink 
+              to='skills' 
+              spy={true} 
+              smooth={true}
+              color={theme.palette.primary.contrastText}
+              activeColor={theme.palette.info.main}
+              >
+                Skills
+              </ScrollLink>
+            </ListItem>
+            <ListItem dense>
+              <ScrollLink 
+              to='contact' 
+              spy={true} 
+              smooth={true}
+              color={theme.palette.primary.contrastText}
+              activeColor={theme.palette.info.main}
+              >
+                Contact
+              </ScrollLink>
+            </ListItem>
+          </List>
+          </Typography>
+        </Box>
+      </DrawerColor>
       {/* Home section */}
       <Section id='home' color={theme.palette.primary.contrastText}>
         <ParallaxHero

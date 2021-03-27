@@ -1,5 +1,5 @@
 import React from 'react';
-import Section from './Section';
+import Section from './ScrollSection';
 
 export default {
     title: 'Section',

@@ -1,20 +1,22 @@
 import Box from '@material-ui/core/Box/Box';
 import React from 'react';
 
-type SectionProps = React.ComponentProps<typeof Box>;
+type ScrollSectionProps = React.ComponentProps<typeof Box>;
 
 /**
- * Component Section
+ * Component ScrollSection
  * 
  * Take ReactNode as child content
+ * 
+ * Define `id` value to make section to be scrolled to, by incorporate with `ScrollLink`
  * 
  * Wrapped Material-UI `Box`
  * https://material-ui.com/components/box/
  * 
- * @param {SectionProps} props 
+ * @param {ScrollSectionProps} props 
  * @returns 
  */
-const Section:React.FC<SectionProps> = (props:SectionProps) => {
+const ScrollSection:React.FC<ScrollSectionProps> = (props:ScrollSectionProps) => {
     const {
         children,
         ...rest
@@ -25,4 +27,4 @@ const Section:React.FC<SectionProps> = (props:SectionProps) => {
     );
 };
 
-export default Section;
+export default ScrollSection;

@@ -1,5 +1,9 @@
 export type LaningPageProps = {
     common:{
+      name:{
+        first: string,
+        last: string,
+      },
       contact:{
         location: string,
         phone: string,

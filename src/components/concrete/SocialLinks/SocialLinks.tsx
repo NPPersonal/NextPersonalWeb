@@ -73,49 +73,47 @@ const SocialLinks:React.FC<SocialLinksProps> = (props:SocialLinksProps) => {
     }
 
     return (
-        <Box {...rest}>
-            <Box className={classes.wrapper} display='flex' flexDirection='center'>
-                {!github? null :
-                    <a className={classes.link} href={github.link} target='_blank'>
-                        <Tooltip classes={toolTipClasses} arrow placement={toolTipPlacement} 
-                        title={github.toolTip}>
-                            <SvgIcon classes={svgClasses} fontSize={iconSize}>
-                                    <GithubIcon />
-                            </SvgIcon>
-                        </Tooltip>
-                    </a>
-                }
-                {!linkedin? null :
-                    <a className={classes.link} href={linkedin.link} target='_blank'>
-                        <Tooltip classes={toolTipClasses} arrow placement={toolTipPlacement} 
-                        title={linkedin.toolTip}>
-                            <SvgIcon classes={svgClasses} fontSize={iconSize}>
-                                <LinkedInIcon />
-                            </SvgIcon>
-                        </Tooltip>
-                    </a>
-                }
-                {!medium? null :
-                    <a className={classes.link} href={medium.link} target='_blank'>
-                        <Tooltip classes={toolTipClasses} arrow placement={toolTipPlacement} 
-                        title={medium.toolTip}>
-                            <SvgIcon classes={svgClasses} fontSize={iconSize}>
-                                <MediumIcon />
-                            </SvgIcon>
-                        </Tooltip>
-                    </a>
-                }
-                {!facebook? null :
-                    <a className={classes.link} href={facebook.link} target='_blank'>
-                        <Tooltip classes={toolTipClasses} arrow placement={toolTipPlacement} 
-                        title={facebook.toolTip}>
-                            <SvgIcon classes={svgClasses} fontSize={iconSize}>
-                                <FacebookIcon />
-                            </SvgIcon>
-                        </Tooltip>
-                    </a>
-                }
-            </Box>
+        <Box className={classes.wrapper} {...rest}>
+            {!github? null :
+                <a className={classes.link} href={github.link} target='_blank'>
+                    <Tooltip classes={toolTipClasses} arrow placement={toolTipPlacement} 
+                    title={github.toolTip}>
+                        <SvgIcon classes={svgClasses} fontSize={iconSize}>
+                                <GithubIcon />
+                        </SvgIcon>
+                    </Tooltip>
+                </a>
+            }
+            {!linkedin? null :
+                <a className={classes.link} href={linkedin.link} target='_blank'>
+                    <Tooltip classes={toolTipClasses} arrow placement={toolTipPlacement} 
+                    title={linkedin.toolTip}>
+                        <SvgIcon classes={svgClasses} fontSize={iconSize}>
+                            <LinkedInIcon />
+                        </SvgIcon>
+                    </Tooltip>
+                </a>
+            }
+            {!medium? null :
+                <a className={classes.link} href={medium.link} target='_blank'>
+                    <Tooltip classes={toolTipClasses} arrow placement={toolTipPlacement} 
+                    title={medium.toolTip}>
+                        <SvgIcon classes={svgClasses} fontSize={iconSize}>
+                            <MediumIcon />
+                        </SvgIcon>
+                    </Tooltip>
+                </a>
+            }
+            {!facebook? null :
+                <a className={classes.link} href={facebook.link} target='_blank'>
+                    <Tooltip classes={toolTipClasses} arrow placement={toolTipPlacement} 
+                    title={facebook.toolTip}>
+                        <SvgIcon classes={svgClasses} fontSize={iconSize}>
+                            <FacebookIcon />
+                        </SvgIcon>
+                    </Tooltip>
+                </a>
+            }
         </Box>
     );
 };

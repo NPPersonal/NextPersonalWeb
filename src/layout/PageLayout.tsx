@@ -4,7 +4,8 @@ import Hidden from '@material-ui/core/Hidden/Hidden';
 import React from 'react';
 
 type PageLayoutProps = React.ComponentProps<typeof Container> & {
-    drawer?:React.ReactNode
+    drawer?:React.ReactNode,
+    navigation?:React.ReactNode,
 };
 
 /**
@@ -22,15 +23,22 @@ const PageLayout:React.FC<PageLayoutProps> = (props:PageLayoutProps) => {
     const {
         children,
         drawer,
+        navigation,
         ...rest
     } = props;
+
     return (
-        <Box display='flex'>
-            <Hidden smDown>
-                {drawer}
+        <React.Fragment>
+            <Hidden mdUp>
+            {navigation}
             </Hidden>
-            <Container {...rest}>{children}</Container>
-        </Box>
+            <Box display='flex'>
+                <Hidden smDown>
+                {drawer}
+                </Hidden>
+                <Container {...rest}>{children}</Container>
+            </Box>
+        </React.Fragment>
     );
 };
 

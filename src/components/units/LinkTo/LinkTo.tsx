@@ -2,12 +2,12 @@ import Link from "next/link";
 import React from "react";
 
 type LinkToProps = React.ComponentProps<typeof React.Component> & {
-  text: string;
-  linkTo: string;
-  shallow?: boolean;
-  display?: "inline" | "block" | "initial";
-  underline?: boolean;
-  color?: string;
+  text: React.ReactNode,
+  linkTo: string,
+  shallow?: boolean,
+  display?: "inline" | "block" | "initial",
+  underline?: boolean,
+  color?: string,
 };
 
 /**

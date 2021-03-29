@@ -29,11 +29,17 @@ import DrawerColor from "../components/units/DrawerColor/DrawerColor";
 import ScrollLink from "../components/units/ScrollLink/ScrollLink";
 import SizeAvatar from "../components/units/SizeAvatar/SizeAvatar";
 import avatarURL from '../assets/profile/profile-avatar.png';
+import StickyNav from "../components/concrete/StickyNav/StickyNav";
+import LinkTo from "../components/units/LinkTo/LinkTo";
 
 export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
   return {
     props:{
       common:{
+        name:{
+          first: 'Ming-Chun',
+          last: 'Hung',
+        },
         contact:{
           location: 'No. 46, Dongcheng 1st St., North Dist., Taichung City 404001, Taiwan (R.O.C.)',
           phone: '(04) 2231-6495',
@@ -182,6 +188,7 @@ const LandingPage = (props:LaningPageProps) => {
   const theme = useTheme();
   const {
     common:{
+      name,
       contact,
       socialLinks,
     },
@@ -298,6 +305,40 @@ const LandingPage = (props:LaningPageProps) => {
             />
           </Box>
         </DrawerColor>
+    }
+    navigation={
+      <StickyNav
+      color={theme.palette.primary.main}
+      brand={
+        <LinkTo 
+        color={theme.palette.primary.contrastText}
+        linkTo='/'
+        text={
+          <Typography variant='h6'>{name.first}</Typography>
+        } />
+      }
+      >
+          <SocialLinks
+          width='fit-content'
+          iconSize='small'
+          github={{
+              link:socialLinks.github,
+              toolTip:'Github'
+          }}
+          linkedin={{
+              link:socialLinks.linkedIn,
+              toolTip:'Linked In'
+          }}
+          medium={{
+              link:socialLinks.medium,
+              toolTip:'Medium'
+          }}
+          facebook={{
+              link:socialLinks.facebook,
+              toolTip:'Facebook'
+          }}
+          />
+      </StickyNav>
     }
     >
       {/* Home section */}

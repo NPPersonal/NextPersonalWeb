@@ -27,6 +27,8 @@ import List from "@material-ui/core/List/List";
 import ListItem from "@material-ui/core/ListItem/ListItem";
 import DrawerColor from "../components/units/DrawerColor/DrawerColor";
 import ScrollLink from "../components/units/ScrollLink/ScrollLink";
+import SizeAvatar from "../components/units/SizeAvatar/SizeAvatar";
+import avatarURL from '../assets/profile/profile-avatar.png';
 
 export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
   return {
@@ -216,6 +218,17 @@ const LandingPage = (props:LaningPageProps) => {
           height='100%'
           py={2}
           >
+            <SizeAvatar
+            src={avatarURL}
+            size={200}
+            ringColor={theme.palette.primary.light}
+            ringWidth={theme.spacing(1)}
+            caption={
+              <Box color={theme.palette.primary.contrastText} pt={1}>
+                <Typography variant='h6' align='center'>{personName}</Typography>
+              </Box>
+            }
+            />
             <Typography variant='h6'>
               <List>
                 <ListItem dense>
@@ -488,7 +501,7 @@ const LandingPage = (props:LaningPageProps) => {
       {/* Footer */}
       <Section id='footer' bgcolor={theme.palette.secondary.main}>
           <Box
-          py={4}
+          py={8}
           textAlign='center'
           color={theme.palette.secondary.contrastText}
           >

@@ -7,6 +7,7 @@ type HamburgerToggleProps = ButtonWithoutStyle & {
     color?:string,
     strokeWidth?: number | string,
     StrokeLinecap?: "inherit" | "butt" | "round" | "square",
+    open?:boolean,
     onClick?:(open:boolean)=>void,
 };    
 
@@ -16,11 +17,12 @@ const HamburgerToggle:React.FC<HamburgerToggleProps> = (props:HamburgerTogglePro
         color = 'black',
         strokeWidth = 3,
         StrokeLinecap = 'round',
+        open = false,
         onClick,
         ...rest
     } = props;
 
-    const [isOpen, toggleOpen] = useCycle(false, true);
+    const [isOpen, toggleOpen] = useCycle(open, !open);
 
     const handleClick = ()=>{
         toggleOpen();

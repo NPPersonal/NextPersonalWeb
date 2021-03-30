@@ -7,34 +7,45 @@ export default {
 }
 
 export const Default = ()=>{
+    const [toggle, setToggle] = React.useState<boolean>(false);
+
     return (
-        <HamburgerToggle />
+        <HamburgerToggle toggle={toggle} onClick={()=>setToggle(state=>!state)} />
     )
 }
 
 export const Color = ()=>{
+    const [toggle, setToggle] = React.useState<boolean>(false);
+
     return (
-        <HamburgerToggle color='red' />
+        <HamburgerToggle toggle={toggle} color='red' onClick={()=>setToggle(state=>!state)}/>
     )
 }
 
 export const LineWidth = ()=>{
+    const [toggle, setToggle] = React.useState<boolean>(false);
+
     return (
-        <HamburgerToggle color='blue' strokeWidth={2} />
+        <HamburgerToggle toggle={toggle} color='blue' strokeWidth={2} onClick={()=>setToggle(state=>!state)} />
     )
 }
 
 export const Size = ()=>{
+    const [toggle, setToggle] = React.useState<boolean>(false);
+
     return (
-        <HamburgerToggle size={70} />
+        <HamburgerToggle toggle={toggle} size={70} onClick={()=>setToggle(state=>!state)}/>
     )
 }
 
 export const Event = ()=>{
-    const handleClick = (open:boolean)=>{
-        action('event')(open);
+    const [toggle, setToggle] = React.useState<boolean>(false);
+
+    const handleClick = ()=>{
+        setToggle(state=>!state);
+        action('event')(!toggle);
     }
     return (
-        <HamburgerToggle onClick={handleClick} />
+        <HamburgerToggle toggle={toggle} onClick={handleClick} />
     )
 }

@@ -1,14 +1,17 @@
-import { motion, useCycle } from 'framer-motion';
+import { motion, Transition } from 'framer-motion';
 import React from 'react';
+import { springTransition } from '../Transition';
 
-type ButtonWithoutStyle = Omit<React.HTMLAttributes<HTMLButtonElement>, 'style' | 'onClick'>;
-type HamburgerToggleProps = ButtonWithoutStyle & {
+type ButtonWithoutStyle = Omit<React.HTMLAttributes<HTMLButtonElement>, 'style'>;
+export type HamburgerToggleProps = ButtonWithoutStyle & {
     size?:number | string,
     color?:string,
     strokeWidth?: number | string,
     StrokeLinecap?: "inherit" | "butt" | "round" | "square",
-    open?:boolean,
-    onClick?:(open:boolean)=>void,
+    toggle?:boolean,
+    zIndex?:any,
+    openTransition?: Transition,
+    closedTransition?: Transition,
 };    
 
 const HamburgerToggle:React.FC<HamburgerToggleProps> = (props:HamburgerToggleProps) => {
@@ -17,41 +20,27 @@ const HamburgerToggle:React.FC<HamburgerToggleProps> = (props:HamburgerTogglePro
         color = 'black',
         strokeWidth = 3,
         StrokeLinecap = 'round',
-        open = false,
-        onClick,
+        toggle = false,
+        zIndex = 'auto',
+        openTransition = springTransition(20, 2),
+        closedTransition = springTransition(400, 40, 0.5),
         ...rest
     } = props;
 
-    const [isOpen, toggleOpen] = useCycle(open, !open);
-
-    const handleClick = ()=>{
-        toggleOpen();
-        if(onClick) onClick(!isOpen);
-    }
-
     const variants = {
         open: {
-            transition: {
-              type: "spring",
-              stiffness: 20,
-              restDelta: 2
-            }
+            transition: openTransition
         },
         closed: {
-          transition: {
-            delay: 0.5,
-            type: "spring",
-            stiffness: 400,
-            damping: 40
-          }
+          transition: closedTransition
         }
       };
 
     return (
         <button 
         {...rest}
-        onClick={handleClick} 
         style={{
+            position:'relative',
             outline:'none',
             border: 'none',
             WebkitUserSelect: 'none',
@@ -62,10 +51,11 @@ const HamburgerToggle:React.FC<HamburgerToggleProps> = (props:HamburgerTogglePro
             padding:0,
             width: size,
             height: size,
+            zIndex: zIndex,
         }}>
             <motion.svg 
             initial={false}
-            animate={isOpen?'open':'closed'}
+            animate={toggle?'open':'closed'}
             variants={variants}
             viewBox="0 0 22 19"
             >

@@ -31,6 +31,7 @@ import SizeAvatar from "../components/units/SizeAvatar/SizeAvatar";
 import avatarURL from '../assets/profile/profile-avatar.png';
 import StickyNav from "../components/concrete/StickyNav/StickyNav";
 import LinkTo from "../components/units/LinkTo/LinkTo";
+import RippleMenu from "../components/concrete/RippleMenu/RippleMenu";
 
 export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
   return {
@@ -207,6 +208,10 @@ const LandingPage = (props:LaningPageProps) => {
     }
   } = props;
 
+  const [toggle, setToggle] = React.useState<boolean>(false);
+
+  const closeRippleMenu = ()=>setToggle(state=>!state);
+
   return (
     <PageLayout 
     maxWidth='xl' 
@@ -320,7 +325,6 @@ const LandingPage = (props:LaningPageProps) => {
       >
           <SocialLinks
           width='fit-content'
-          iconSize='small'
           github={{
               link:socialLinks.github,
               toolTip:'Github'
@@ -338,6 +342,57 @@ const LandingPage = (props:LaningPageProps) => {
               toolTip:'Facebook'
           }}
           />
+          <Typography variant='h6'>
+            <RippleMenu
+            ml={2}
+            toggleColor={theme.palette.primary.contrastText} 
+            menuColor={theme.palette.primary.main}
+            open={toggle}
+            items={[
+              <ScrollLink 
+              to='home' 
+              spy={true} 
+              smooth={true}
+              color={theme.palette.primary.contrastText}
+              activeColor={theme.palette.info.main}
+              onClick={closeRippleMenu}
+              >
+                Home
+              </ScrollLink>,
+              <ScrollLink 
+              to='about-me' 
+              spy={true} 
+              smooth={true}
+              color={theme.palette.primary.contrastText}
+              activeColor={theme.palette.info.main}
+              onClick={closeRippleMenu}
+              >
+                About Me
+              </ScrollLink>,
+              <ScrollLink 
+              to='skills' 
+              spy={true} 
+              smooth={true}
+              color={theme.palette.primary.contrastText}
+              activeColor={theme.palette.info.main}
+              onClick={closeRippleMenu}
+              >
+                Skills
+              </ScrollLink>,
+              <ScrollLink 
+              to='contact' 
+              spy={true} 
+              smooth={true}
+              color={theme.palette.primary.contrastText}
+              activeColor={theme.palette.info.main}
+              onClick={closeRippleMenu}
+              >
+                Contact
+              </ScrollLink>
+            ]}
+            onClick={()=>setToggle(state=>!state)}
+            />
+          </Typography>
       </StickyNav>
     }
     >

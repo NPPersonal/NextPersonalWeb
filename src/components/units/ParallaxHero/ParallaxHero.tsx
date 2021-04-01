@@ -37,7 +37,7 @@ const ParallaxHero:React.FC<ParallaxHeroProps> = (props:ParallaxHeroProps) => {
         maskColor = '#000',
         maskOpacity = 0.5,
         bgImage,
-        strength = 500,
+        strength = 280,
         ...rest
     } = props; 
     return (

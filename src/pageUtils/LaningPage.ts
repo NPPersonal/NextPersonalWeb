@@ -17,6 +17,12 @@ export type LaningPageProps = {
         facebook: string,
       }
     },
+    menu:{
+      links:{
+        title:string,
+        id:string,
+      }[]
+    },
     hero:{
       heroBgImageURL: string,
     },

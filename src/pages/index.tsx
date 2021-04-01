@@ -54,6 +54,14 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
           facebook: 'https://www.facebook.com/punch.nelson'
         }
       },
+      menu:{
+        links:[
+          {title:'Home', id:'home'},
+          {title:'About Me', id:'about-me'},
+          {title:'Skills', id:'skills'},
+          {title:'Contact', id:'contact'},
+        ]
+      },
       hero:{
         heroBgImageURL: 'https://img00.deviantart.net/2bd0/i/2009/276/c/9/magic_forrest_wallpaper_by_goergen.jpg',
       },
@@ -193,6 +201,9 @@ const LandingPage = (props:LaningPageProps) => {
       contact,
       socialLinks,
     },
+    menu:{
+      links,
+    },
     hero:{ heroBgImageURL},
     about:{
       personName,
@@ -243,50 +254,21 @@ const LandingPage = (props:LaningPageProps) => {
             />
             <Typography variant='h6'>
               <List>
-                <ListItem dense>
-                  <ScrollLink 
-                  to='home' 
-                  spy={true} 
-                  smooth={true}
-                  color={theme.palette.primary.contrastText}
-                  activeColor={theme.palette.info.main}
-                  >
-                    Home
-                  </ScrollLink>
-                </ListItem>
-                <ListItem dense>
-                  <ScrollLink 
-                  to='about-me' 
-                  spy={true} 
-                  smooth={true}
-                  color={theme.palette.primary.contrastText}
-                  activeColor={theme.palette.info.main}
-                  >
-                    About Me
-                  </ScrollLink>
-                </ListItem>
-                <ListItem dense>
-                  <ScrollLink 
-                  to='skills' 
-                  spy={true} 
-                  smooth={true}
-                  color={theme.palette.primary.contrastText}
-                  activeColor={theme.palette.info.main}
-                  >
-                    Skills
-                  </ScrollLink>
-                </ListItem>
-                <ListItem dense>
-                  <ScrollLink 
-                  to='contact' 
-                  spy={true} 
-                  smooth={true}
-                  color={theme.palette.primary.contrastText}
-                  activeColor={theme.palette.info.main}
-                  >
-                    Contact
-                  </ScrollLink>
-                </ListItem>
+              {links.map(link=>{
+                return (
+                  <ListItem key={link.id} dense>
+                    <ScrollLink 
+                    to={link.id} 
+                    spy={true} 
+                    smooth={true}
+                    color={theme.palette.primary.contrastText}
+                    activeColor={theme.palette.info.main}
+                    >
+                      {link.title}
+                    </ScrollLink>
+                  </ListItem>
+                )
+              })}
               </List>
             </Typography>
             <SocialLinks 
@@ -348,48 +330,20 @@ const LandingPage = (props:LaningPageProps) => {
             toggleColor={theme.palette.primary.contrastText} 
             menuColor={theme.palette.primary.main}
             open={toggle}
-            items={[
-              <ScrollLink 
-              to='home' 
-              spy={true} 
-              smooth={true}
-              color={theme.palette.primary.contrastText}
-              activeColor={theme.palette.info.main}
-              onClick={closeRippleMenu}
-              >
-                Home
-              </ScrollLink>,
-              <ScrollLink 
-              to='about-me' 
-              spy={true} 
-              smooth={true}
-              color={theme.palette.primary.contrastText}
-              activeColor={theme.palette.info.main}
-              onClick={closeRippleMenu}
-              >
-                About Me
-              </ScrollLink>,
-              <ScrollLink 
-              to='skills' 
-              spy={true} 
-              smooth={true}
-              color={theme.palette.primary.contrastText}
-              activeColor={theme.palette.info.main}
-              onClick={closeRippleMenu}
-              >
-                Skills
-              </ScrollLink>,
-              <ScrollLink 
-              to='contact' 
-              spy={true} 
-              smooth={true}
-              color={theme.palette.primary.contrastText}
-              activeColor={theme.palette.info.main}
-              onClick={closeRippleMenu}
-              >
-                Contact
-              </ScrollLink>
-            ]}
+            items={links.map(link=>{
+              return (
+                <ScrollLink 
+                to={link.id} 
+                spy={true} 
+                smooth={true}
+                color={theme.palette.primary.contrastText}
+                activeColor={theme.palette.info.main}
+                onClick={closeRippleMenu}
+                >
+                  {link.title}
+                </ScrollLink>
+              )
+            })}
             onClick={()=>setToggle(state=>!state)}
             />
           </Typography>
@@ -585,7 +539,7 @@ const LandingPage = (props:LaningPageProps) => {
         }
         contactForm={
           <ContactForm 
-          px={2} 
+          px={1} 
           textColor={theme.palette.secondary.contrastText}
           fieldBorderColor={theme.palette.secondary.main}
           fieldBgColor={theme.palette.secondary.main}

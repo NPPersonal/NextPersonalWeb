@@ -63,7 +63,7 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
         ]
       },
       hero:{
-        heroBgImageURL: 'https://img00.deviantart.net/2bd0/i/2009/276/c/9/magic_forrest_wallpaper_by_goergen.jpg',
+        heroBgImageURL: 'https://images.unsplash.com/photo-1617264262155-235ae4cb078d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=966&q=80',
       },
       about:{
         personName: 'Ming-Chun Hung',

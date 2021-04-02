@@ -24,8 +24,8 @@ const AboutLayout:React.FC<AboutLayoutProps> = (props:AboutLayoutProps) => {
         <Box {...rest}>
           <Container>
             {header}
-            <Box p={4}>
-            <Grid container spacing={8}>
+            <Box >
+            <Grid container >
               <Grid item xs={12} sm={7} md={6}>
                 {brief}
               </Grid>

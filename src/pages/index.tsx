@@ -37,7 +37,12 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import BlogCard from "../components/concrete/BlogCard/BlogCard";
 import Link from "next/dist/client/link";
-import HtmlTypography from "../components/units/HtmlTypography/HtmlTypography";
+import ReactMarkdown from "react-markdown";
+import gfm from "remark-gfm";
+import LeftArrow from '@material-ui/icons/ArrowLeftRounded';
+import RigthArrow from '@material-ui/icons/ArrowRightRounded';
+import IconButton from "@material-ui/core/IconButton/IconButton";
+
 
 export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
 
@@ -491,26 +496,59 @@ const LandingPage = (props:LaningPageProps) => {
         } 
         blogPreview={
           <Carousel
-          autoPlay={false} 
+          autoPlay={false}//this has bug but use interval for work around
+          interval={3000000} 
+          emulateTouch
+          swipeable={false}
           infiniteLoop
           autoFocus={false}
           showArrows={true} 
           showStatus={false} 
           showThumbs={false}
-          centerMode
-          centerSlidePercentage={100}>
+          renderArrowPrev={(clickHandler, hasPre, label)=>hasPre && (
+            <IconButton onClick={clickHandler} title={label} style={{
+              position: 'absolute',
+              zIndex: 2,
+              top: 'calc(50% - 15px)',
+              width: 40,
+              height: 40,
+              left: 0,
+              cursor: 'pointer',
+              color: theme.palette.secondary.contrastText
+            }}>
+              <LeftArrow fontSize='large' />
+            </IconButton>
+          )}
+          renderArrowNext={(clickHandler, hasPre, label)=>hasPre && (
+            <IconButton onClick={clickHandler} title={label} style={{
+              position: 'absolute',
+              zIndex: 2,
+              top: 'calc(50% - 15px)',
+              width: 40,
+              height: 40,
+              right: 0,
+              cursor: 'pointer',
+              color: theme.palette.secondary.contrastText
+            }}>
+              <RigthArrow fontSize='large' />
+            </IconButton>
+          )}
+          >
             {blog.data.items.map(item=>{
               return (
-                <Box key={item.guid} display='flex' justifyContent='center' pb={4} textAlign='left'>
+                <Box key={item.guid} display='flex' justifyContent='center' mb={4} textAlign='left'>
                 <BlogCard
                 raised
+                width='80%'
                 header={item.title}
                 publishDate={item.pubDate}
                 publisher={`By ${item.author}`}
                 thumbnailSrc={item.thumbnail}
                 content={
-                  <HtmlTypography 
-                  htmlContent={item.content}
+                  <ReactMarkdown
+                    plugins={[gfm]}
+                    children={item.content}
+                    allowDangerousHtml
                   />
                 }
                 blogSrc={item.link}

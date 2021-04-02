@@ -42,6 +42,7 @@ import gfm from "remark-gfm";
 import LeftArrow from '@material-ui/icons/ArrowLeftRounded';
 import RigthArrow from '@material-ui/icons/ArrowRightRounded';
 import IconButton from "@material-ui/core/IconButton/IconButton";
+import { formatDateTime } from "../utils/formater/TimeFormater";
 
 
 export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
@@ -542,7 +543,7 @@ const LandingPage = (props:LaningPageProps) => {
                 raised
                 width='80%'
                 header={item.title}
-                publishDate={item.pubDate}
+                publishDate={formatDateTime(item.pubDate)}
                 publisher={`By ${item.author}`}
                 thumbnailSrc={item.thumbnail}
                 content={

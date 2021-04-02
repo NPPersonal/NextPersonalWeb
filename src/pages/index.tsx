@@ -12,7 +12,7 @@ import ParallaxHero from "../components/units/ParallaxHero/ParallaxHero";
 import Section from "../components/units/ScrollSection/ScrollSection";
 import AboutLayout from "../layout/AboutLayout";
 import PageLayout from "../layout/PageLayout";
-import { LaningPageProps } from "../pageUtils/LaningPage";
+import { Blog, LaningPageProps, mediumFeed } from "../pageUtils/LaningPage";
 import SkillLayout from "../layout/SkillLayout";
 import SkillSet from "../components/concrete/SkillSet/SkillSet";
 import ContactLayout from "../layout/ContactLayout";
@@ -32,8 +32,24 @@ import avatarURL from '../assets/profile/profile-avatar.png';
 import StickyNav from "../components/concrete/StickyNav/StickyNav";
 import LinkTo from "../components/units/LinkTo/LinkTo";
 import RippleMenu from "../components/concrete/RippleMenu/RippleMenu";
+import BlogLayout from "../layout/BlogLayout";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
+import BlogCard from "../components/concrete/BlogCard/BlogCard";
+import Link from "next/dist/client/link";
+import HtmlTypography from "../components/units/HtmlTypography/HtmlTypography";
 
 export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
+
+  let blog:Blog = {data:null, error:null};
+  try{
+    const feed = await mediumFeed('tomneo2004');
+    blog={data:feed, error:null};
+  }
+  catch(error){
+    blog={data:null, error};
+  }
+
   return {
     props:{
       common:{
@@ -59,6 +75,7 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
           {title:'Home', id:'home'},
           {title:'About Me', id:'about-me'},
           {title:'Skills', id:'skills'},
+          {title:'Blogs', id:'blog'},
           {title:'Contact', id:'contact'},
         ]
       },
@@ -182,7 +199,8 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
             ]
           }
         ]
-      }
+      },
+      blog
     }
   }
 }
@@ -216,7 +234,8 @@ const LandingPage = (props:LaningPageProps) => {
     },
     skill:{
       group,
-    }
+    },
+    blog,
   } = props;
 
   const [toggle, setToggle] = React.useState<boolean>(false);
@@ -227,8 +246,10 @@ const LandingPage = (props:LaningPageProps) => {
     <PageLayout 
     maxWidth='xl' 
     disableGutters
+    drawerWidth={240}
     drawer={
       <DrawerColor 
+        drawerWidth={240}
         variant='permanent' 
         anchor='left' 
         color={theme.palette.primary.main}
@@ -453,8 +474,80 @@ const LandingPage = (props:LaningPageProps) => {
         ))}
         />
       </Section>
+      {/* Blog */}
+      <Section id='blog' bgcolor={theme.palette.secondary.dark}
+      color={theme.palette.secondary.contrastText}
+      >
+        <BlogLayout
+        header={
+          <Header
+          mb={4} 
+          text='Stories'
+          textColor={theme.palette.secondary.light} 
+          caption='Blogs'
+          captionColor={theme.palette.secondary.contrastText}
+          lineColor={theme.palette.info.main}
+          />
+        } 
+        blogPreview={
+          <Carousel
+          autoPlay={false} 
+          infiniteLoop
+          autoFocus={false}
+          showArrows={true} 
+          showStatus={false} 
+          showThumbs={false}
+          centerMode
+          centerSlidePercentage={100}>
+            {blog.data.items.map(item=>{
+              return (
+                <Box key={item.guid} display='flex' justifyContent='center' pb={4} textAlign='left'>
+                <BlogCard
+                raised
+                header={item.title}
+                publishDate={item.pubDate}
+                publisher={`By ${item.author}`}
+                thumbnailSrc={item.thumbnail}
+                content={
+                  <HtmlTypography 
+                  htmlContent={item.content}
+                  />
+                }
+                blogSrc={item.link}
+                actions={[
+                  <Link href={item.link}>
+                    <ColorButton 
+                    disableRipple 
+                    color={theme.palette.info.main} 
+                    hoverColor={theme.palette.info.dark}
+                    titleColor={theme.palette.secondary.contrastText}
+                    >
+                      <Typography variant='h6'>See on Medium</Typography>
+                    </ColorButton>
+                  </Link>
+                ]}
+                />
+                </Box>
+              )
+            })}
+          </Carousel>
+        }
+        blogLink={
+          <Link href={blog.data.feed.link}>
+            <ColorButton 
+            disableRipple 
+            color={theme.palette.info.main} 
+            hoverColor={theme.palette.info.dark}
+            titleColor={theme.palette.secondary.contrastText}
+            >
+              <Typography variant='h6'>Blog On Medium</Typography>
+            </ColorButton>
+          </Link>
+        }
+        />
+      </Section>
       {/* Contact section */}
-      <Section id='contact' bgcolor={theme.palette.secondary.dark}
+      <Section id='contact' bgcolor={theme.palette.secondary.main}
       color={theme.palette.secondary.contrastText}
       >
         <ContactLayout
@@ -541,15 +634,15 @@ const LandingPage = (props:LaningPageProps) => {
           <ContactForm 
           px={1} 
           textColor={theme.palette.secondary.contrastText}
-          fieldBorderColor={theme.palette.secondary.main}
-          fieldBgColor={theme.palette.secondary.main}
-          fieldFocusColor={theme.palette.info.main}
+          fieldBorderColor={theme.palette.secondary.dark}
+          fieldBgColor={theme.palette.secondary.dark}
+          fieldFocusColor={theme.palette.info.dark}
           />
         }
         />
       </Section>
       {/* Footer */}
-      <Section id='footer' bgcolor={theme.palette.secondary.main}>
+      <Section id='footer' bgcolor={theme.palette.secondary.dark}>
           <Box
           py={8}
           textAlign='center'

@@ -32,7 +32,7 @@ type ColorButtonProps = ButtonWithoutColorProps & {
  * @param {ColorButtonProps} props 
  * @returns 
  */
-const ColorButton:React.FC<ColorButtonProps> = (props:ColorButtonProps) => {
+const ColorButton = React.forwardRef<any, ColorButtonProps>((props,ref) => {
     const {
         children,
         borderRadius = '35px',
@@ -63,8 +63,10 @@ const ColorButton:React.FC<ColorButtonProps> = (props:ColorButtonProps) => {
     }
 
     return (
-        <Button classes={buttonClasses} {...rest}>{children}</Button>
+        <div ref={ref}>
+            <Button classes={buttonClasses} {...rest}>{children}</Button>
+        </div>
     );
-};
+});
 
 export default ColorButton;

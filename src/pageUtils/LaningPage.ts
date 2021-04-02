@@ -98,7 +98,8 @@ export const mediumFeed = async (username:string):Promise<MediumFeed>=>{
     const feed = await axios.get<MediumFeed>(` https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${username}`);
 
     const regex = /(?:<figure>)(.*?)(?:<\/figure>)/g;
-    feed.data.items = feed.data.items.map(item=>{
+    const slicedItems = feed.data.items.slice(0, 10);
+    feed.data.items = slicedItems.map(item=>{
       const cleanFigure = item.content.replace(regex, '');
       return {
         ...item,

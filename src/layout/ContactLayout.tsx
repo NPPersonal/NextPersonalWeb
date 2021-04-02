@@ -25,8 +25,8 @@ const ContactLayout:React.FC<ContactLayoutProps> = (props:ContactLayoutProps) =>
         <Box {...rest}>
             <Container>
                 {header}
-                <Box >
-                <Grid container >
+                <Box p={4}>
+                <Grid container spacing={8}>
                     <Grid item sm={12} md={4}>
                         <Box display='flex' flexDirection='column'>
                             {location}

@@ -484,6 +484,7 @@ const LandingPage = (props:LaningPageProps) => {
       color={theme.palette.secondary.contrastText}
       >
         <BlogLayout
+        py={10}
         header={
           <Header
           mb={4} 

@@ -24,8 +24,8 @@ const AboutLayout:React.FC<AboutLayoutProps> = (props:AboutLayoutProps) => {
         <Box {...rest}>
           <Container>
             {header}
-            <Box >
-            <Grid container >
+            <Box p={4}>
+            <Grid container spacing={8}>
               <Grid item xs={12} sm={7} md={6}>
                 {brief}
               </Grid>
@@ -38,7 +38,7 @@ const AboutLayout:React.FC<AboutLayoutProps> = (props:AboutLayoutProps) => {
             </Grid>
             </Box>
             <Box mt={4}>
-            <Grid container justify='center'>
+            <Grid container>
               {experiences.map((exp, i)=>(
                 <Grid key={i} item xs={6} sm={3}>
                   {exp}

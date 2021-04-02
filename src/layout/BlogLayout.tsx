@@ -18,13 +18,11 @@ const BlogLayout:React.FC<BlogLayoutProps> = (props:BlogLayoutProps) => {
         <Box {...rest}>
             <Container>
                 {header}
-                <Box py={4}>
-                    <Box  textAlign='center'>
-                        {blogPreview}   
-                    </Box>
-                    <Box textAlign='center' p={2}>
-                        {blogLink}
-                    </Box>
+                <Box  textAlign='center'>
+                    {blogPreview}   
+                </Box>
+                <Box textAlign='center' p={2}>
+                    {blogLink}
                 </Box>
             </Container>
         </Box>

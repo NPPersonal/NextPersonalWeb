@@ -57,6 +57,7 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
   }
 
   return {
+    revalidate: 60,
     props:{
       common:{
         name:{

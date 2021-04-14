@@ -718,9 +718,9 @@ const LandingPage = (props:LaningPageProps) => {
           <ContactForm 
           px={1} 
           textColor={theme.palette.secondary.contrastText}
-          fieldBorderColor={theme.palette.secondary.dark}
-          fieldBgColor={theme.palette.secondary.dark}
-          fieldFocusColor={theme.palette.info.dark}
+          fieldBorderColor={theme.palette.secondary.main}
+          fieldBgColor={theme.palette.secondary.main}
+          fieldFocusColor={theme.palette.info.main}
           />
         }
         />
@@ -728,7 +728,7 @@ const LandingPage = (props:LaningPageProps) => {
       {/* Footer */}
       <Section id='footer' bgcolor={theme.palette.secondary.main}>
           <Box
-          py={8}
+          py={10}
           textAlign='center'
           color={theme.palette.secondary.contrastText}
           >

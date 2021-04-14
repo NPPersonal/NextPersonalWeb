@@ -43,6 +43,9 @@ import LeftArrow from '@material-ui/icons/ArrowLeftRounded';
 import RigthArrow from '@material-ui/icons/ArrowRightRounded';
 import IconButton from "@material-ui/core/IconButton/IconButton";
 import { formatDateTime } from "../utils/formater/TimeFormater";
+import PortfolioLayout from "../layout/PortfolioLayout";
+import RMasonry from "../components/units/RMasonry/RMasonry";
+import PortfolioCard from "../components/concrete/PortfolioCard/PortfolioCard";
 
 
 export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
@@ -82,6 +85,7 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
           {title:'Home', id:'home'},
           {title:'About Me', id:'about-me'},
           {title:'Skills', id:'skills'},
+          {title:'Portfolios', id:'portfolios'},
           {title:'Blogs', id:'blog'},
           {title:'Contact', id:'contact'},
         ]
@@ -207,6 +211,13 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
           }
         ]
       },
+      portfolios:[
+        {title:'MobileDisk', image:'https://i.imgur.com/ssc7ZAo.png'},
+        {title:'Finder e-Book', image:'https://i.imgur.com/1osInWc.png'},
+        {title:'Explore Movies', image:'https://i.imgur.com/zwrDW50.png'},
+        {title:'Shop', image:'https://i.imgur.com/mD2vMoi.png'},
+        {title:'Visual Music', image:'https://i.imgur.com/8u6Yjc0.png'}
+      ],
       blog
     }
   }
@@ -242,6 +253,7 @@ const LandingPage = (props:LaningPageProps) => {
     skill:{
       group,
     },
+    portfolios,
     blog,
   } = props;
 
@@ -481,8 +493,39 @@ const LandingPage = (props:LaningPageProps) => {
         ))}
         />
       </Section>
+      {/* portfolios */}
+      <Section id='portfolios' bgcolor={theme.palette.secondary.dark}
+      color={theme.palette.secondary.contrastText}
+      >
+        <PortfolioLayout 
+         py={10} 
+         header={
+           <Header
+           mb={4} 
+           text='Portfolios'
+           textColor={theme.palette.secondary.light} 
+           caption='Works'
+           captionColor={theme.palette.secondary.contrastText}
+           lineColor={theme.palette.info.main}
+           />
+         }
+         portfolios={
+          <Box p={4}> 
+          <RMasonry>
+            {portfolios.map(p=>{
+              return (
+                <Box key={p.title} pb={4} display='flex' justifyContent='center'>
+                  <PortfolioCard thumbnail={p.image} width='100%' />
+                </Box>
+              )
+            })}
+          </RMasonry> 
+          </Box>
+         }
+        />
+      </Section>
       {/* Blog */}
-      <Section id='blog' bgcolor={theme.palette.secondary.dark}
+      <Section id='blog' bgcolor={theme.palette.secondary.main}
       color={theme.palette.secondary.contrastText}
       >
         <BlogLayout
@@ -588,7 +631,7 @@ const LandingPage = (props:LaningPageProps) => {
         />
       </Section>
       {/* Contact section */}
-      <Section id='contact' bgcolor={theme.palette.secondary.main}
+      <Section id='contact' bgcolor={theme.palette.secondary.dark}
       color={theme.palette.secondary.contrastText}
       >
         <ContactLayout
@@ -683,7 +726,7 @@ const LandingPage = (props:LaningPageProps) => {
         />
       </Section>
       {/* Footer */}
-      <Section id='footer' bgcolor={theme.palette.secondary.dark}>
+      <Section id='footer' bgcolor={theme.palette.secondary.main}>
           <Box
           py={8}
           textAlign='center'

@@ -50,6 +50,10 @@ export type LaningPageProps = {
             }[]
         }[]
     },
+    portfolios:{
+      title: string,
+      image: string,
+    }[],
     blog:Blog
 }
 

@@ -214,9 +214,9 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
       },
       portfolios:[
         {
-          title:'MobileDisk', 
+          title:'Mobile Disk', 
           image:'https://i.imgur.com/ssc7ZAo.png', 
-          categories:['IOS', 'Web']
+          categories:['IOS']
         },
         {
           title:'Finder e-Book', 

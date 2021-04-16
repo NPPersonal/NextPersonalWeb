@@ -216,27 +216,57 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
         {
           title:'Mobile Disk', 
           image:'https://i.imgur.com/ssc7ZAo.png', 
-          categories:['IOS']
+          categories:['IOS'],
+          imageSlides:[
+            'https://i.imgur.com/ssc7ZAo.png',
+            'https://i.imgur.com/o0vHxBz.png',
+            'https://i.imgur.com/O4LNgvw.png',
+            'https://i.imgur.com/U8ZmTS6.png',
+            'https://i.imgur.com/PqOj7hn.png',
+          ]
         },
         {
           title:'Finder e-Book', 
           image:'https://i.imgur.com/1osInWc.png', 
-          categories:['IOS']
+          categories:['IOS'],
+          imageSlides:[
+            'https://i.imgur.com/1osInWc.png',
+            'https://i.imgur.com/I1r4muo.png',
+            'https://i.imgur.com/P80qM4t.png',
+          ]
         },
         {
           title:'Explore Movies', 
           image:'https://i.imgur.com/zwrDW50.png', 
-          categories:['Web']
+          categories:['Web'],
+          imageSlides:[
+            'https://i.imgur.com/zwrDW50.png',
+            'https://i.imgur.com/Yqc5Cip.png',
+            'https://i.imgur.com/6XVXUQg.png',
+            'https://i.imgur.com/AS7Dzj5.png',
+            'https://i.imgur.com/gaDQJoI.png',
+          ]
         },
         {
           title:'Shop', 
           image:'https://i.imgur.com/mD2vMoi.png', 
-          categories:['Web']
+          categories:['Web'],
+          imageSlides:[
+            'https://i.imgur.com/mD2vMoi.png',
+            'https://i.imgur.com/pxmoW4P.png',
+            'https://i.imgur.com/ATQoMx8.png',
+            'https://i.imgur.com/SBgmd07.png',
+          ]
         },
         {
           title:'Visual Music', 
           image:'https://i.imgur.com/8u6Yjc0.png', 
-          categories:['Web']
+          categories:['Web'],
+          imageSlides:[
+            'https://i.imgur.com/8u6Yjc0.png',
+            'https://i.imgur.com/kXPzB1s.png',
+            'https://i.imgur.com/SZ7Uk7L.png',
+          ]
         }
       ],
       blog

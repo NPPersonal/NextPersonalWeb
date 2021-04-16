@@ -66,6 +66,7 @@ export type Portfolios = {
   title: string,
   image: string,
   categories: string[],
+  imageSlides: string[],
 }
 
 /**

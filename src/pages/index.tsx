@@ -46,6 +46,7 @@ import { formatDateTime } from "../utils/formater/TimeFormater";
 import PortfolioLayout from "../layout/PortfolioLayout";
 import RMasonry from "../components/units/RMasonry/RMasonry";
 import PortfolioCard from "../components/concrete/PortfolioCard/PortfolioCard";
+import Container from "@material-ui/core/Container/Container";
 
 
 export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
@@ -212,11 +213,31 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
         ]
       },
       portfolios:[
-        {title:'MobileDisk', image:'https://i.imgur.com/ssc7ZAo.png'},
-        {title:'Finder e-Book', image:'https://i.imgur.com/1osInWc.png'},
-        {title:'Explore Movies', image:'https://i.imgur.com/zwrDW50.png'},
-        {title:'Shop', image:'https://i.imgur.com/mD2vMoi.png'},
-        {title:'Visual Music', image:'https://i.imgur.com/8u6Yjc0.png'}
+        {
+          title:'MobileDisk', 
+          image:'https://i.imgur.com/ssc7ZAo.png', 
+          categories:['IOS', 'Web']
+        },
+        {
+          title:'Finder e-Book', 
+          image:'https://i.imgur.com/1osInWc.png', 
+          categories:['IOS']
+        },
+        {
+          title:'Explore Movies', 
+          image:'https://i.imgur.com/zwrDW50.png', 
+          categories:['Web']
+        },
+        {
+          title:'Shop', 
+          image:'https://i.imgur.com/mD2vMoi.png', 
+          categories:['Web']
+        },
+        {
+          title:'Visual Music', 
+          image:'https://i.imgur.com/8u6Yjc0.png', 
+          categories:['Web']
+        }
       ],
       blog
     }
@@ -515,7 +536,20 @@ const LandingPage = (props:LaningPageProps) => {
             {portfolios.map(p=>{
               return (
                 <Box key={p.title} pb={4} display='flex' justifyContent='center'>
-                  <PortfolioCard thumbnail={p.image} width='100%' />
+                  <PortfolioCard 
+                  thumbnail={p.image} 
+                  width='100%'
+                  projectTitle={
+                    <Typography variant='h4'>{p.title}</Typography>
+                  }
+                  projectCategory={
+                    <Container>
+                      {p.categories.map((cat, i)=>(
+                        <Typography key={i} variant='h6' align='center'>{cat}</Typography>
+                      ))}
+                    </Container>
+                  }
+                  />
                 </Box>
               )
             })}

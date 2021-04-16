@@ -28,38 +28,44 @@ export type LaningPageProps = {
     hero:{
       heroBgImageURL: string,
     },
-    about:{
-      personName: string,
-      occupation: string,
-      brief: string,
-      age: string,
-      location: string,
-      email: string,
-      experiences: {
-        number: number,
-        suffix: string,
-        title: string,
-      }[]
-    },
-    skill:{
-        group:{
-            title: string,
-            skills:{
-                title: string,
-                value: number,
-            }[]
-        }[]
-    },
-    portfolios:{
-      title: string,
-      image: string,
-    }[],
+    about:About,
+    skill:Skill,
+    portfolios:Portfolios[],
     blog:Blog
 }
 
+export type About = {
+  personName: string,
+  occupation: string,
+  brief: string,
+  age: string,
+  location: string,
+  email: string,
+  experiences: {
+    number: number,
+    suffix: string,
+    title: string,
+  }[]
+}
+
+export type Skill = {
+  group:{
+    title: string,
+    skills:{
+        title: string,
+        value: number,
+    }[]
+  }[]
+}
 export type Blog = {
   data:MediumFeed,
   error:any,
+}
+
+export type Portfolios = {
+  title: string,
+  image: string,
+  categories: string[],
 }
 
 /**

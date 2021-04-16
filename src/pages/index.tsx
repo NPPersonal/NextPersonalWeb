@@ -322,6 +322,8 @@ const LandingPage = (props:LaningPageProps) => {
                     to={link.id} 
                     spy={true} 
                     smooth={true}
+                    delay={500}
+                    isDynamic={true}
                     color={theme.palette.primary.contrastText}
                     activeColor={theme.palette.info.main}
                     >
@@ -397,6 +399,8 @@ const LandingPage = (props:LaningPageProps) => {
                 to={link.id} 
                 spy={true} 
                 smooth={true}
+                delay={500}
+                isDynamic={true}
                 color={theme.palette.primary.contrastText}
                 activeColor={theme.palette.info.main}
                 onClick={closeRippleMenu}

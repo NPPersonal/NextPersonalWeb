@@ -40,7 +40,7 @@ import Link from "next/dist/client/link";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import LeftArrow from '@material-ui/icons/ArrowLeftRounded';
-import RigthArrow from '@material-ui/icons/ArrowRightRounded';
+import RightArrow from '@material-ui/icons/ArrowRightRounded';
 import IconButton from "@material-ui/core/IconButton/IconButton";
 import { formatDateTime } from "../utils/formater/TimeFormater";
 import PortfolioLayout from "../layout/PortfolioLayout";
@@ -644,7 +644,7 @@ const LandingPage = (props:LaningPageProps) => {
               cursor: 'pointer',
               color: theme.palette.secondary.contrastText
             }}>
-              <RigthArrow fontSize='large' />
+              <RightArrow fontSize='large' />
             </IconButton>
           )}
           >

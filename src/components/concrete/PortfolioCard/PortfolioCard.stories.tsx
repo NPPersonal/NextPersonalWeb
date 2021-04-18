@@ -11,6 +11,8 @@ export const Default = ()=>{
        <PortfolioCard
        thumbnail='https://i.imgur.com/SZ7Uk7L.png'
        width={320}
+       projectTitle='Project Title'
+       projectCategory='Project Category'
        />
     )
 }

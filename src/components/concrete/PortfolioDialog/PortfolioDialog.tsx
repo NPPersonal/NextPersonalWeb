@@ -18,7 +18,8 @@ type PortfolioDialogProps = DialogWithoutProps & {
     color?:string,
     imageSlides:string[],
     slideInterval?:number,
-    projectDetail:React.ReactNode,
+    desc:React.ReactNode,
+    detail:React.ReactNode,
     onClose?:()=>void,
 }
 
@@ -28,7 +29,8 @@ const PortfolioDialog:React.FC<PortfolioDialogProps> = (props:PortfolioDialogPro
         color = '#fff',
         imageSlides,
         slideInterval = 3000,
-        projectDetail,
+        desc,
+        detail,
         onClose,
         ...rest
     } = props;
@@ -80,11 +82,9 @@ const PortfolioDialog:React.FC<PortfolioDialogProps> = (props:PortfolioDialogPro
                         </Box>
                     </Grid>
                     <Grid item sm={12} md={6}>
-                        <Box 
-                        m={1}
-                        color={paperContrastColor}
-                        >
-                            {projectDetail}
+                        <Box display='flex' flexDirection='column' m={1} color={paperContrastColor}>
+                            <Box mb={1}>{desc}</Box>
+                            <Box>{detail}</Box>
                         </Box>
                     </Grid>
                 </Grid>

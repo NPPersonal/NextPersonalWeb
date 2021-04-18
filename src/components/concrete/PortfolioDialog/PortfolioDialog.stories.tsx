@@ -32,7 +32,8 @@ export const Default = ()=>{
                 open={open}
                 projectTitle='Project title'
                 imageSlides={imageSlides1}
-                projectDetail='This is project info'
+                desc='This is project info'
+                detail='This is project detail'
                 onClose={()=>setOpen(false)} 
                 onBackdropClick={()=>setOpen(false)}   
                 fullWidth   
@@ -51,7 +52,8 @@ export const ScrollBody = ()=>{
                 open={open}
                 projectTitle='Project Title'
                 imageSlides={imageSlides2}
-                projectDetail='This is project info'
+                desc='This is project info'
+                detail='This is project detail'
                 onClose={()=>setOpen(false)} 
                 onBackdropClick={()=>setOpen(false)}   
                 fullWidth
@@ -71,7 +73,8 @@ export const ColourdPaper = ()=>{
                 open={open}
                 projectTitle='Project Title'
                 imageSlides={imageSlides2}
-                projectDetail='This is project info'
+                desc='This is project info'
+                detail='This is project detail'
                 onClose={()=>setOpen(false)} 
                 onBackdropClick={()=>setOpen(false)}   
                 fullWidth

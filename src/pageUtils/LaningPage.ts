@@ -30,7 +30,7 @@ export type LaningPageProps = {
     },
     about:About,
     skill:Skill,
-    portfolios:Portfolios[],
+    portfolios:Portfolio[],
     blog:Blog
 }
 
@@ -62,11 +62,18 @@ export type Blog = {
   error:any,
 }
 
-export type Portfolios = {
+export type Portfolio = {
   title: string,
   image: string,
   categories: string[],
   imageSlides: string[],
+  description: string,
+  platform: string,
+  technologies: string,
+  url?: string,
+  links?:{
+    github?: string,
+  }
 }
 
 /**

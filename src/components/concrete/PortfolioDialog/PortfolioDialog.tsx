@@ -17,6 +17,8 @@ type PortfolioDialogProps = DialogWithoutProps & {
     projectTitle:React.ReactNode,
     color?:string,
     imageSlides:string[],
+    
+    /** Image slide change interval in ms */
     slideInterval?:number,
     desc:React.ReactNode,
     detail:React.ReactNode,

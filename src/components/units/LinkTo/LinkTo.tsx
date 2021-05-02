@@ -8,6 +8,7 @@ type LinkToProps = React.ComponentProps<typeof React.Component> & {
   display?: "inline" | "block" | "initial",
   underline?: boolean,
   color?: string,
+  target?: string,
 };
 
 /**
@@ -26,10 +27,13 @@ type LinkToProps = React.ComponentProps<typeof React.Component> & {
  * @returns 
  */
 const LinkTo: React.FC<LinkToProps> = (props: LinkToProps) => {
-  const { text, linkTo, shallow = false, display = "inline", underline, color='blue' } = props;
+  const { text, linkTo, shallow = false, display = "inline", underline, color='blue', target='_blank' } = props;
   return (
     <Link href={linkTo} shallow={shallow}>
-      <a style={{ display: display, color: color, textDecoration:underline?'underline':'none'}}>{text}</a>
+      <a 
+      style={{ display: display, color: color, textDecoration:underline?'underline':'none'}}
+      target={target}
+      >{text}</a>
     </Link>
   );
 };

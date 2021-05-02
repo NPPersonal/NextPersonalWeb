@@ -81,7 +81,8 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
           linkedIn: 'https://www.linkedin.com/in/ming-chung-hung-38125a117/',
           medium: 'https://tomneo2004.medium.com/',
           facebook: 'https://www.facebook.com/punch.nelson'
-        }
+        },
+        cvURL:'https://www.dropbox.com/s/k5ui6ovd4xku905/Resume.pdf?dl=0'
       },
       menu:{
         links:[
@@ -322,6 +323,7 @@ const LandingPage = (props:LaningPageProps) => {
       name,
       contact,
       socialLinks,
+      cvURL,
     },
     menu:{
       links,
@@ -555,14 +557,19 @@ const LandingPage = (props:LaningPageProps) => {
             />
           }
           cvDownloadButton={
-            <ColorButton 
-            disableRipple 
-            color={theme.palette.info.main} 
-            hoverColor={theme.palette.info.dark}
-            titleColor={theme.palette.secondary.contrastText}
-            >
-              <Typography variant='h6'>Download CV</Typography>
-            </ColorButton>
+            <LinkTo
+            linkTo={cvURL}
+            text={
+              <ColorButton 
+              disableRipple 
+              color={theme.palette.info.main} 
+              hoverColor={theme.palette.info.dark}
+              titleColor={theme.palette.secondary.contrastText}
+              >
+                <Typography variant='h6'>Resume</Typography>
+              </ColorButton>
+            } 
+            />
           }
           experiences={experiences.map(exp=>(
             <Box p={2}>

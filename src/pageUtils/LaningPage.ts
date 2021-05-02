@@ -17,7 +17,8 @@ export type LaningPageProps = {
         linkedIn: string,
         medium: string,
         facebook: string,
-      }
+      },
+      cvURL: string,
     },
     menu:{
       links:{

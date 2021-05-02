@@ -883,7 +883,6 @@ const LandingPage = (props:LaningPageProps) => {
       </PageLayout>
       {/* Portfolio Dialog */}
       <PortfolioDialog
-      keepMounted
       TransitionComponent={dialogTransition}
       open={openPortfolio.open}
       projectTitle={!portfolio?'':

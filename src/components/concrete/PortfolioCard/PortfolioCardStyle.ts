@@ -13,10 +13,10 @@ export default createStyles({
     root:(props:StyleProps)=>({
         width: props.width,
     }),
-    image:(props:StyleProps)=>({
+    img:(props:StyleProps)=>({
         display:'block',
         transform: `scale(${props.imageScale})`,
-        transition: 'all 500ms ease-in-out'
+        transition: 'all 500ms ease-in-out !important'
     }),
     actionArea:{
         position: 'relative'

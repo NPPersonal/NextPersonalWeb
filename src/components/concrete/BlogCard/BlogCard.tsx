@@ -4,6 +4,8 @@ import CardActions from '@material-ui/core/CardActions/CardActions';
 import CardContent from '@material-ui/core/CardContent/CardContent';
 import CardHeader from '@material-ui/core/CardHeader/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia/CardMedia';
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import React from 'react';
 import style from './BlogCardStyle';
@@ -57,10 +59,12 @@ const BlogCard:React.FC<BlogCardProps> = (props:BlogCardProps) => {
             titleTypographyProps={{noWrap:true}}
             />
             {!thumbnailSrc?null:
-                <CardMedia
-                className={classes.media}
-                image={thumbnailSrc}
-                />
+                <LazyLoadComponent>
+                    <CardMedia
+                    className={classes.media}
+                    image={thumbnailSrc}
+                    />
+                </LazyLoadComponent>
             }
             <CardContent className={classes.content}>
                 {content}

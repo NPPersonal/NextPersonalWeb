@@ -15,8 +15,8 @@ export default createStyles({
         textOverflow:'ellipsis'
     },
     media:{
-        height:0, 
-        paddingTop:'56.25%',
+        height:0,
+        paddingTop:'56.25%'
     },
     content:(props:StyleProps)=>({
         height:props.contentHeight,

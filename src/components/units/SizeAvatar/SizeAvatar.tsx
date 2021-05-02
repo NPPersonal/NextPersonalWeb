@@ -1,14 +1,18 @@
 import Avatar from '@material-ui/core/Avatar/Avatar';
 import Box from '@material-ui/core/Box/Box';
+import { LazyLoadComponent, LazyLoadComponentProps } from 'react-lazy-load-image-component';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import React from 'react';
 import style from './SizeAvatarStyle';
 
-type SizeAvatarProps = React.ComponentProps<typeof Avatar> & {
+type LazyLoadComponentIgnoredProps = Omit<LazyLoadComponentProps, 'placeholder'|'children'>;
+type SizeAvatarProps = LazyLoadComponentIgnoredProps & {
     caption?: React.ReactNode,
     size?: number | string,
     ringColor?: string,
     ringWidth?: number,
+    src?: string,
+    placeholderSrc?: string
 }
 
 /**
@@ -18,14 +22,16 @@ type SizeAvatarProps = React.ComponentProps<typeof Avatar> & {
  * 
  * Customizable size, ring color and ring width
  * 
- * Wrapped Material-UI `Avatar`
- * https://material-ui.com/components/avatars/#avatar
+ * Wrapped LazyLoadComponent
+ * https://www.npmjs.com/package/react-lazy-load-image-component
  * 
  * @param {SizeAvatarProps} props 
  * @returns 
  */
 const SizeAvatar:React.FC<SizeAvatarProps> = (props:SizeAvatarProps) => {
     const {
+        src,
+        placeholderSrc,
         caption,
         size = 44,
         ringColor = 'lightgrey',
@@ -45,7 +51,14 @@ const SizeAvatar:React.FC<SizeAvatarProps> = (props:SizeAvatarProps) => {
 
     return (
         <Box display='flex' flexDirection='column' alignItems='center'>
-            <Avatar {...rest} classes={avatarClasses} />
+            <LazyLoadComponent 
+            placeholder={
+                <Avatar classes={avatarClasses} src={placeholderSrc} />
+            }
+            {...rest}
+            >
+                <Avatar classes={avatarClasses} src={src} />
+            </LazyLoadComponent>
             {caption}
         </Box>
     );

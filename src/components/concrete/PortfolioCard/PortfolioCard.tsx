@@ -1,6 +1,8 @@
 import Box from '@material-ui/core/Box/Box';
 import Card, { CardProps } from '@material-ui/core/Card/Card';
 import CardActionArea from '@material-ui/core/CardActionArea/CardActionArea';
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import Fade from '@material-ui/core/Fade/Fade';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import useTheme from '@material-ui/core/styles/useTheme';
@@ -9,14 +11,14 @@ import style from './PortfolioCardStyle';
 
 type CardWithoutStyle = Omit<CardProps, 'style'>;
 type PortfolioCardProps = CardWithoutStyle & {
-    thumbnail:string,
+    thumbnailSrc:string,
     width:string|number,
     projectTitle:React.ReactNode,
     projectCategory:React.ReactNode,
 }
 const PortfolioCard:React.FC<PortfolioCardProps> = (props:PortfolioCardProps) => {
     const {
-        thumbnail,
+        thumbnailSrc,
         width,
         projectTitle,
         projectCategory,
@@ -43,7 +45,11 @@ const PortfolioCard:React.FC<PortfolioCardProps> = (props:PortfolioCardProps) =>
             className={classes.actionArea}
             onMouseEnter={handleMouseOver} 
             onMouseLeave={handleMouseLeave}>
-                <img className={classes.image} src={thumbnail} width={width} />
+                <LazyLoadComponent
+                visibleByDefault={true}
+                >
+                    <img src={thumbnailSrc} width={width} className={classes.img} />
+                </LazyLoadComponent>
                 <Fade in={mouseOver} timeout={1000}>
                     <Box 
                     className={classes.mask} 

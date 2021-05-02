@@ -29,6 +29,7 @@ import DrawerColor from "../components/units/DrawerColor/DrawerColor";
 import ScrollLink from "../components/units/ScrollLink/ScrollLink";
 import SizeAvatar from "../components/units/SizeAvatar/SizeAvatar";
 import avatarURL from '../assets/profile/profile-avatar.png';
+import avatarPlaceholder from '../assets/profile/profile-placeholder.svg'
 import StickyNav from "../components/concrete/StickyNav/StickyNav";
 import LinkTo from "../components/units/LinkTo/LinkTo";
 import RippleMenu from "../components/concrete/RippleMenu/RippleMenu";
@@ -396,6 +397,7 @@ const LandingPage = (props:LaningPageProps) => {
             >
               <SizeAvatar
               src={avatarURL}
+              placeholderSrc={avatarPlaceholder}
               size={200}
               ringColor={theme.palette.primary.light}
               ringWidth={theme.spacing(1)}
@@ -638,7 +640,7 @@ const LandingPage = (props:LaningPageProps) => {
                 return (
                   <Box key={p.title} pb={4} display='flex' justifyContent='center'>
                     <PortfolioCard 
-                    thumbnail={p.image} 
+                    thumbnailSrc={p.image}
                     width='100%'
                     projectTitle={
                       <Typography variant='h4'>{p.title}</Typography>

@@ -245,6 +245,10 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
           ],
           platform: 'IOS',
           technologies: 'IOS SDK',
+          url: 'https://www.gogofinder.com.tw/',
+          links:{
+            appstore:'https://apps.apple.com/tw/app/finder-ebook-for-iphone/id1081726714'
+          },
           description: `An IOS app that is designed for registered member to find and read
           electronic book or catalog. Book and catalog that can be created by member.
 
@@ -264,6 +268,7 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
           ],
           platform: 'Web',
           technologies: 'Next.JS, Material-UI, JSS',
+          url: 'https://explore-movies.netlify.app/',
           description: `Explore all kind of movies and see movie information. Find out what
           movies are popular, trending playing in cinema or search movie you already know by
           title. 
@@ -272,7 +277,7 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
           Movies also find available streaming service for you at your location.`
         },
         {
-          title:'Shop', 
+          title:'Shop demo', 
           image:'https://i.imgur.com/mD2vMoi.png', 
           categories:['Web'],
           imageSlides:[
@@ -282,7 +287,8 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
             'https://i.imgur.com/SBgmd07.png',
           ],
           platform: 'Web',
-          technologies: 'React.JS, Express.JS, Firebase, Styled-Components, SASS', 
+          technologies: 'React.JS, Express.JS, Firebase, Styled-Components, SASS',
+          url: 'https://tomneo2004.github.io/E-Clothing/', 
           description: `A website that was made while learning React.JS and it is to mimic
           an online shop. 
           
@@ -298,7 +304,10 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
             'https://i.imgur.com/SZ7Uk7L.png',
           ],
           platform: 'Web',
-          technologies: 'React.JS, Firebase, SASS', 
+          technologies: 'React.JS, Firebase, SASS',
+          links:{
+            github:'https://github.com/zero-to-mastery/visual-music'
+          },
           description: `An open-source that I participated and workd with other students from
           worldwide. 
           
@@ -917,6 +926,19 @@ const LandingPage = (props:LaningPageProps) => {
               value:(
                 <Box ml={1}>
                   <Typography variant='body1'>{portfolio.technologies}</Typography>
+                </Box>)
+            },
+            {
+              label:(<Typography variant='body1'>{`URL: `}</Typography>),
+              value:(
+                <Box ml={1}>
+                  <Typography variant='body1'>
+                    <LinkTo 
+                    linkTo={portfolio.url?portfolio.url:''} 
+                    text={portfolio.url?portfolio.url:''}
+                    color={theme.palette.info.main}
+                    />
+                  </Typography>
                 </Box>)
             }
           ]} 

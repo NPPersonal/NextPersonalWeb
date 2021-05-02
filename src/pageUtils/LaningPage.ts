@@ -74,6 +74,7 @@ export type Portfolio = {
   url?: string,
   links?:{
     github?: string,
+    appstore?: string,
   }
 }
 

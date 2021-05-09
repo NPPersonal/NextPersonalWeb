@@ -72,9 +72,8 @@ export type Portfolio = {
   platform: string,
   technologies: string,
   url?: string,
-  links?:{
-    github?: string,
-    appstore?: string,
+  links:{
+    [key:string]: string,
   }
 }
 

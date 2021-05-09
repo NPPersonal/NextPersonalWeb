@@ -230,6 +230,7 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
           ],
           platform: 'IOS',
           technologies: 'IOS SDK, GIMP',
+          links:{},
           description: `Turn your mobile device into a storage disk. Store any kind of files and carry them to anywhere with you.
 
           Preview supported fils such as video, image and document. Transfer files between your mobile device and personal computer with cable or local wifi.`
@@ -247,7 +248,7 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
           technologies: 'IOS SDK',
           url: 'https://www.gogofinder.com.tw/',
           links:{
-            appstore:'https://apps.apple.com/tw/app/finder-ebook-for-iphone/id1081726714'
+            AppStore:'https://apps.apple.com/tw/app/finder-ebook-for-iphone/id1081726714'
           },
           description: `An IOS app that is designed for registered member to find and read
           electronic book or catalog. Book and catalog that can be created by member.
@@ -269,6 +270,9 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
           platform: 'Web',
           technologies: 'Next.JS, Material-UI, JSS',
           url: 'https://explore-movies.netlify.app/',
+          links:{
+            Github:'https://github.com/tomneo2004/MovieReviews'
+          },
           description: `Explore all kind of movies and see movie information. Find out what
           movies are popular, trending playing in cinema or search movie you already know by
           title. 
@@ -289,6 +293,7 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
           platform: 'Web',
           technologies: 'React.JS, Express.JS, Firebase, Styled-Components, SASS',
           url: 'https://tomneo2004.github.io/E-Clothing/', 
+          links:{},
           description: `A website that was made while learning React.JS and it is to mimic
           an online shop. 
           
@@ -306,7 +311,7 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
           platform: 'Web',
           technologies: 'React.JS, Firebase, SASS',
           links:{
-            github:'https://github.com/zero-to-mastery/visual-music'
+            Github:'https://github.com/zero-to-mastery/visual-music'
           },
           description: `An open-source that I participated and workd with other students from
           worldwide. 
@@ -439,22 +444,28 @@ const LandingPage = (props:LaningPageProps) => {
               </Typography>
               <SocialLinks 
               iconSize='small'
-              github={{
+              socialIcons={[
+                {
+                  kind: 'Github',
                   link:socialLinks.github,
                   toolTip:'Github'
-              }}
-              linkedin={{
+                },
+                {
+                  kind: 'LinkedIn',
                   link:socialLinks.linkedIn,
-                  toolTip:'Linked In'
-              }}
-              medium={{
+                  toolTip:'LinkedIn'
+                },
+                {
+                  kind: 'Medium',
                   link:socialLinks.medium,
                   toolTip:'Medium'
-              }}
-              facebook={{
+                },
+                {
+                  kind: 'Facebook',
                   link:socialLinks.facebook,
                   toolTip:'Facebook'
-              }}
+                }
+              ]}
               />
             </Box>
           </DrawerColor>
@@ -473,22 +484,28 @@ const LandingPage = (props:LaningPageProps) => {
         >
             <SocialLinks
             width='fit-content'
-            github={{
+            socialIcons={[
+              {
+                kind: 'Github',
                 link:socialLinks.github,
                 toolTip:'Github'
-            }}
-            linkedin={{
+              },
+              {
+                kind: 'LinkedIn',
                 link:socialLinks.linkedIn,
-                toolTip:'Linked In'
-            }}
-            medium={{
+                toolTip:'LinkedIn'
+              },
+              {
+                kind: 'Medium',
                 link:socialLinks.medium,
                 toolTip:'Medium'
-            }}
-            facebook={{
+              },
+              {
+                kind: 'Facebook',
                 link:socialLinks.facebook,
                 toolTip:'Facebook'
-            }}
+              }
+            ]}
             />
             <Typography variant='h6'>
               <RippleMenu
@@ -843,22 +860,28 @@ const LandingPage = (props:LaningPageProps) => {
           }
           socialLinks={
             <SocialLinks 
-            github={{
+            socialIcons={[
+              {
+                kind: 'Github',
                 link:socialLinks.github,
                 toolTip:'Github'
-            }}
-            linkedin={{
+              },
+              {
+                kind: 'LinkedIn',
                 link:socialLinks.linkedIn,
-                toolTip:'Linked In'
-            }}
-            medium={{
+                toolTip:'LinkedIn'
+              },
+              {
+                kind: 'Medium',
                 link:socialLinks.medium,
                 toolTip:'Medium'
-            }}
-            facebook={{
+              },
+              {
+                kind: 'Facebook',
                 link:socialLinks.facebook,
                 toolTip:'Facebook'
-            }}
+              }
+            ]}
             />
           }
           contactForm={
@@ -943,6 +966,22 @@ const LandingPage = (props:LaningPageProps) => {
             }
           ]} 
           />
+          {Object.keys(portfolio.links).length===0?null:
+              <React.Fragment>
+                <Typography variant='h6'>{`Links:`}</Typography>
+                <SocialLinks 
+                iconSize='large'
+                socialIcons={Object.keys(portfolio.links).map(key=>{
+                  return {
+                    kind: key,
+                    link: portfolio.links[key],
+                    toolTip: key
+                  }
+                })}
+                />
+              </React.Fragment>
+          }
+          
         </Box>
       }
       onClose={dismissPortfolio} 

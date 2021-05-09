@@ -5,25 +5,33 @@ export default {
     title: 'Social links',
 }
 
+const icons = [
+    {
+      kind: 'Github',
+      link:'https://github.com/',
+      toolTip:'Github'
+    },
+    {
+      kind: 'LinkedIn',
+      link:'https://www.linkedin.com/',
+      toolTip:'LinkedIn'
+    },
+    {
+      kind: 'Medium',
+      link:'https://medium.com/',
+      toolTip:'Medium'
+    },
+    {
+      kind: 'Facebook',
+      link:'https://www.facebook.com/',
+      toolTip:'Facebook'
+    }
+  ]
+
 export const Default = ()=>{
     return (
         <SocialLinks 
-        github={{
-            link:'https://github.com/',
-            toolTip:'Github'
-        }}
-        linkedin={{
-            link:'https://linkedin.com/',
-            toolTip:'Linked In'
-        }}
-        medium={{
-            link:'https://medium.com/',
-            toolTip:'Medium'
-        }}
-        facebook={{
-            link:'https://facebook.com/',
-            toolTip:'Facebook'
-        }}
+        socialIcons={icons}
         />
     )
 }
@@ -31,22 +39,7 @@ export const Default = ()=>{
 export const Color = ()=>{
     return (
         <SocialLinks 
-        github={{
-            link:'https://github.com/',
-            toolTip:'Github'
-        }}
-        linkedin={{
-            link:'https://linkedin.com/',
-            toolTip:'Linked In'
-        }}
-        medium={{
-            link:'https://medium.com/',
-            toolTip:'Medium'
-        }}
-        facebook={{
-            link:'https://facebook.com/',
-            toolTip:'Facebook'
-        }}
+        socialIcons={icons}
         iconColor='red'
         />
     )
@@ -55,22 +48,7 @@ export const Color = ()=>{
 export const Large = ()=>{
     return (
         <SocialLinks 
-        github={{
-            link:'https://github.com/',
-            toolTip:'Github'
-        }}
-        linkedin={{
-            link:'https://linkedin.com/',
-            toolTip:'Linked In'
-        }}
-        medium={{
-            link:'https://medium.com/',
-            toolTip:'Medium'
-        }}
-        facebook={{
-            link:'https://facebook.com/',
-            toolTip:'Facebook'
-        }}
+        socialIcons={icons}
         iconColor='black'
         iconSize='large'
         />
@@ -80,22 +58,7 @@ export const Large = ()=>{
 export const Small = ()=>{
     return (
         <SocialLinks 
-        github={{
-            link:'https://github.com/',
-            toolTip:'Github'
-        }}
-        linkedin={{
-            link:'https://linkedin.com/',
-            toolTip:'Linked In'
-        }}
-        medium={{
-            link:'https://medium.com/',
-            toolTip:'Medium'
-        }}
-        facebook={{
-            link:'https://facebook.com/',
-            toolTip:'Facebook'
-        }}
+        socialIcons={icons}
         iconColor='black'
         iconSize='small'
         />
@@ -105,22 +68,7 @@ export const Small = ()=>{
 export const TooltipRight = ()=>{
     return (
         <SocialLinks 
-        github={{
-            link:'https://github.com/',
-            toolTip:'Github'
-        }}
-        linkedin={{
-            link:'https://linkedin.com/',
-            toolTip:'Linked In'
-        }}
-        medium={{
-            link:'https://medium.com/',
-            toolTip:'Medium'
-        }}
-        facebook={{
-            link:'https://facebook.com/',
-            toolTip:'Facebook'
-        }}
+        socialIcons={icons}
         toolTipPlacement = 'right'
         />
     )
@@ -129,22 +77,7 @@ export const TooltipRight = ()=>{
 export const TooltipColor = ()=>{
     return (
         <SocialLinks 
-        github={{
-            link:'https://github.com/',
-            toolTip:'Github'
-        }}
-        linkedin={{
-            link:'https://linkedin.com/',
-            toolTip:'Linked In'
-        }}
-        medium={{
-            link:'https://medium.com/',
-            toolTip:'Medium'
-        }}
-        facebook={{
-            link:'https://facebook.com/',
-            toolTip:'Facebook'
-        }}
+        socialIcons={icons}
         toolTipColor = 'lightblue'
         />
     )

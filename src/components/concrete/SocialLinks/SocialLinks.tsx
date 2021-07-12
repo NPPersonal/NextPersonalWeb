@@ -82,7 +82,7 @@ const SocialLinks:React.FC<SocialLinksProps> = (props:SocialLinksProps) => {
             const icon = Icons[social.kind];
 
             return (
-                <a className={classes.link} href={social.link} target='_blank'>
+                <a key={social.link} className={classes.link} href={social.link} target='_blank'>
                     <Tooltip classes={toolTipClasses} arrow placement={toolTipPlacement} 
                     title={social.toolTip}>
                         <SvgIcon classes={svgClasses} fontSize={iconSize}>

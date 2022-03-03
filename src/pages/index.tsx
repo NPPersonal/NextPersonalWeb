@@ -31,6 +31,7 @@ import AboutMeView from "../views/about-me/AboutMe.view";
 import SkillsView from "../views/skills/Skills.view";
 import BlogsView from "../views/blog/Blogs.view";
 import ContactView from "../views/contact/Contact.view";
+import FooterView from "../views/footer/Footer.view";
 
 export const getStaticProps: GetStaticProps<ViewProps> = async () => {
   let blog: BlogProps = { data: null, error: null };
@@ -588,30 +589,7 @@ const LandingPage = (props: ViewProps) => {
         {/* Contact section */}
         <ContactView id="contact" contact={contact} socialLinks={socialLinks} />
         {/* Footer */}
-        <Section id="footer" bgcolor={theme.palette.secondary.main}>
-          <Box
-            py={10}
-            textAlign="center"
-            color={theme.palette.secondary.contrastText}
-          >
-            <Typography variant="h6" component="span">
-              Powered by{" "}
-            </Typography>
-            <Box component="span" color={theme.palette.info.main}>
-              <Typography variant="h6" component="span">
-                Next.JS
-              </Typography>
-            </Box>
-            <Typography variant="h6" component="span">
-              . Created by{" "}
-            </Typography>
-            <Box component="span" color={theme.palette.info.main}>
-              <Typography variant="h6" component="span">
-                {personName}
-              </Typography>
-            </Box>
-          </Box>
-        </Section>
+        <FooterView id="footer" personName={personName} />
       </PageLayout>
       {/* Portfolio Dialog */}
       <PortfolioDialog

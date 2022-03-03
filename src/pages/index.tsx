@@ -7,14 +7,8 @@ import Header from "../components/concrete/OverlapHeader/OverlapHeader";
 import Section from "../components/units/ScrollSection/ScrollSection";
 import PageLayout from "../layout/PageLayout";
 import { BlogProps, ViewProps, PortfolioProps } from "../pageUtils/PropDef";
-import ContactLayout from "../layout/ContactLayout";
 import ListItems from "../components/units/ListItems/ListItems";
-import PhoneIcon from "../assets/icons/phone-solid.inline.svg";
-import MobileIcon from "../assets/icons/mobile-alt-solid.inline.svg";
-import EmailIcon from "../assets/icons/envelope-solid.inline.svg";
-import SvgIconColor from "../components/units/SvgIconColor/SvgIconColor";
 import SocialLinks from "../components/concrete/SocialLinks/SocialLinks";
-import ContactForm from "../components/concrete/ContactForm/ContactForm";
 import List from "@material-ui/core/List/List";
 import ListItem from "@material-ui/core/ListItem/ListItem";
 import DrawerColor from "../components/units/DrawerColor/DrawerColor";
@@ -36,6 +30,7 @@ import { mediumFeed } from "../pageUtils/LaningPage";
 import AboutMeView from "../views/about-me/AboutMe.view";
 import SkillsView from "../views/skills/Skills.view";
 import BlogsView from "../views/blog/Blogs.view";
+import ContactView from "../views/contact/Contact.view";
 
 export const getStaticProps: GetStaticProps<ViewProps> = async () => {
   let blog: BlogProps = { data: null, error: null };
@@ -591,108 +586,7 @@ const LandingPage = (props: ViewProps) => {
         {/* Blog */}
         <BlogsView id="blog" blog={blog} />
         {/* Contact section */}
-        <Section
-          id="contact"
-          bgcolor={theme.palette.secondary.dark}
-          color={theme.palette.secondary.contrastText}
-        >
-          <ContactLayout
-            py={10}
-            header={
-              <Header
-                mb={4}
-                text="Contact"
-                textColor={theme.palette.secondary.light}
-                caption="Get In Touch"
-                captionColor={theme.palette.secondary.contrastText}
-                lineColor={theme.palette.info.main}
-              />
-            }
-            location={
-              <Box>
-                <Typography variant="h4">Location</Typography>
-                <Typography variant="h6">{contact.location}</Typography>
-              </Box>
-            }
-            contact={
-              <ListItems
-                items={[
-                  {
-                    label: (
-                      <SvgIconColor color={theme.palette.info.main}>
-                        <PhoneIcon />
-                      </SvgIconColor>
-                    ),
-                    value: (
-                      <Box ml={1}>
-                        <Typography variant="h6">{contact.phone}</Typography>
-                      </Box>
-                    ),
-                  },
-                  {
-                    label: (
-                      <SvgIconColor color={theme.palette.info.main}>
-                        <MobileIcon />
-                      </SvgIconColor>
-                    ),
-                    value: (
-                      <Box ml={1}>
-                        <Typography variant="h6">{contact.mobile}</Typography>
-                      </Box>
-                    ),
-                  },
-                  {
-                    label: (
-                      <SvgIconColor color={theme.palette.info.main}>
-                        <EmailIcon />
-                      </SvgIconColor>
-                    ),
-                    value: (
-                      <Box ml={1}>
-                        <Typography variant="h6">{contact.email}</Typography>
-                      </Box>
-                    ),
-                  },
-                ]}
-              />
-            }
-            socialLinks={
-              <SocialLinks
-                socialIcons={[
-                  {
-                    kind: "Github",
-                    link: socialLinks.github,
-                    toolTip: "Github",
-                  },
-                  {
-                    kind: "LinkedIn",
-                    link: socialLinks.linkedIn,
-                    toolTip: "LinkedIn",
-                  },
-                  {
-                    kind: "Medium",
-                    link: socialLinks.medium,
-                    toolTip: "Medium",
-                  },
-                  {
-                    kind: "Facebook",
-                    link: socialLinks.facebook,
-                    toolTip: "Facebook",
-                  },
-                ]}
-              />
-            }
-            contactForm={
-              <ContactForm
-                px={1}
-                textColor={theme.palette.secondary.contrastText}
-                fieldBorderColor={theme.palette.secondary.main}
-                fieldBgColor={theme.palette.secondary.main}
-                fieldFocusColor={theme.palette.info.main}
-              />
-            }
-          />
-        </Section>
+        <ContactView id="contact" contact={contact} socialLinks={socialLinks} />
         {/* Footer */}
         <Section id="footer" bgcolor={theme.palette.secondary.main}>
           <Box

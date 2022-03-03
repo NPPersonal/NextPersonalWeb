@@ -223,6 +223,12 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
             ],
           },
         ],
+        certificates: [
+          {
+            title: "Tensorflow",
+            url: "https://i.imgur.com/eztGRGe.png",
+          },
+        ],
       },
       portfolios: [
         {
@@ -348,7 +354,7 @@ const LandingPage = (props: LaningPageProps) => {
     menu: { links },
     hero: { heroBgImageURL },
     about: { personName, occupation, age, location, email, brief, experiences },
-    skill: { group },
+    skill: { group, certificates },
     portfolios,
     blog,
   } = props;
@@ -657,6 +663,25 @@ const LandingPage = (props: LaningPageProps) => {
                 })}
               />
             ))}
+            certificates={
+              <Box p={4}>
+                <RMasonry>
+                  {certificates.map((cert) => {
+                    return (
+                      <Link key={cert.title} href={cert.url}>
+                        <ZoomFadeCard
+                          thumbnailSrc={cert.url}
+                          width="100%"
+                          maskTitle={
+                            <Typography variant="h4">{cert.title}</Typography>
+                          }
+                        />
+                      </Link>
+                    );
+                  })}
+                </RMasonry>
+              </Box>
+            }
           />
         </Section>
         {/* portfolios */}

@@ -48,6 +48,7 @@ import ZoomFadeCard from "../components/concrete/ZoomFadeCard/ZoomFadeCard";
 import HomeView from "../views/home/Home.view";
 import { mediumFeed } from "../pageUtils/LaningPage";
 import AboutMeView from "../views/about-me/AboutMe.view";
+import SkillsView from "../views/skills/Skills.view";
 
 export const getStaticProps: GetStaticProps<ViewProps> = async () => {
   let blog: BlogProps = { data: null, error: null };
@@ -545,63 +546,8 @@ const LandingPage = (props: ViewProps) => {
           cvURL={cvURL}
         />
         {/* Skills section */}
-        <Section
-          id="skills"
-          bgcolor={theme.palette.secondary.main}
-          color={theme.palette.secondary.contrastText}
-        >
-          <SkillLayout
-            py={10}
-            header={
-              <Header
-                mb={4}
-                text="Summary"
-                textColor={theme.palette.secondary.light}
-                caption="I Have Learned"
-                captionColor={theme.palette.secondary.contrastText}
-                lineColor={theme.palette.info.main}
-              />
-            }
-            skillGroup={group.map((g) => (
-              <SkillSet
-                mb={8}
-                barColor={theme.palette.info.main}
-                barMaskColor={theme.palette.secondary.dark}
-                key={g.title}
-                header={
-                  <Typography variant="h3" align="center">
-                    {g.title}
-                  </Typography>
-                }
-                skills={g.skills.map((s) => {
-                  return {
-                    title: <Typography variant="h5">{s.title}</Typography>,
-                    value: s.value,
-                  };
-                })}
-              />
-            ))}
-            certificates={
-              <Box p={4}>
-                <RMasonry>
-                  {certificates.map((cert) => {
-                    return (
-                      <Link key={cert.title} href={cert.url}>
-                        <ZoomFadeCard
-                          thumbnailSrc={cert.url}
-                          width="100%"
-                          maskTitle={
-                            <Typography variant="h4">{cert.title}</Typography>
-                          }
-                        />
-                      </Link>
-                    );
-                  })}
-                </RMasonry>
-              </Box>
-            }
-          />
-        </Section>
+        <SkillsView id="skills" group={group} certificates={certificates} />
+
         {/* portfolios */}
         <Section
           id="portfolios"

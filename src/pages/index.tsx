@@ -3,20 +3,11 @@ import useTheme from "@material-ui/core/styles/useTheme";
 import Typography from "@material-ui/core/Typography/Typography";
 import React from "react";
 import { GetStaticProps } from "next/types/index";
-import Brief from "../components/concrete/Brief/Brief";
-import Counter from "../components/concrete/Counter/Counter";
 import Header from "../components/concrete/OverlapHeader/OverlapHeader";
-import PersonInfo from "../components/concrete/PersonInfo/PersonInfo";
 import ColorButton from "../components/units/ColorButton/ColorButton";
 import Section from "../components/units/ScrollSection/ScrollSection";
-import AboutLayout from "../layout/AboutLayout";
 import PageLayout from "../layout/PageLayout";
-import {
-  BlogProps,
-  ViewProps,
-  // mediumFeedProps,
-  PortfolioProps,
-} from "../pageUtils/PropDef";
+import { BlogProps, ViewProps, PortfolioProps } from "../pageUtils/PropDef";
 import SkillLayout from "../layout/SkillLayout";
 import SkillSet from "../components/concrete/SkillSet/SkillSet";
 import ContactLayout from "../layout/ContactLayout";

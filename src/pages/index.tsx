@@ -51,10 +51,10 @@ import IconButton from "@material-ui/core/IconButton/IconButton";
 import { formatDateTime } from "../utils/formater/TimeFormater";
 import PortfolioLayout from "../layout/PortfolioLayout";
 import RMasonry from "../components/units/RMasonry/RMasonry";
-import PortfolioCard from "../components/concrete/PortfolioCard/PortfolioCard";
 import Container from "@material-ui/core/Container/Container";
 import PortfolioDialog from "../components/concrete/PortfolioDialog/PortfolioDialog";
 import Slide, { SlideProps } from "@material-ui/core/Slide/Slide";
+import ZoomFadeCard from "../components/concrete/ZoomFadeCard/ZoomFadeCard";
 
 export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
   let blog: Blog = { data: null, error: null };
@@ -688,13 +688,13 @@ const LandingPage = (props: LaningPageProps) => {
                         display="flex"
                         justifyContent="center"
                       >
-                        <PortfolioCard
+                        <ZoomFadeCard
                           thumbnailSrc={p.image}
                           width="100%"
-                          projectTitle={
+                          maskTitle={
                             <Typography variant="h4">{p.title}</Typography>
                           }
-                          projectCategory={
+                          maskCategory={
                             <Container>
                               {p.categories.map((cat, i) => (
                                 <Typography key={i} variant="h6" align="center">

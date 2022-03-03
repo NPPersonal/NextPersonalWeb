@@ -8,16 +8,15 @@ import Counter from "../components/concrete/Counter/Counter";
 import Header from "../components/concrete/OverlapHeader/OverlapHeader";
 import PersonInfo from "../components/concrete/PersonInfo/PersonInfo";
 import ColorButton from "../components/units/ColorButton/ColorButton";
-import ParallaxHero from "../components/units/ParallaxHero/ParallaxHero";
 import Section from "../components/units/ScrollSection/ScrollSection";
 import AboutLayout from "../layout/AboutLayout";
 import PageLayout from "../layout/PageLayout";
 import {
-  Blog,
-  LaningPageProps,
-  mediumFeed,
-  Portfolio,
-} from "../pageUtils/LaningPage";
+  BlogProps,
+  ViewProps,
+  // mediumFeedProps,
+  PortfolioProps,
+} from "../pageUtils/PropDef";
 import SkillLayout from "../layout/SkillLayout";
 import SkillSet from "../components/concrete/SkillSet/SkillSet";
 import ContactLayout from "../layout/ContactLayout";
@@ -56,9 +55,11 @@ import PortfolioDialog from "../components/concrete/PortfolioDialog/PortfolioDia
 import Slide, { SlideProps } from "@material-ui/core/Slide/Slide";
 import ZoomFadeCard from "../components/concrete/ZoomFadeCard/ZoomFadeCard";
 import HomeView from "../views/home/Home.view";
+import { mediumFeed } from "../pageUtils/LaningPage";
+import AboutMeView from "../views/about-me/AboutMe.view";
 
-export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
-  let blog: Blog = { data: null, error: null };
+export const getStaticProps: GetStaticProps<ViewProps> = async () => {
+  let blog: BlogProps = { data: null, error: null };
   try {
     const feed = await mediumFeed("tomneo2004");
     blog = { data: feed, error: null };
@@ -348,7 +349,7 @@ export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
  * @param {LaningPageProps} props
  * @returns
  */
-const LandingPage = (props: LaningPageProps) => {
+const LandingPage = (props: ViewProps) => {
   const theme = useTheme();
   const {
     common: { name, contact, socialLinks, cvURL },
@@ -367,7 +368,7 @@ const LandingPage = (props: LaningPageProps) => {
     index: number;
   }>({ open: false, index: 0 });
 
-  const portfolio = React.useMemo<Portfolio>(() => {
+  const portfolio = React.useMemo<PortfolioProps>(() => {
     return portfolios[openPortfolio.index];
   }, [openPortfolio.index]);
 
@@ -541,73 +542,17 @@ const LandingPage = (props: LaningPageProps) => {
         {/* Home section */}
         <HomeView id="home" bgImageURL={heroBgImageURL} />
         {/* About Me section */}
-        <Section
+        <AboutMeView
           id="about-me"
-          bgcolor={theme.palette.secondary.dark}
-          color={theme.palette.secondary.contrastText}
-        >
-          <AboutLayout
-            py={10}
-            header={
-              <Header
-                mb={4}
-                text="About me"
-                textColor={theme.palette.secondary.light}
-                caption="Know Me More"
-                captionColor={theme.palette.secondary.contrastText}
-                lineColor={theme.palette.info.main}
-              />
-            }
-            brief={
-              <Brief
-                color={theme.palette.secondary.contrastText}
-                personName="Ming-Chun Hung, "
-                personNameColor={theme.palette.info.main}
-                occupation={occupation}
-                brief={brief}
-              />
-            }
-            personInfo={
-              <PersonInfo
-                personName={personName}
-                age={age}
-                location={location}
-                email={email}
-                emailColor={theme.palette.info.main}
-                dividerColor={theme.palette.secondary.light}
-              />
-            }
-            cvDownloadButton={
-              <LinkTo
-                linkTo={cvURL}
-                text={
-                  <ColorButton
-                    disableRipple
-                    color={theme.palette.info.main}
-                    hoverColor={theme.palette.info.dark}
-                    titleColor={theme.palette.secondary.contrastText}
-                  >
-                    <Typography variant="h6">Resume</Typography>
-                  </ColorButton>
-                }
-              />
-            }
-            experiences={experiences.map((exp) => (
-              <Box p={2}>
-                <Counter
-                  start={0}
-                  end={exp.number}
-                  suffix={exp.suffix}
-                  caption={
-                    <Typography variant="h6" align="center">
-                      {exp.title}
-                    </Typography>
-                  }
-                />
-              </Box>
-            ))}
-          />
-        </Section>
+          occupation={occupation}
+          brief={brief}
+          personName={personName}
+          age={age}
+          location={location}
+          email={email}
+          experiences={experiences}
+          cvURL={cvURL}
+        />
         {/* Skills section */}
         <Section
           id="skills"

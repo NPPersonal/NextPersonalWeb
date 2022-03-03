@@ -17,12 +17,24 @@ import { ViewProps, PortfolioProps } from "../../props-def/PropDef";
 
 type PortfoliosViewProps = React.ComponentProps<typeof Section> & {
   portfolios: ViewProps["portfolios"];
+
+  /** Transition duration for dialog in ms */
+  dialogTransDuration?: number;
+
+  /** Image slide change interval for dialog in ms */
+  slideInterval?: number;
 };
 
 const PortfoliosView: React.FC<PortfoliosViewProps> = (
   props: PortfoliosViewProps
 ) => {
-  const { portfolios, ...rest } = props;
+  const {
+    portfolios,
+    dialogTransDuration = 250,
+    slideInterval = 4000,
+    ...rest
+  } = props;
+
   const [openPortfolio, setOpenPortfolio] = React.useState<{
     open: boolean;
     index: number;
@@ -33,6 +45,8 @@ const PortfoliosView: React.FC<PortfoliosViewProps> = (
   }, [openPortfolio.index]);
 
   const theme = useTheme();
+
+  //transition component for portfolio dialog
   const dialogTransition = React.useMemo(
     () =>
       React.forwardRef<any, SlideProps>((props, ref) => {
@@ -106,6 +120,7 @@ const PortfoliosView: React.FC<PortfoliosViewProps> = (
           }
         />
       </Section>
+      {/* portfolios dialog */}
       <PortfolioDialog
         TransitionComponent={dialogTransition}
         open={openPortfolio.open}
@@ -117,7 +132,7 @@ const PortfoliosView: React.FC<PortfoliosViewProps> = (
           )
         }
         imageSlides={!portfolio ? [] : portfolio.imageSlides}
-        slideInterval={4000}
+        slideInterval={slideInterval}
         desc={
           !portfolio ? (
             ""
@@ -206,6 +221,7 @@ const PortfoliosView: React.FC<PortfoliosViewProps> = (
         maxWidth="sm"
         scroll="body"
         color={theme.palette.primary.main}
+        transitionDuration={dialogTransDuration}
       />
     </React.Fragment>
   );

@@ -505,7 +505,6 @@ const LandingPage = (props: ViewProps) => {
         {/* Footer */}
         <FooterView id="footer" personName={personName} />
       </PageLayout>
-      {/* Portfolio Dialog */}
     </React.Fragment>
   );
 };

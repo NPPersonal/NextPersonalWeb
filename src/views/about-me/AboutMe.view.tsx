@@ -10,7 +10,7 @@ import ColorButton from "../../components/units/ColorButton/ColorButton";
 import LinkTo from "../../components/units/LinkTo/LinkTo";
 import Section from "../../components/units/ScrollSection/ScrollSection";
 import AboutLayout from "../../layout/AboutLayout";
-import { AboutProps, CommonProps } from "../../pageUtils/PropDef";
+import { AboutProps, CommonProps } from "../../props-def/PropDef";
 
 type AboutMeProps = React.ComponentProps<typeof Section> & {
   occupation: AboutProps["occupation"];

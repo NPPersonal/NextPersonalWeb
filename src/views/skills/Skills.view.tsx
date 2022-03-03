@@ -9,7 +9,7 @@ import ZoomFadeCard from "../../components/concrete/ZoomFadeCard/ZoomFadeCard";
 import RMasonry from "../../components/units/RMasonry/RMasonry";
 import Section from "../../components/units/ScrollSection/ScrollSection";
 import SkillLayout from "../../layout/SkillLayout";
-import { SkillProps } from "../../pageUtils/PropDef";
+import { SkillProps } from "../../props-def/PropDef";
 
 type SkillViewProps = React.ComponentProps<typeof Section> & {
   group: SkillProps["group"];

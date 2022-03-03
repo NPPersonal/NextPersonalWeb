@@ -3,7 +3,7 @@ import useTheme from "@material-ui/core/styles/useTheme";
 import Typography from "@material-ui/core/Typography/Typography";
 import React from "react";
 import Section from "../../components/units/ScrollSection/ScrollSection";
-import { AboutProps } from "../../pageUtils/PropDef";
+import { AboutProps } from "../../props-def/PropDef";
 
 type FooterViewProps = React.ComponentProps<typeof Section> & {
   personName: AboutProps["personName"];

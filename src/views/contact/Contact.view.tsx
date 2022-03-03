@@ -11,7 +11,7 @@ import PhoneIcon from "../../assets/icons/phone-solid.inline.svg";
 import MobileIcon from "../../assets/icons/mobile-alt-solid.inline.svg";
 import EmailIcon from "../../assets/icons/envelope-solid.inline.svg";
 import SocialLinks from "../../components/concrete/SocialLinks/SocialLinks";
-import { CommonProps } from "../../pageUtils/PropDef";
+import { CommonProps } from "../../props-def/PropDef";
 import ContactForm from "../../components/concrete/ContactForm/ContactForm";
 
 type ContactViewProps = React.ComponentProps<typeof Section> & {

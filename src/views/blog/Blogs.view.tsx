@@ -16,7 +16,7 @@ import BlogLayout from "../../layout/BlogLayout";
 import LeftArrow from "@material-ui/icons/ArrowLeftRounded";
 import RightArrow from "@material-ui/icons/ArrowRightRounded";
 import { formatDateTime } from "../../utils/formater/TimeFormater";
-import { BlogProps } from "../../pageUtils/PropDef";
+import { BlogProps } from "../../props-def/PropDef";
 
 type BlogsViewProps = React.ComponentProps<typeof Section> & {
   blog: BlogProps;

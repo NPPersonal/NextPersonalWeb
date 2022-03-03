@@ -1,12 +1,12 @@
 import axios from "axios";
-import { MediumFeedProps } from "./PropDef";
+import { MediumFeedProps } from "../../props-def/PropDef";
 
 /**
  * Get feed from medium blog
  * @param username user name or account
  * @returns blog feed
  */
-export const mediumFeed = async (
+export const getMediumBlogFeed = async (
   username: string
 ): Promise<MediumFeedProps> => {
   try {

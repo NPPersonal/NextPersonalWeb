@@ -3,13 +3,25 @@ import Typography from "@material-ui/core/Typography/Typography";
 import React from "react";
 import ParallaxHero from "../../components/units/ParallaxHero/ParallaxHero";
 import Section from "../../components/units/ScrollSection/ScrollSection";
+import { HomeProps, CommonProps } from "../../props-def/PropDef";
 
 type HomeViewProps = React.ComponentProps<typeof Section> & {
   bgImageURL: string;
+  greeting: HomeProps["greeting"];
+  country: HomeProps["country"];
+  city: HomeProps["city"];
+  fullName: CommonProps["name"];
 };
 
 const HomeView: React.FC<HomeViewProps> = (props: HomeViewProps) => {
-  const { bgImageURL, ...rest } = props;
+  const {
+    bgImageURL,
+    greeting,
+    country,
+    city,
+    fullName: { first, last },
+    ...rest
+  } = props;
   const theme = useTheme();
 
   return (
@@ -22,13 +34,13 @@ const HomeView: React.FC<HomeViewProps> = (props: HomeViewProps) => {
       >
         <React.Fragment>
           <Typography variant="h6" align="center" paragraph>
-            Welcome
+            {greeting}
           </Typography>
           <Typography variant="h3" align="center" paragraph>
-            I am Ming-Chung Hung
+            {`I am ${first} ${last}`}
           </Typography>
           <Typography variant="h6" align="center" paragraph>
-            Los Angeles, California.
+            {`${city}, ${country}.`}
           </Typography>
         </React.Fragment>
       </ParallaxHero>

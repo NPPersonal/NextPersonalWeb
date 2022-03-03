@@ -1,6 +1,7 @@
 export type ViewProps = {
   common: CommonProps;
   menu: MenuProps;
+  home: HomeProps;
   hero: HeroProps;
   about: AboutProps;
   skill: SkillProps;
@@ -33,6 +34,12 @@ export type MenuProps = {
     title: string;
     id: string;
   }[];
+};
+
+export type HomeProps = {
+  greeting: string;
+  country: string;
+  city: string;
 };
 
 export type AboutProps = {

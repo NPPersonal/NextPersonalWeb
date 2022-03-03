@@ -55,6 +55,7 @@ import Container from "@material-ui/core/Container/Container";
 import PortfolioDialog from "../components/concrete/PortfolioDialog/PortfolioDialog";
 import Slide, { SlideProps } from "@material-ui/core/Slide/Slide";
 import ZoomFadeCard from "../components/concrete/ZoomFadeCard/ZoomFadeCard";
+import HomeView from "../views/home/Home.view";
 
 export const getStaticProps: GetStaticProps<LaningPageProps> = async () => {
   let blog: Blog = { data: null, error: null };
@@ -538,26 +539,7 @@ const LandingPage = (props: LaningPageProps) => {
         }
       >
         {/* Home section */}
-        <Section id="home" color={theme.palette.primary.contrastText}>
-          <ParallaxHero
-            py={30}
-            bgImage={heroBgImageURL}
-            maskColor={theme.palette.primary.dark}
-            maskOpacity={0.8}
-          >
-            <React.Fragment>
-              <Typography variant="h6" align="center" paragraph>
-                Welcome
-              </Typography>
-              <Typography variant="h3" align="center" paragraph>
-                I am Ming-Chung Hung
-              </Typography>
-              <Typography variant="h6" align="center" paragraph>
-                Los Angeles, California.
-              </Typography>
-            </React.Fragment>
-          </ParallaxHero>
-        </Section>
+        <HomeView id="home" bgImageURL={heroBgImageURL} />
         {/* About Me section */}
         <Section
           id="about-me"

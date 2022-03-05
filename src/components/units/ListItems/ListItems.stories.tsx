@@ -1,7 +1,22 @@
-import { ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider, Theme, StyledEngineProvider } from '@mui/material/styles';
 import defaultTheme from '../../../themes/defaultTheme';
 import React from 'react';
 import ListItems from './ListItems';
+
+
+
+declare module '@mui/styles/defaultTheme' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface DefaultTheme extends Theme {}
+}
+
+
+
+declare module '@mui/styles/defaultTheme' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface DefaultTheme extends Theme {}
+}
+
 
 export default {
     title: 'ListItems',
@@ -28,8 +43,10 @@ const items = [
 
 export const Default = ()=>{
     return (
-        <ThemeProvider theme={defaultTheme}>
-            <ListItems items={items} />
-        </ThemeProvider>
-    )
+        <StyledEngineProvider injectFirst>
+            <ThemeProvider theme={defaultTheme}>
+                <ListItems items={items} />
+            </ThemeProvider>
+        </StyledEngineProvider>
+    );
 }

@@ -1,18 +1,15 @@
-import Box from "@material-ui/core/Box/Box";
-import useTheme from "@material-ui/core/styles/useTheme";
-import Typography from "@material-ui/core/Typography/Typography";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import React from "react";
 import { GetStaticProps } from "next/types/index";
 import PageLayout from "../layout/PageLayout";
 import { BlogProps, ViewProps } from "../props-def/PropDef";
 import SocialLinks from "../components/concrete/SocialLinks/SocialLinks";
-import List from "@material-ui/core/List/List";
-import ListItem from "@material-ui/core/ListItem/ListItem";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
 import DrawerColor from "../components/units/DrawerColor/DrawerColor";
 import ScrollLink from "../components/units/ScrollLink/ScrollLink";
 import SizeAvatar from "../components/units/SizeAvatar/SizeAvatar";
-import avatarURL from "../assets/profile/profile-avatar.png";
-import avatarPlaceholder from "../assets/profile/profile-placeholder.svg";
 import StickyNav from "../components/concrete/StickyNav/StickyNav";
 import LinkTo from "../components/units/LinkTo/LinkTo";
 import RippleMenu from "../components/concrete/RippleMenu/RippleMenu";
@@ -25,6 +22,7 @@ import ContactView from "../views/contact/Contact.view";
 import FooterView from "../views/footer/Footer.view";
 import PortfoliosView from "../views/portolio/Portfolios.view";
 import { getStaticPageData } from "../page-data/pageData";
+import { useTheme } from "@mui/styles";
 
 export const getStaticProps: GetStaticProps<ViewProps> = async () => {
   let blog: BlogProps = { data: null, error: null };
@@ -91,11 +89,11 @@ const LandingPage = (props: ViewProps) => {
               py={2}
             >
               <SizeAvatar
-                src={avatarURL}
-                placeholderSrc={avatarPlaceholder}
+                src="/profile/profile-avatar.png"
+                placeholderSrc="/profile/profile-placeholder.svg"
                 size={200}
                 ringColor={theme.palette.primary.light}
-                ringWidth={theme.spacing(1)}
+                ringWidth={18}
                 caption={
                   <Box color={theme.palette.primary.contrastText} pt={1}>
                     <Typography variant="h6" align="center">
@@ -217,7 +215,6 @@ const LandingPage = (props: ViewProps) => {
           </StickyNav>
         }
       >
-        {/* Home section */}
         <HomeView
           id="home"
           bgImageURL={heroBgImageURL}
@@ -226,7 +223,6 @@ const LandingPage = (props: ViewProps) => {
           city={city}
           fullName={name}
         />
-        {/* About Me section */}
         <AboutMeView
           id="about-me"
           occupation={occupation}
@@ -238,16 +234,11 @@ const LandingPage = (props: ViewProps) => {
           experiences={experiences}
           cvURL={cvURL}
         />
-        {/* Skills section */}
         <SkillsView id="skills" group={group} certificates={certificates} />
-        {/* portfolios */}
         <PortfoliosView id="portfolios" portfolios={portfolios} />
-        {/* Blog */}
-        <BlogsView id="blog" blog={blog} />
-        {/* Contact section */}
-        <ContactView id="contact" contact={contact} socialLinks={socialLinks} />
-        {/* Footer */}
-        <FooterView id="footer" personName={personName} />
+        {/* <BlogsView id="blog" blog={blog} /> */}
+        {/* <ContactView id="contact" contact={contact} socialLinks={socialLinks} /> */}
+        {/* <FooterView id="footer" personName={personName} /> */}
       </PageLayout>
     </React.Fragment>
   );

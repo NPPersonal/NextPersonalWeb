@@ -1,5 +1,5 @@
-import useTheme from "@material-ui/core/styles/useTheme";
-import Typography from "@material-ui/core/Typography/Typography";
+import useTheme from "@mui/styles/useTheme";
+import Typography from "@mui/material/Typography";
 import React from "react";
 import ParallaxHero from "../../components/units/ParallaxHero/ParallaxHero";
 import Section from "../../components/units/ScrollSection/ScrollSection";

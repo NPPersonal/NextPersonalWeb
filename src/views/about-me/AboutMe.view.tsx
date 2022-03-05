@@ -1,6 +1,6 @@
-import Box from "@material-ui/core/Box/Box";
-import useTheme from "@material-ui/core/styles/useTheme";
-import Typography from "@material-ui/core/Typography/Typography";
+import Box from "@mui/material/Box";
+import useTheme from "@mui/styles/useTheme";
+import Typography from "@mui/material/Typography";
 import React from "react";
 import Brief from "../../components/concrete/Brief/Brief";
 import Counter from "../../components/concrete/Counter/Counter";
@@ -79,12 +79,17 @@ const AboutMeView: React.FC<AboutMeProps> = (props: AboutMeProps) => {
             linkTo={cvURL}
             text={
               <ColorButton
-                disableRipple
-                color={theme.palette.info.main}
+                // disableRipple
+                bgColor={theme.palette.info.main}
                 hoverColor={theme.palette.info.dark}
                 titleColor={theme.palette.secondary.contrastText}
               >
-                <Typography variant="h6">Resume</Typography>
+                <Typography
+                  variant="h6"
+                  color={theme.palette.secondary.contrastText}
+                >
+                  Resume
+                </Typography>
               </ColorButton>
             }
           />

@@ -1,6 +1,6 @@
-import Box from "@material-ui/core/Box/Box";
-import useTheme from "@material-ui/core/styles/useTheme";
-import Typography from "@material-ui/core/Typography/Typography";
+import Box from "@mui/material/Box";
+import useTheme from "@mui/styles/useTheme";
+import Typography from "@mui/material/Typography";
 import React from "react";
 import Section from "../../components/units/ScrollSection/ScrollSection";
 import { AboutProps } from "../../props-def/PropDef";

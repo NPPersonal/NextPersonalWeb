@@ -1,7 +1,6 @@
-import Box from "@material-ui/core/Box/Box";
-import useTheme from "@material-ui/core/styles/useTheme";
-import Typography from "@material-ui/core/Typography/Typography";
-import Link from "next/dist/client/link";
+import Box from "@mui/material/Box";
+import useTheme from "@mui/styles/useTheme";
+import Typography from "@mui/material/Typography";
 import React from "react";
 import Header from "../../components/concrete/OverlapHeader/OverlapHeader";
 import SkillSet from "../../components/concrete/SkillSet/SkillSet";
@@ -61,15 +60,22 @@ const SkillsView: React.FC<SkillViewProps> = (props: SkillProps) => {
             <RMasonry>
               {certificates.map((cert) => {
                 return (
-                  <Link key={cert.title} href={cert.url}>
-                    <ZoomFadeCard
-                      thumbnailSrc={cert.url}
-                      width="100%"
-                      maskTitle={
-                        <Typography variant="h4">{cert.title}</Typography>
-                      }
-                    />
-                  </Link>
+                  <a
+                    key={cert.title}
+                    target="_blank"
+                    href={cert.url}
+                    rel="noopener noreferrer"
+                  >
+                    <div>
+                      <ZoomFadeCard
+                        thumbnailSrc={cert.url}
+                        width="100%"
+                        maskTitle={
+                          <Typography variant="h4">{cert.title}</Typography>
+                        }
+                      />
+                    </div>
+                  </a>
                 );
               })}
             </RMasonry>

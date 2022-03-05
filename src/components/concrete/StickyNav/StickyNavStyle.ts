@@ -1,4 +1,4 @@
-import createStyles from "@material-ui/core/styles/createStyles";
+import createStyles from '@mui/styles/createStyles';
 
 type StyleProps = {
     color: string,

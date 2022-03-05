@@ -1,8 +1,23 @@
-import { ThemeProvider, useTheme } from '@material-ui/core/styles';
+import { ThemeProvider, Theme, StyledEngineProvider, useTheme } from '@mui/material/styles';
 import defaultTheme from '../../../themes/defaultTheme';
 import React from 'react';
 import Brief from './Brief';
-import { Box } from '@material-ui/core';
+import { Box } from '@mui/material';
+
+
+
+declare module '@mui/styles/defaultTheme' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface DefaultTheme extends Theme {}
+}
+
+
+
+declare module '@mui/styles/defaultTheme' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface DefaultTheme extends Theme {}
+}
+
 
 export default {
     title: 'Brief',
@@ -17,17 +32,19 @@ Delivering work within time and budget which meets client’s requirements is ou
 export const Default = ()=>{
     const theme = useTheme();
     return (
-        <ThemeProvider theme={defaultTheme}>
-            <Box bgcolor={theme.palette.primary.main}>
-            <Brief 
-            color={theme.palette.primary.contrastText} 
-            personName='Nelson, ' 
-            personNameColor={theme.palette.info.main}
-            occupation='a web developer' 
-            brief={brief}
-            briefColor={theme.palette.primary.contrastText} 
-            />
-            </Box>
-        </ThemeProvider>
-    )
+        <StyledEngineProvider injectFirst>
+            <ThemeProvider theme={defaultTheme}>
+                <Box bgcolor={theme.palette.primary.main}>
+                <Brief 
+                color={theme.palette.primary.contrastText} 
+                personName='Nelson, ' 
+                personNameColor={theme.palette.info.main}
+                occupation='a web developer' 
+                brief={brief}
+                briefColor={theme.palette.primary.contrastText} 
+                />
+                </Box>
+            </ThemeProvider>
+        </StyledEngineProvider>
+    );
 }

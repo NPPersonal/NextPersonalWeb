@@ -1,16 +1,16 @@
-import Box from "@material-ui/core/Box/Box";
-import Card, { CardProps } from "@material-ui/core/Card/Card";
-import CardActionArea from "@material-ui/core/CardActionArea/CardActionArea";
 import { LazyLoadComponent } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import Fade from "@material-ui/core/Fade/Fade";
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import useTheme from "@material-ui/core/styles/useTheme";
+import Fade from "@mui/material/Fade";
+import useTheme from "@mui/styles/useTheme";
 import React from "react";
-import style from "./ZoomFadeCardStyle";
+import {
+  ZFCard,
+  ZFCardActionArea,
+  ZFCardMask,
+  ZoomImage,
+} from "./ZoomFadeCardStyle";
 
-type CardWithoutStyle = Omit<CardProps, "style">;
-type ZoomFadeCardProps = CardWithoutStyle & {
+type ZoomFadeCardProps = {
   thumbnailSrc: string;
   width: string | number;
   maskTitle?: React.ReactNode;
@@ -18,6 +18,7 @@ type ZoomFadeCardProps = CardWithoutStyle & {
   fadeTimeout?: number;
   zoomTime?: number;
   zoomOnly?: boolean;
+  onClick?: () => void;
 };
 const ZoomFadeCard: React.FC<ZoomFadeCardProps> = (
   props: ZoomFadeCardProps
@@ -30,6 +31,7 @@ const ZoomFadeCard: React.FC<ZoomFadeCardProps> = (
     fadeTimeout = 1000,
     zoomTime = 500,
     zoomOnly = false,
+    onClick,
     ...rest
   } = props;
 
@@ -39,41 +41,37 @@ const ZoomFadeCard: React.FC<ZoomFadeCardProps> = (
   const handleMouseOver = () => setMouseOver(true);
   const handleMouseLeave = () => setMouseOver(false);
 
-  const classes = makeStyles(style)({
-    theme,
-    width,
-    imageScale: mouseOver ? 1.1 : 1,
-    maskColor: theme.palette.common.black,
-    maskOpacity: 0.7,
-    zoomTime,
-  });
-
   return (
-    <Card {...rest} className={classes.root}>
-      <CardActionArea
-        className={classes.actionArea}
+    <ZFCard cardWidth={width} onClick={onClick} {...rest}>
+      <ZFCardActionArea
         onMouseEnter={handleMouseOver}
         onMouseLeave={handleMouseLeave}
       >
         <LazyLoadComponent visibleByDefault={true}>
-          <img src={thumbnailSrc} width={width} className={classes.img} />
+          <ZoomImage
+            src={thumbnailSrc}
+            width={width}
+            imageScale={mouseOver ? 1.1 : 1}
+            zoomTime={zoomTime}
+          />
         </LazyLoadComponent>
         {!zoomOnly && (
           <Fade in={mouseOver} timeout={fadeTimeout}>
-            <Box
-              className={classes.mask}
+            <ZFCardMask
               display="flex"
               flexDirection="column"
               justifyContent="center"
               alignItems="center"
+              maskColor={theme.palette.primary.dark}
+              maskOpacity={0.5}
             >
               {maskTitle}
               {maskCategory}
-            </Box>
+            </ZFCardMask>
           </Fade>
         )}
-      </CardActionArea>
-    </Card>
+      </ZFCardActionArea>
+    </ZFCard>
   );
 };
 

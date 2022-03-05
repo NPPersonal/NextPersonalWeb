@@ -1,10 +1,8 @@
-import createStyles from "@material-ui/core/styles/createStyles";
+import ListItem from "@mui/material/ListItem";
+import { styled } from "@mui/material/styles";
 
-type StyleProps = {
-    dividerColor:string,
-}
-export default createStyles({
-    divider:(props:StyleProps)=>({
-        borderColor: props.dividerColor,
-    })
-})
+type ItemProps = {};
+
+export const Item = styled(ListItem)<ItemProps>(({ theme }) => ({
+  borderColor: theme.palette.primary.dark,
+}));

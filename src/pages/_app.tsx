@@ -1,16 +1,26 @@
 import React from "react";
 import Head from "next/head";
-import { ThemeProvider } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline/CssBaseline";
 import theme from "../themes/defaultTheme";
-import type { AppProps /*, AppContext */ } from "next/app";
+import { AppProps } from "next/app";
 import ErrorBoundary from "../components/units/ErrorBoundary/ErrorBoundary";
-import Box from "@material-ui/core/Box/Box";
-import Typography from "@material-ui/core/Typography/Typography";
 import LinkTo from "../components/units/LinkTo/LinkTo";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import ThemeProvider from "@mui/styles/ThemeProvider";
+import CssBaseline from "@mui/material/CssBaseline";
+import { CacheProvider, EmotionCache } from "@emotion/react";
+import createEmotionCache from "../createEmotionCache";
+import { StyledEngineProvider } from "@mui/material/styles";
 
-export default function MovieReviewApp(props: AppProps) {
-  const { Component, pageProps } = props;
+// Client-side cache, shared for the whole session of the user in the browser.
+const clientSideEmotionCache = createEmotionCache();
+
+interface MyAppProps extends AppProps {
+  emotionCache?: EmotionCache;
+}
+
+export default function PersonalWebApp(props: MyAppProps) {
+  const { Component, pageProps, emotionCache = clientSideEmotionCache } = props;
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
@@ -21,7 +31,7 @@ export default function MovieReviewApp(props: AppProps) {
   }, []);
 
   return (
-    <React.Fragment>
+    <CacheProvider value={emotionCache}>
       <Head>
         <title>{process.env.NEXT_PUBLIC_WEBSITE_NAME}</title>
         <meta
@@ -41,19 +51,18 @@ export default function MovieReviewApp(props: AppProps) {
             <Typography variant="h2">
               Oooops ! Looks like somthing is not right
             </Typography>
-            <LinkTo
-              text="Back to home"
-              linkTo='/'
-            />
+            <LinkTo text="Back to home" linkTo="/" />
           </Box>
         }
       >
-        <ThemeProvider theme={theme}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
-          <Component {...pageProps} />
-        </ThemeProvider>
+        <StyledEngineProvider injectFirst>
+          <ThemeProvider theme={theme}>
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            <CssBaseline />
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </StyledEngineProvider>
       </ErrorBoundary>
-    </React.Fragment>
+    </CacheProvider>
   );
 }

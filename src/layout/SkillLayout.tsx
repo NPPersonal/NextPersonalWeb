@@ -1,5 +1,5 @@
-import Box from "@material-ui/core/Box/Box";
-import Container from "@material-ui/core/Container/Container";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
 import React from "react";
 
 type SkillLayoutProps = React.ComponentProps<typeof Box> & {

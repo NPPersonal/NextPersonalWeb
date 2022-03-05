@@ -1,6 +1,7 @@
 
-import { Theme } from "@material-ui/core/styles/createMuiTheme";
-import createStyles from "@material-ui/core/styles/createStyles";
+import { Theme } from '@mui/material/styles';
+
+import createStyles from '@mui/styles/createStyles';
 
 type StyleProps = {
     iconColor: string,

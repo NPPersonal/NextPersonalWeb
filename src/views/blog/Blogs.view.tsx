@@ -1,7 +1,7 @@
-import Box from "@material-ui/core/Box/Box";
-import IconButton from "@material-ui/core/IconButton/IconButton";
-import useTheme from "@material-ui/core/styles/useTheme";
-import Typography from "@material-ui/core/Typography/Typography";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import useTheme from "@mui/styles/useTheme";
+import Typography from "@mui/material/Typography";
 import Link from "next/dist/client/link";
 import React from "react";
 import ReactMarkdown from "react-markdown";
@@ -13,8 +13,8 @@ import Header from "../../components/concrete/OverlapHeader/OverlapHeader";
 import ColorButton from "../../components/units/ColorButton/ColorButton";
 import Section from "../../components/units/ScrollSection/ScrollSection";
 import BlogLayout from "../../layout/BlogLayout";
-import LeftArrow from "@material-ui/icons/ArrowLeftRounded";
-import RightArrow from "@material-ui/icons/ArrowRightRounded";
+import LeftArrow from "@mui/icons-material/ArrowLeftRounded";
+import RightArrow from "@mui/icons-material/ArrowRightRounded";
 import { formatDateTime } from "../../utils/formater/TimeFormater";
 import { BlogProps } from "../../props-def/PropDef";
 
@@ -69,6 +69,7 @@ const BlogsView: React.FC<BlogsViewProps> = (props: BlogsViewProps) => {
                     cursor: "pointer",
                     color: theme.palette.secondary.contrastText,
                   }}
+                  size="large"
                 >
                   <LeftArrow fontSize="large" />
                 </IconButton>
@@ -89,6 +90,7 @@ const BlogsView: React.FC<BlogsViewProps> = (props: BlogsViewProps) => {
                     cursor: "pointer",
                     color: theme.palette.secondary.contrastText,
                   }}
+                  size="large"
                 >
                   <RightArrow fontSize="large" />
                 </IconButton>

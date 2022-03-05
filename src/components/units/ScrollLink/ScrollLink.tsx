@@ -1,4 +1,4 @@
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import makeStyles from '@mui/styles/makeStyles';
 import React from 'react';
 import Link, {ReactScrollLinkProps} from 'react-scroll/modules/components/Link';
 import style from './ScrollLinkStyle';

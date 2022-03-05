@@ -1,9 +1,11 @@
-  
 import { NextApiRequest, NextApiResponse } from "next/types/index";
 
-type reqHandlerResponse = { [key: string]: any } | { [key: string]: any }[] | any;
+type reqHandlerResponse =
+  | { [key: string]: any }
+  | { [key: string]: any }[]
+  | any;
 
-type ReqHandler<T> = (req:NextApiRequest)=>Promise<T>;
+type ReqHandler<T> = (req: NextApiRequest) => Promise<T>;
 
 /**
  * A handler for handing next api request
@@ -29,7 +31,7 @@ export default async function nextRequestHandler(
     res.status(200).json(data);
 
     return Promise.resolve();
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
     if (errorHandler) {
       errorHandler(error, res);

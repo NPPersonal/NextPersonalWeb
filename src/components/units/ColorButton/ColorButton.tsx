@@ -1,72 +1,59 @@
-import Button, { ButtonProps } from '@material-ui/core/Button/Button';
-import makeStyles from '@material-ui/core/styles/makeStyles';
-import React from 'react';
-import style from './ColorButtonStyle';
+import useTheme from "@mui/styles/useTheme";
+import React from "react";
+import { InteractiveButton } from "./ColorButtonStyle";
 
-type ButtonWithoutColorProps = Omit<ButtonProps, 'color'>;
+// type ButtonWithoutColorProps = Omit<ButtonProps, "color">;
 
-type ColorButtonProps = ButtonWithoutColorProps & {
-    children: React.ReactNode,
-    borderRadius?: string,
-    color?: string,
-    activeColor?: string,
-    hoverColor?: string,
-    titleColor?: string,
-    px?: string | number,
-    py?: string | number,
-    shadow?: boolean,
+type ColorButtonProps = {
+  children: React.ReactNode;
+  borderRadius?: string;
+  bgColor?: string;
+  activeColor?: string;
+  hoverColor?: string;
+  titleColor?: string;
+  shadow?: boolean;
 };
 
 /**
  * Component ColorButton
- * 
+ *
  * Customized border radius
- * 
+ *
  * Customized color, color for active and hover
- * 
+ *
  * Padding horizontal and vertical
- * 
+ *
  * Wrapped Material-UI `Button`
  * https://material-ui.com/components/buttons/#button
- * 
- * @param {ColorButtonProps} props 
- * @returns 
+ *
+ * @param {ColorButtonProps} props
+ * @returns
  */
-const ColorButton = React.forwardRef<any, ColorButtonProps>((props,ref) => {
-    const {
-        children,
-        borderRadius = '35px',
-        color = 'grey',
-        activeColor = 'grey',
-        hoverColor = 'lightgrey',
-        titleColor = 'black',
-        px = 20,
-        py = 8,
-        shadow = true,
-        ...rest
-    } = props;
+const ColorButton: React.FC<ColorButtonProps> = (props: ColorButtonProps) => {
+  const {
+    children,
+    borderRadius = "35px",
+    bgColor = "grey",
+    activeColor = "grey",
+    hoverColor = "lightgrey",
+    titleColor = "black",
+    shadow = true,
+  } = props;
 
-    const classes = makeStyles(style)({
-        borderRadius,
-        color,
-        activeColor,
-        hoverColor,
-        titleColor,
-        px,
-        py,
-        shadow
-    });
-
-    const buttonClasses = {
-        root:classes.root,
-        label:classes.label,
-    }
-
-    return (
-        <div ref={ref}>
-            <Button classes={buttonClasses} {...rest}>{children}</Button>
-        </div>
-    );
-});
+  const theme = useTheme();
+  return (
+    <InteractiveButton
+      theme={theme}
+      borderRadius={borderRadius}
+      activeColor={activeColor}
+      hoverColor={hoverColor}
+      titleColor={titleColor}
+      bgColor={bgColor}
+      shadow={shadow}
+    >
+      {children}
+    </InteractiveButton>
+  );
+};
 
 export default ColorButton;

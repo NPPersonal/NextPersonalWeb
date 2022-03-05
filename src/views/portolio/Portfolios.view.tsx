@@ -1,8 +1,8 @@
-import Box from "@material-ui/core/Box/Box";
-import Container from "@material-ui/core/Container/Container";
-import Slide, { SlideProps } from "@material-ui/core/Slide/Slide";
-import useTheme from "@material-ui/core/styles/useTheme";
-import Typography from "@material-ui/core/Typography/Typography";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Slide, { SlideProps } from "@mui/material/Slide";
+import useTheme from "@mui/styles/useTheme";
+import Typography from "@mui/material/Typography";
 import React from "react";
 import Header from "../../components/concrete/OverlapHeader/OverlapHeader";
 import PortfolioDialog from "../../components/concrete/PortfolioDialog/PortfolioDialog";

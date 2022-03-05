@@ -1,4 +1,4 @@
-import createStyles from "@material-ui/styles/createStyles/createStyles";
+import createStyles from "@mui/styles/createStyles/createStyles";
 
 export default createStyles({
     text:{

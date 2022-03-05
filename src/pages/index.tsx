@@ -238,7 +238,7 @@ const LandingPage = (props: ViewProps) => {
         <PortfoliosView id="portfolios" portfolios={portfolios} />
         {/* <BlogsView id="blog" blog={blog} /> */}
         {/* <ContactView id="contact" contact={contact} socialLinks={socialLinks} /> */}
-        {/* <FooterView id="footer" personName={personName} /> */}
+        <FooterView id="footer" personName={personName} />
       </PageLayout>
     </React.Fragment>
   );

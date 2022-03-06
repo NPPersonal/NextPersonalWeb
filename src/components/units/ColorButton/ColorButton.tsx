@@ -1,17 +1,16 @@
 import useTheme from "@mui/styles/useTheme";
 import React from "react";
-import { InteractiveButton } from "./ColorButtonStyle";
+import { InteractiveButton, InteractiveButtonProps } from "./ColorButtonStyle";
 
 // type ButtonWithoutColorProps = Omit<ButtonProps, "color">;
 
-type ColorButtonProps = {
-  children: React.ReactNode;
-  borderRadius?: string;
-  bgColor?: string;
-  activeColor?: string;
-  hoverColor?: string;
-  titleColor?: string;
-  shadow?: boolean;
+type ColorButtonProps = InteractiveButtonProps & {
+  // borderRadius?: string;
+  // bgColor?: string;
+  // activeColor?: string;
+  // hoverColor?: string;
+  // titleColor?: string;
+  // shadow?: boolean;
 };
 
 /**
@@ -38,6 +37,7 @@ const ColorButton: React.FC<ColorButtonProps> = (props: ColorButtonProps) => {
     hoverColor = "lightgrey",
     titleColor = "black",
     shadow = true,
+    ...rest
   } = props;
 
   const theme = useTheme();
@@ -50,6 +50,7 @@ const ColorButton: React.FC<ColorButtonProps> = (props: ColorButtonProps) => {
       titleColor={titleColor}
       bgColor={bgColor}
       shadow={shadow}
+      {...rest}
     >
       {children}
     </InteractiveButton>

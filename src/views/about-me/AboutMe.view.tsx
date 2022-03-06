@@ -79,7 +79,6 @@ const AboutMeView: React.FC<AboutMeProps> = (props: AboutMeProps) => {
             linkTo={cvURL}
             text={
               <ColorButton
-                // disableRipple
                 bgColor={theme.palette.info.main}
                 hoverColor={theme.palette.info.dark}
                 titleColor={theme.palette.secondary.contrastText}

@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import useTheme from "@mui/styles/useTheme";
 import Typography from "@mui/material/Typography";
-import Link from "next/dist/client/link";
+// import Link from "next/dist/client/link";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
@@ -17,6 +17,8 @@ import LeftArrow from "@mui/icons-material/ArrowLeftRounded";
 import RightArrow from "@mui/icons-material/ArrowRightRounded";
 import { formatDateTime } from "../../utils/formater/TimeFormater";
 import { BlogProps } from "../../props-def/PropDef";
+import LinkTo from "../../components/units/LinkTo/LinkTo";
+// import NoSsr from "@mui/material/NoSsr";
 
 type BlogsViewProps = React.ComponentProps<typeof Section> & {
   blog: BlogProps;
@@ -122,16 +124,23 @@ const BlogsView: React.FC<BlogsViewProps> = (props: BlogsViewProps) => {
                     }
                     blogSrc={item.link}
                     actions={[
-                      <Link href={item.link}>
-                        <ColorButton
-                          disableRipple
-                          color={theme.palette.info.main}
-                          hoverColor={theme.palette.info.dark}
-                          titleColor={theme.palette.secondary.contrastText}
-                        >
-                          <Typography variant="h6">See on Medium</Typography>
-                        </ColorButton>
-                      </Link>,
+                      <LinkTo
+                        linkTo={item.link}
+                        text={
+                          <ColorButton
+                            bgColor={theme.palette.info.main}
+                            hoverColor={theme.palette.info.dark}
+                            titleColor={theme.palette.secondary.contrastText}
+                          >
+                            <Typography
+                              variant="h6"
+                              color={theme.palette.secondary.contrastText}
+                            >
+                              See on Medium
+                            </Typography>
+                          </ColorButton>
+                        }
+                      />,
                     ]}
                   />
                 </Box>
@@ -140,16 +149,23 @@ const BlogsView: React.FC<BlogsViewProps> = (props: BlogsViewProps) => {
           </Carousel>
         }
         blogLink={
-          <Link href={blog.data.feed.link}>
-            <ColorButton
-              disableRipple
-              color={theme.palette.info.main}
-              hoverColor={theme.palette.info.dark}
-              titleColor={theme.palette.secondary.contrastText}
-            >
-              <Typography variant="h6">Blog On Medium</Typography>
-            </ColorButton>
-          </Link>
+          <LinkTo
+            linkTo={blog.data.feed.link}
+            text={
+              <ColorButton
+                bgColor={theme.palette.info.main}
+                hoverColor={theme.palette.info.dark}
+                titleColor={theme.palette.secondary.contrastText}
+              >
+                <Typography
+                  variant="h6"
+                  color={theme.palette.secondary.contrastText}
+                >
+                  Blog On Medium
+                </Typography>
+              </ColorButton>
+            }
+          />
         }
       />
     </Section>

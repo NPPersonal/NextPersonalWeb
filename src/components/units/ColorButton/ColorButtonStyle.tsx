@@ -13,13 +13,13 @@ const createCSSHoverShadow = () => `
 0px 1px 10px 0px rgba(0,0,0,0.12)
 `;
 
-type InteractiveButtonProps = React.ComponentProps<typeof Button> & {
+export type InteractiveButtonProps = React.ComponentProps<typeof Button> & {
   children?: React.ReactNode;
-  borderRadius: string;
-  bgColor: string;
-  activeColor: string;
-  hoverColor: string;
-  titleColor: string;
+  borderRadius?: string;
+  bgColor?: string;
+  activeColor?: string;
+  hoverColor?: string;
+  titleColor?: string;
   shadow?: boolean;
   sx?: SxProps<Theme>;
   theme?: Theme;
@@ -28,12 +28,12 @@ type InteractiveButtonProps = React.ComponentProps<typeof Button> & {
 export const InteractiveButton = ({
   children,
   sx = [],
-  borderRadius,
-  bgColor,
-  activeColor,
-  hoverColor,
-  titleColor,
-  shadow,
+  borderRadius = "4px",
+  bgColor = "blue",
+  activeColor = "green",
+  hoverColor = "lightblue",
+  titleColor = "green",
+  shadow = true,
   theme,
   ...rest
 }: InteractiveButtonProps) => (

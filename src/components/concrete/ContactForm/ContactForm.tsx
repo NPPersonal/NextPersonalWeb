@@ -136,14 +136,17 @@ const ContactForm: React.FC<ContactFormProps> = (props: ContactFormProps) => {
         </Box>
         <Box pt={2}>
           <ColorButton
-            px={40}
-            disableRipple
-            color={theme.palette.info.main}
+            bgColor={theme.palette.info.main}
             hoverColor={theme.palette.info.dark}
             titleColor={theme.palette.secondary.contrastText}
             onClick={handleTryAgain}
           >
-            Try Again
+            <Typography
+              variant="h6"
+              color={theme.palette.secondary.contrastText}
+            >
+              Try Again
+            </Typography>
           </ColorButton>
         </Box>
       </Box>
@@ -216,13 +219,16 @@ const ContactForm: React.FC<ContactFormProps> = (props: ContactFormProps) => {
               ) : (
                 <ColorButton
                   type="submit"
-                  px={40}
-                  disableRipple
-                  color={theme.palette.info.main}
+                  bgColor={theme.palette.info.main}
                   hoverColor={theme.palette.info.dark}
                   titleColor={theme.palette.secondary.contrastText}
                 >
-                  Send
+                  <Typography
+                    variant="h6"
+                    color={theme.palette.secondary.contrastText}
+                  >
+                    Send
+                  </Typography>
                 </ColorButton>
               )}
             </Box>

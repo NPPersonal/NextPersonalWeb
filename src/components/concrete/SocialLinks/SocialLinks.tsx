@@ -1,15 +1,13 @@
 import Box from "@mui/material/Box";
-import SvgIcon from "@mui/material/SvgIcon";
-import Tooltip from "@mui/material/Tooltip";
 import React from "react";
-import style from "./SocialLinksStyle";
-import makeStyles from "@mui/styles/makeStyles";
+import { SLSvgIcon, SLWapper } from "./SocialLinksStyle";
 import GithubIcon from "../../../assets/icons/github-brands.inline.svg";
 import LinkedInIcon from "../../../assets/icons/linkedin-brands.inline.svg";
 import MediumIcon from "../../../assets/icons/medium-brands.inline.svg";
 import FacebookIcon from "../../../assets/icons/facebook-brands.inline.svg";
 import AppStoreIcon from "../../../assets/icons/appstore-brands.inline.svg";
 import useTheme from "@mui/styles/useTheme";
+import { Tooltip } from "@mui/material";
 
 type SocialProps = {
   kind: string;
@@ -66,54 +64,46 @@ const SocialLinks: React.FC<SocialLinksProps> = (props: SocialLinksProps) => {
   const {
     socialIcons,
     iconSize = "medium",
-    iconColor = "grey",
+    iconColor = "#474B4F",
     toolTipPlacement = "top",
-    toolTipColor = "black",
+    toolTipColor = "#000",
     ...rest
   } = props;
 
   const theme = useTheme();
-  const classes = makeStyles(style)({
-    iconColor,
-    toolTipColor,
-    theme,
-  });
-
-  const svgClasses = {
-    root: classes.svgIcon,
-  };
-
-  const toolTipClasses = {
-    tooltip: classes.tooltip,
-    arrow: classes.tooltipArrow,
-  };
 
   return (
-    <Box className={classes.wrapper} {...rest}>
+    <SLWapper {...rest}>
       {socialIcons.map((social) => {
         const icon = Icons[social.kind];
 
         return (
           <a
             key={social.link}
-            className={classes.link}
             href={social.link}
             target="_blank"
+            style={{ marginRight: theme.spacing(2) }}
           >
             <Tooltip
-              classes={toolTipClasses}
+              PopperProps={{
+                disablePortal: true,
+              }}
               arrow
               placement={toolTipPlacement}
               title={social.toolTip}
+              componentsProps={{
+                arrow: { sx: { color: toolTipColor } },
+                tooltip: { sx: { backgroundColor: toolTipColor } },
+              }}
             >
-              <SvgIcon className={svgClasses.root} fontSize={iconSize}>
+              <SLSvgIcon fontSize={iconSize} iconColor={iconColor}>
                 {icon}
-              </SvgIcon>
+              </SLSvgIcon>
             </Tooltip>
           </a>
         );
       })}
-    </Box>
+    </SLWapper>
   );
 };
 

@@ -31,7 +31,7 @@ const Skill: React.FC<SkillProps> = (props: SkillProps) => {
     header,
     value,
     barColor,
-    barMaskColor,
+    progressColor,
     barRadius,
     barWidth,
     barHeight,
@@ -45,7 +45,7 @@ const Skill: React.FC<SkillProps> = (props: SkillProps) => {
         variant="determinate"
         value={value}
         barColor={barColor}
-        barMaskColor={barMaskColor}
+        progressColor={progressColor}
         barRadius={barRadius}
         barWidth={barWidth}
         barHeight={barHeight}

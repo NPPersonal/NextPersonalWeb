@@ -3,8 +3,8 @@ import LinearProgress from "@mui/material/LinearProgress";
 import { SxProps, Theme } from "@mui/material/styles";
 
 type ProgressBarProps = React.ComponentProps<typeof LinearProgress> & {
+  progressColor: string;
   barColor: string;
-  barMaskColor: string;
   barRadius: string | number;
   barWidth: string | number;
   barHeight: string | number;
@@ -14,7 +14,7 @@ type ProgressBarProps = React.ComponentProps<typeof LinearProgress> & {
 export const ProgressBar = ({
   sx = [],
   barColor,
-  barMaskColor,
+  progressColor,
   barRadius,
   barWidth,
   barHeight,
@@ -26,10 +26,10 @@ export const ProgressBar = ({
         borderRadius: barRadius,
         width: barWidth,
         height: barHeight,
-        "&.MuiLinearProgress-determinate": {
-          backgroundColor: barMaskColor,
+        "&.MuiLinearProgress-root": {
+          backgroundColor: progressColor,
         },
-        "& > .MuiLinearProgress-bar1Determinate": {
+        "& > .MuiLinearProgress-bar": {
           backgroundColor: barColor,
         },
       },

@@ -1,14 +1,14 @@
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import TextField from "@mui/material/TextField";
+// import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { useFormik } from "formik";
 import React from "react";
 import ColorButton from "../../units/ColorButton/ColorButton";
 import * as yup from "yup";
-import style from "./ContactFormStyle";
+import { FormTextField } from "./ContactFormStyle";
 import { sendContactMail } from "../../../utils/mail/SentMail";
-import makeStyles from "@mui/styles/makeStyles";
+// import makeStyles from "@mui/styles/makeStyles";
 import LinearProgressColor from "../../units/LinearProgressColor/LinearProgressColor";
 import TickMotion from "../../framer/TickMotion/TickMotion";
 import CrossMotion from "../../framer/CrossMotion/CrossMotion";
@@ -34,10 +34,10 @@ type ContactFormProps = React.ComponentProps<typeof Box> & {
  */
 const ContactForm: React.FC<ContactFormProps> = (props: ContactFormProps) => {
   const {
-    textColor = "white",
-    fieldBgColor = "grey",
-    fieldFocusColor = "lightblue",
-    fieldBorderColor = "black",
+    textColor = "#fff",
+    fieldBgColor = "#474B4F",
+    fieldFocusColor = "#86C232",
+    fieldBorderColor = "#fff",
     ...rest
   } = props;
 
@@ -93,12 +93,12 @@ const ContactForm: React.FC<ContactFormProps> = (props: ContactFormProps) => {
     setSubmitState({ submitted: false, error: undefined });
   };
 
-  const classes = makeStyles(style)({
-    textColor,
-    fieldBgColor,
-    fieldFocusColor,
-    fieldBorderColor,
-  });
+  // const classes = makeStyles(style)({
+  //   textColor,
+  //   fieldBgColor,
+  //   fieldFocusColor,
+  //   fieldBorderColor,
+  // });
 
   if (submitState.submitted && !submitState.error) {
     return (
@@ -160,8 +160,7 @@ const ContactForm: React.FC<ContactFormProps> = (props: ContactFormProps) => {
         <Grid container>
           <Grid item xs={12} md={6}>
             <Box ml={0} mt={2} mr={matchSM ? 0 : 2}>
-              <TextField
-                className={classes.root}
+              <FormTextField
                 id="name"
                 name="name"
                 value={formik.values.name}
@@ -171,13 +170,16 @@ const ContactForm: React.FC<ContactFormProps> = (props: ContactFormProps) => {
                 onChange={formik.handleChange}
                 error={formik.touched.name && Boolean(formik.errors.name)}
                 helperText={formik.touched.name && formik.errors.name}
+                textColor={textColor}
+                fieldBgColor={fieldBgColor}
+                fieldFocusColor={fieldFocusColor}
+                fieldBorderColor={fieldBorderColor}
               />
             </Box>
           </Grid>
           <Grid item xs={12} md={6}>
             <Box ml={0} mt={2} mr={0}>
-              <TextField
-                className={classes.root}
+              <FormTextField
                 id="email"
                 name="email"
                 value={formik.values.email}
@@ -187,13 +189,16 @@ const ContactForm: React.FC<ContactFormProps> = (props: ContactFormProps) => {
                 onChange={formik.handleChange}
                 error={formik.touched.email && Boolean(formik.errors.email)}
                 helperText={formik.touched.email && formik.errors.email}
+                textColor={textColor}
+                fieldBgColor={fieldBgColor}
+                fieldFocusColor={fieldFocusColor}
+                fieldBorderColor={fieldBorderColor}
               />
             </Box>
           </Grid>
           <Grid item xs={12}>
             <Box ml={0} mt={2} mb={2} mr={0}>
-              <TextField
-                className={classes.root}
+              <FormTextField
                 id="message"
                 name="message"
                 value={formik.values.message}
@@ -205,6 +210,10 @@ const ContactForm: React.FC<ContactFormProps> = (props: ContactFormProps) => {
                 onChange={formik.handleChange}
                 error={formik.touched.message && Boolean(formik.errors.message)}
                 helperText={formik.touched.message && formik.errors.message}
+                textColor={textColor}
+                fieldBgColor={fieldBgColor}
+                fieldFocusColor={fieldFocusColor}
+                fieldBorderColor={fieldBorderColor}
               />
             </Box>
           </Grid>
@@ -213,7 +222,7 @@ const ContactForm: React.FC<ContactFormProps> = (props: ContactFormProps) => {
               {formik.isSubmitting ? (
                 <LinearProgressColor
                   barColor={theme.palette.info.main}
-                  barMaskColor={theme.palette.info.dark}
+                  progressColor={theme.palette.info.dark}
                   barWidth="100%"
                 />
               ) : (

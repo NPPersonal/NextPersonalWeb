@@ -13,6 +13,7 @@ import EmailIcon from "../../assets/icons/envelope-solid.inline.svg";
 import SocialLinks from "../../components/concrete/SocialLinks/SocialLinks";
 import { CommonProps } from "../../props-def/PropDef";
 import ContactForm from "../../components/concrete/ContactForm/ContactForm";
+import NoSsr from "@mui/material/NoSsr";
 
 type ContactViewProps = React.ComponentProps<typeof Section> & {
   contact: CommonProps["contact"];
@@ -47,46 +48,48 @@ const ContactView: React.FC<ContactViewProps> = (props: ContactViewProps) => {
           </Box>
         }
         contact={
-          <ListItems
-            items={[
-              {
-                label: (
-                  <SvgIconColor color={theme.palette.info.main}>
-                    <PhoneIcon />
-                  </SvgIconColor>
-                ),
-                value: (
-                  <Box ml={1}>
-                    <Typography variant="h6">{contact.phone}</Typography>
-                  </Box>
-                ),
-              },
-              {
-                label: (
-                  <SvgIconColor color={theme.palette.info.main}>
-                    <MobileIcon />
-                  </SvgIconColor>
-                ),
-                value: (
-                  <Box ml={1}>
-                    <Typography variant="h6">{contact.mobile}</Typography>
-                  </Box>
-                ),
-              },
-              {
-                label: (
-                  <SvgIconColor color={theme.palette.info.main}>
-                    <EmailIcon />
-                  </SvgIconColor>
-                ),
-                value: (
-                  <Box ml={1}>
-                    <Typography variant="h6">{contact.email}</Typography>
-                  </Box>
-                ),
-              },
-            ]}
-          />
+          <NoSsr>
+            <ListItems
+              items={[
+                {
+                  label: (
+                    <SvgIconColor color={theme.palette.info.main}>
+                      <PhoneIcon />
+                    </SvgIconColor>
+                  ),
+                  value: (
+                    <Box ml={1}>
+                      <Typography variant="h6">{contact.phone}</Typography>
+                    </Box>
+                  ),
+                },
+                {
+                  label: (
+                    <SvgIconColor color={theme.palette.info.main}>
+                      <MobileIcon />
+                    </SvgIconColor>
+                  ),
+                  value: (
+                    <Box ml={1}>
+                      <Typography variant="h6">{contact.mobile}</Typography>
+                    </Box>
+                  ),
+                },
+                {
+                  label: (
+                    <SvgIconColor color={theme.palette.info.main}>
+                      <EmailIcon />
+                    </SvgIconColor>
+                  ),
+                  value: (
+                    <Box ml={1}>
+                      <Typography variant="h6">{contact.email}</Typography>
+                    </Box>
+                  ),
+                },
+              ]}
+            />
+          </NoSsr>
         }
         socialLinks={
           <SocialLinks

@@ -40,7 +40,7 @@ const SkillsView: React.FC<SkillViewProps> = (props: SkillProps) => {
           <SkillSet
             mb={8}
             barColor={theme.palette.info.main}
-            barMaskColor={theme.palette.secondary.dark}
+            progressColor={theme.palette.secondary.dark}
             key={g.title}
             header={
               <Typography variant="h3" align="center">

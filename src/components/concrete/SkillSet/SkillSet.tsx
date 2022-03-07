@@ -32,7 +32,7 @@ type SkillSetProps = React.ComponentProps<typeof Box> &
  * @returns
  */
 const SkillSet: React.FC<SkillSetProps> = (props: SkillSetProps) => {
-  const { header, skills, barColor, barMaskColor, ...rest } = props;
+  const { header, skills, barColor, progressColor, ...rest } = props;
 
   return (
     <Box {...rest}>
@@ -45,7 +45,7 @@ const SkillSet: React.FC<SkillSetProps> = (props: SkillSetProps) => {
               header={<Box pb={1}>{skill.title}</Box>}
               value={skill.value}
               barColor={barColor}
-              barMaskColor={barMaskColor}
+              progressColor={progressColor}
               barHeight="8px"
             />
           </Grid>

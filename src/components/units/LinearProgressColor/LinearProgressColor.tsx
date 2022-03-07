@@ -7,7 +7,7 @@ type ProgressWithoutColorProps = Omit<LinearProgressProps, "color">;
 
 export type LinearProgressColorProps = ProgressWithoutColorProps & {
   barColor?: string;
-  barMaskColor?: string;
+  progressColor?: string;
   barRadius?: string | number;
 
   /** not suitable for `buffer` style */
@@ -34,8 +34,8 @@ const LinearProgressColor: React.FC<LinearProgressColorProps> = (
   props: LinearProgressColorProps
 ) => {
   const {
+    progressColor = "grey",
     barColor = "lightgrey",
-    barMaskColor = "grey",
     barRadius = "4px",
     barWidth = "auto",
     barHeight = "4px",
@@ -46,7 +46,7 @@ const LinearProgressColor: React.FC<LinearProgressColorProps> = (
     <ProgressBar
       {...rest}
       barColor={barColor}
-      barMaskColor={barMaskColor}
+      progressColor={progressColor}
       barRadius={barRadius}
       barWidth={barWidth}
       barHeight={barHeight}

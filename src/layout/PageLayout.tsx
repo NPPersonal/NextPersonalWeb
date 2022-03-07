@@ -1,8 +1,6 @@
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Hidden from "@mui/material/Hidden";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import useTheme from "@mui/styles/useTheme";
 import React from "react";
 
 type PageLayoutProps = React.ComponentProps<typeof Container> & {
@@ -24,13 +22,6 @@ type PageLayoutProps = React.ComponentProps<typeof Container> & {
  */
 const PageLayout: React.FC<PageLayoutProps> = (props: PageLayoutProps) => {
   const { children, drawerWidth, drawer, navigation, ...rest } = props;
-
-  // const theme = useTheme();
-  // const matchSMDown = useMediaQuery(theme.breakpoints.down("md"));
-
-  // const container = {
-  //   width: matchSMDown ? "100%" : `calc(100% - ${drawerWidth}px)`,
-  // };
 
   return (
     <React.Fragment>

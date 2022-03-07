@@ -23,7 +23,8 @@
     "cy-run": "cypress run",
     "e2e-test": "server-test dev :3000 cy-open",
     "ci-test": "server-test dev :3000 cy-run",
-    "storybook": "start-storybook -p 6006"
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@emotion/cache": "^11.7.1",
@@ -42,7 +43,6 @@
     "moment": "^2.29.1",
     "next": "^12.1.0",
     "next-svgr": "^0.0.2",
-    "nodemailer": "^6.5.0",
     "react": "^17.0.2",
     "react-countup": "^6.1.1",
     "react-dom": "^17.0.2",
@@ -61,10 +61,11 @@
     "@netlify/plugin-nextjs": "^3.0.2",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
-    "@storybook/addon-actions": "^6.1.21",
+    "@storybook/addon-actions": "^6.4.19",
     "@storybook/addon-essentials": "^6.1.21",
-    "@storybook/addon-links": "^6.1.21",
-    "@storybook/react": "^6.1.21",
+    "@storybook/addon-links": "^6.4.19",
+    "@storybook/addons": "^6.4.19",
+    "@storybook/react": "^6.4.19",
     "@types/node": "^12.12.21",
     "@types/nodemailer": "^6.4.1",
     "@types/react": "^17.0.2",

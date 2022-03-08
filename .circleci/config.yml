@@ -6,6 +6,7 @@ workflows:
     jobs:
       - cypress/run:
           name: Install Dependencies
+          attach-workspace: true
           command: npm install
 
       # - cypress/run:

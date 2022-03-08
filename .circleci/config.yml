@@ -43,7 +43,7 @@ workflows:
             - run: node -v
             - run: npm -v
             - run: npx semantic-release
-            - run: npm install netlify-cli --save-dev
+            - run: npm install -g netlify-cli --save-dev
             - run: netlify build
             - run: netlify deploy --prod --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID
           filters:

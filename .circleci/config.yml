@@ -38,6 +38,8 @@ workflows:
           start: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
           command: npm install
           post-steps:
+            - run: npm install -g n
+            - run: n stable
             - run: node -v
             - run: npm -v
             - run: npx semantic-release

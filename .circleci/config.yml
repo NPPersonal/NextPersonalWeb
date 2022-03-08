@@ -6,12 +6,10 @@ workflows:
   build:
     jobs:
       - cypress/run:
-          executor: cypress/base-14
           name: Install Dependencies
           command: npm install --legacy-peer-deps
 
       - cypress/run:
-          executor: cypress/base-14
           name: Testing Project
           requires:
             - Install Dependencies
@@ -20,7 +18,6 @@ workflows:
           command: npm run ci-test
 
       - cypress/run:
-          executor: cypress/base-14
           name: Building Project
           requires:
             - Testing Project
@@ -33,7 +30,6 @@ workflows:
                   - project
 
       - cypress/run:
-          executor: cypress/base-14
           name: Alpha Netlify Release
           requires:
             - Building Project

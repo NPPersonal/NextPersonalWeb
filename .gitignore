@@ -41,4 +41,4 @@ yarn-error.log*
 .netlify
 
 # Cypress video
-/cypress/video
+/cypress/videos

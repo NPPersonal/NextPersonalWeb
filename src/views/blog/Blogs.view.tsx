@@ -2,10 +2,10 @@ import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import useTheme from "@mui/styles/useTheme";
 import Typography from "@mui/material/Typography";
-// import Link from "next/dist/client/link";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import BlogCard from "../../components/concrete/BlogCard/BlogCard";
@@ -18,7 +18,6 @@ import RightArrow from "@mui/icons-material/ArrowRightRounded";
 import { formatDateTime } from "../../utils/formater/TimeFormater";
 import { BlogProps } from "../../props-def/PropDef";
 import LinkTo from "../../components/units/LinkTo/LinkTo";
-// import NoSsr from "@mui/material/NoSsr";
 
 type BlogsViewProps = React.ComponentProps<typeof Section> & {
   blog: BlogProps;
@@ -117,9 +116,9 @@ const BlogsView: React.FC<BlogsViewProps> = (props: BlogsViewProps) => {
                     thumbnailSrc={item.thumbnail}
                     content={
                       <ReactMarkdown
-                        plugins={[gfm]}
+                        remarkPlugins={[gfm]}
+                        rehypePlugins={[rehypeRaw]}
                         children={item.content}
-                        allowDangerousHtml
                       />
                     }
                     blogSrc={item.link}

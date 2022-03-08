@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@1.29.0
 executors:
-  with-chrome:
+  with-node:
     resource_class: small
     docker:
       - image: "cypress/base:16.14.0"
@@ -10,6 +10,7 @@ workflows:
   build:
     jobs:
       - cypress/install:
+          executor: with-node
           post-install:
             - run: npm install
           post-steps:
@@ -38,6 +39,7 @@ workflows:
 
       - cypress/run:
           name: Alpha Netlify Release
+          executor: with-node
           requires:
             - cypress/install
           attach-workspace: true

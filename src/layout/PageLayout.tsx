@@ -1,5 +1,4 @@
 import { Breakpoint, NoSsr, useMediaQuery } from "@mui/material";
-import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import useTheme from "@mui/styles/useTheme";
 import React from "react";

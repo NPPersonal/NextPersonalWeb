@@ -6,7 +6,7 @@ workflows:
     jobs:
       - cypress/run:
           name: Install Dependencies
-          # attach-workspace: true
+          attach-workspace: true
           command: npm install
           post-steps:
             - run: npm install -g n
@@ -39,7 +39,7 @@ workflows:
           requires:
             - Install Dependencies
           executor: cypress/base-14
-          # attach-workspace: true
+          attach-workspace: true
           start: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
           command: npx semantic-release
           post-steps:

@@ -2,42 +2,46 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@1.29.0
 executors: # for ci run on new node version https://github.com/cypress-io/circleci-orb/issues/368
-  with-node:
+  with-chrome:
     resource_class: small
     docker:
-      - image: "cypress/base:16.14.0"
+      - image: "cypress/browsers:node16.5.0-chrome97-ff96"
 workflows:
   build:
     jobs:
       - cypress/install:
-          executor: with-node
+          executor: with-chrome
           post-install:
             - run: npm install
           post-steps:
             - run: node -v
             - run: npm -v
 
-      # - cypress/run:
-      #     name: Testing Project
-      #     requires:
-      #       - Install Dependencies
-      #     debug: "cypress:cli"
-      #     attach-workspace: true
-      #     command: npm run ci-test
+      - cypress/run:
+          name: Testing Project
+          executor: with-chrome
+          requires:
+            - cypress/install
+          debug: "cypress:cli"
+          attach-workspace: true
+          command: npm run ci-test
 
       - cypress/run:
           name: Building Project
-          executor: with-node
+          executor: with-chrome
           requires:
             - cypress/install
+            - Testing Project
           attach-workspace: true
           command: npm run build
 
       - cypress/run:
           name: Alpha Netlify Release
-          executor: with-node
+          executor: with-chrome
           requires:
             - cypress/install
+            - Testing Project
+            - Building Project
           attach-workspace: true
           start: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
           command: npx semantic-release

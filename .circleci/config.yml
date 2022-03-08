@@ -4,10 +4,15 @@ orbs:
 workflows:
   build:
     jobs:
-      # - cypress/run:
-      # name: Install Dependencies
-      # attach-workspace: true
-      # command: npm install
+      - cypress/run:
+          name: Install Dependencies
+          # attach-workspace: true
+          command: npm install
+          post-steps:
+            - run: npm install -g n
+            - run: n stable
+            - run: node -v
+            - run: npm -v
 
       # - cypress/run:
       #     name: Testing Project
@@ -31,18 +36,13 @@ workflows:
 
       - cypress/run:
           name: Alpha Netlify Release
-          # requires:
-          #   - Building Project
+          requires:
+            - Install Dependencies
           executor: cypress/base-14
           # attach-workspace: true
           start: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
-          command: npm install
+          command: npx semantic-release
           post-steps:
-            - run: npm install -g n
-            - run: n stable
-            - run: node -v
-            - run: npm -v
-            - run: npx semantic-release
             - run: npm install -g netlify-cli --save-dev
             - run: netlify deploy --build --prod --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID
           filters:

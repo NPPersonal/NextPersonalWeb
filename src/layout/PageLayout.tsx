@@ -1,12 +1,17 @@
+import { Breakpoint, NoSsr, useMediaQuery } from "@mui/material";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Hidden from "@mui/material/Hidden";
+import useTheme from "@mui/styles/useTheme";
 import React from "react";
 
 type PageLayoutProps = React.ComponentProps<typeof Container> & {
-  drawerWidth: number;
   drawer?: React.ReactNode;
+  /** same as the width you set to drawer component */
+  drawerWidth: string;
+  /** when drawer is shown then navigation will be hidden */
   navigation?: React.ReactNode;
+  /** start from screen size and up where drawer need to be shown */
+  drawerStartBreakpoint?: number | Breakpoint;
 };
 
 /**
@@ -21,20 +26,33 @@ type PageLayoutProps = React.ComponentProps<typeof Container> & {
  * @returns
  */
 const PageLayout: React.FC<PageLayoutProps> = (props: PageLayoutProps) => {
-  const { children, drawerWidth, drawer, navigation, ...rest } = props;
+  const {
+    children,
+    drawer,
+    drawerWidth,
+    navigation,
+    drawerStartBreakpoint = "lg",
+  } = props;
+
+  const theme = useTheme();
+  const onDrawer = useMediaQuery(theme.breakpoints.up(drawerStartBreakpoint));
 
   return (
-    <React.Fragment>
-      <Hidden mdUp>{navigation}</Hidden>
-      <Box display="flex">
-        <Hidden mdDown>
-          <Box width={drawerWidth}>{drawer}</Box>
-        </Hidden>
-        <Container {...rest} maxWidth={false}>
+    <NoSsr>
+      <Box display="flex" flexDirection={onDrawer ? "row" : "column"}>
+        {onDrawer ? drawer : navigation}
+        <Container
+          sx={[
+            //calculate content size from drawer
+            { width: `${onDrawer ? `calc(100% - ${drawerWidth})` : "100%"}` },
+          ]}
+          disableGutters
+          maxWidth={false}
+        >
           {children}
         </Container>
       </Box>
-    </React.Fragment>
+    </NoSsr>
   );
 };
 

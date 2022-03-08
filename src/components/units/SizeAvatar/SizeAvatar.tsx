@@ -1,12 +1,12 @@
-import Avatar from "@mui/material/Avatar";
+// import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import {
   LazyLoadComponent,
   LazyLoadComponentProps,
 } from "react-lazy-load-image-component";
-import makeStyles from "@mui/styles/makeStyles";
+// import makeStyles from "@mui/styles/makeStyles";
 import React from "react";
-import style from "./SizeAvatarStyle";
+import { PersonAvatar } from "./SizeAvatarStyle";
 
 type LazyLoadComponentIgnoredProps = Omit<
   LazyLoadComponentProps,
@@ -45,23 +45,35 @@ const SizeAvatar: React.FC<SizeAvatarProps> = (props: SizeAvatarProps) => {
     ...rest
   } = props;
 
-  const classes = makeStyles(style)({
-    size,
-    ringColor,
-    ringWidth,
-  });
+  // const classes = makeStyles(style)({
+  //   size,
+  //   ringColor,
+  //   ringWidth,
+  // });
 
-  const avatarClasses = {
-    root: classes.root,
-  };
+  // const avatarClasses = {
+  //   root: classes.root,
+  // };
 
   return (
     <Box display="flex" flexDirection="column" alignItems="center">
       <LazyLoadComponent
-        placeholder={<Avatar classes={avatarClasses} src={placeholderSrc} />}
+        placeholder={
+          <PersonAvatar
+            size={size}
+            ringColor={ringColor}
+            ringWidth={ringWidth}
+            src={placeholderSrc}
+          />
+        }
         {...rest}
       >
-        <Avatar classes={avatarClasses} src={src} />
+        <PersonAvatar
+          size={size}
+          ringColor={ringColor}
+          ringWidth={ringWidth}
+          src={src}
+        />
       </LazyLoadComponent>
       {caption}
     </Box>

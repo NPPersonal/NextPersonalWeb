@@ -23,6 +23,7 @@ import FooterView from "../views/footer/Footer.view";
 import PortfoliosView from "../views/portolio/Portfolios.view";
 import { getStaticPageData } from "../page-data/pageData";
 import { useTheme } from "@mui/styles";
+import { useMediaQuery } from "@mui/material";
 
 export const getStaticProps: GetStaticProps<ViewProps> = async () => {
   let blog: BlogProps = { data: null, error: null };
@@ -51,7 +52,6 @@ export const getStaticProps: GetStaticProps<ViewProps> = async () => {
  * @returns
  */
 const LandingPage = (props: ViewProps) => {
-  const theme = useTheme();
   const {
     common: { name, contact, socialLinks, cvURL },
     menu: { links },
@@ -63,6 +63,26 @@ const LandingPage = (props: ViewProps) => {
     blog,
   } = props;
 
+  const theme = useTheme();
+  const upLG = useMediaQuery(theme.breakpoints.up("lg"));
+  const upMD = useMediaQuery(theme.breakpoints.up("md"));
+
+  //Tuning for avatar and drawer size
+  let avaterSize = 64;
+  let drawerWidth = "5%";
+  if (upLG) {
+    avaterSize = 120;
+    drawerWidth = "12%";
+  } else if (upMD) {
+    avaterSize = 90;
+    drawerWidth = "12%";
+  } else {
+    // any screen below md
+    avaterSize = 64;
+    drawerWidth = "5%";
+  }
+
+  // toggle menu at top
   const [toggle, setToggle] = React.useState<boolean>(false);
 
   const closeRippleMenu = () => setToggle((state) => !state);
@@ -72,13 +92,13 @@ const LandingPage = (props: ViewProps) => {
       <PageLayout
         maxWidth="xl"
         disableGutters
-        drawerWidth={240}
+        drawerWidth={drawerWidth}
         drawer={
           <DrawerColor
-            drawerWidth={240}
             variant="permanent"
             anchor="left"
             color={theme.palette.primary.main}
+            drawerWidth={drawerWidth}
           >
             <Box
               display="flex"
@@ -91,15 +111,22 @@ const LandingPage = (props: ViewProps) => {
               <SizeAvatar
                 src="/profile/profile-avatar.png"
                 placeholderSrc="/profile/profile-placeholder.svg"
-                size={200}
+                size={avaterSize}
                 ringColor={theme.palette.primary.light}
-                ringWidth={18}
+                ringWidth={5}
                 caption={
-                  <Box color={theme.palette.primary.contrastText} pt={1}>
-                    <Typography variant="h6" align="center">
+                  <Typography
+                    variant="h6"
+                    align="center"
+                    style={{ whiteSpace: "pre-line" }}
+                  >
+                    <Box
+                      color={theme.palette.primary.contrastText}
+                      whiteSpace="normal"
+                    >
                       {personName}
-                    </Typography>
-                  </Box>
+                    </Box>
+                  </Typography>
                 }
               />
               <Typography variant="h6">

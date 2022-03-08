@@ -9,6 +9,7 @@ import {
   BCardMedia,
   BCardProps,
 } from "./BlogCardStyle";
+import { Typography } from "@mui/material";
 
 type CardWithoutStyle = Omit<BCardProps, "style" | "width">;
 type BlogCardProps = CardWithoutStyle & {
@@ -40,7 +41,11 @@ const BlogCard: React.FC<BlogCardProps> = (props: BlogCardProps) => {
   return (
     <BCard width={width} {...rest}>
       <BCardHeader
-        title={header}
+        title={
+          <Typography variant="h4" style={{ whiteSpace: "pre-line" }}>
+            {header}
+          </Typography>
+        }
         subheader={
           <div style={{ display: "flex", flexDirection: "column" }}>
             <span>{publishDate}</span>

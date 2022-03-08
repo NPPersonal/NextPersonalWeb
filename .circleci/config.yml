@@ -1,7 +1,6 @@
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@1.29.0
-executor: cypress/base-14
 workflows:
   build:
     jobs:
@@ -33,6 +32,7 @@ workflows:
           name: Alpha Netlify Release
           requires:
             - Building Project
+          executor: cypress/base-14
           attach-workspace: true
           start: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
           command: npx semantic-release

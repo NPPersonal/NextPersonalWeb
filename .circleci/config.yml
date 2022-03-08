@@ -1,49 +1,45 @@
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@1.29.0
+executors: # for ci run on new node version https://github.com/cypress-io/circleci-orb/issues/368
+  with-chrome:
+    resource_class: small
+    docker:
+      - image: "cypress/browsers:node16.5.0-chrome97-ff96"
 workflows:
   build:
     jobs:
-      - cypress/run:
-          name: Install Dependencies
-          command: npm install --legacy-peer-deps
+      - cypress/install:
+          executor: with-chrome
+          post-install:
+            - run: npm install
+          post-steps:
+            - run: node -v
+            - run: npm -v
 
       - cypress/run:
           name: Testing Project
+          executor: with-chrome
           requires:
-            - Install Dependencies
-          executor: cypress/base-14
+            - cypress/install
           debug: "cypress:cli"
           attach-workspace: true
           command: npm run ci-test
-
-      - cypress/run:
-          name: Building Project
-          requires:
-            - Testing Project
-          executor: cypress/base-14
-          attach-workspace: true
-          command: npm run build
           post-steps:
-            - persist_to_workspace:
-                root: ~/
-                paths:
-                  - project
+            - run: npm run build
 
       - cypress/run:
           name: Alpha Netlify Release
+          executor: with-chrome
           requires:
-            - Building Project
-          executor: cypress/base-14
+            - cypress/install
+            - Testing Project
           attach-workspace: true
           start: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
           command: npx semantic-release
           post-steps:
-            - run: node -v
-            - run: npm -v
-            - run: npm install netlify-cli --save-dev
-            - run: netlify build
-            - run: netlify deploy --prod --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID
+            - run: npm install -g netlify-cli --save-dev
+            - run: netlify deploy --build --prod --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID
           filters:
             branches:
               only: alpha

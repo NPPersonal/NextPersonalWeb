@@ -25,15 +25,8 @@ workflows:
           debug: "cypress:cli"
           attach-workspace: true
           command: npm run ci-test
-
-      - cypress/run:
-          name: Building Project
-          executor: with-chrome
-          requires:
-            - cypress/install
-            - Testing Project
-          attach-workspace: true
-          command: npm run build
+          post-steps:
+            - run: npm run build
 
       - cypress/run:
           name: Alpha Netlify Release
@@ -41,7 +34,6 @@ workflows:
           requires:
             - cypress/install
             - Testing Project
-            - Building Project
           attach-workspace: true
           start: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
           command: npx semantic-release

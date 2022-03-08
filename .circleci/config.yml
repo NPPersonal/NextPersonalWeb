@@ -31,8 +31,8 @@ workflows:
 
       - cypress/run:
           name: Alpha Netlify Release
-          requires:
-            - Building Project
+          # requires:
+          #   - Building Project
           executor: cypress/base-14
           # attach-workspace: true
           start: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config

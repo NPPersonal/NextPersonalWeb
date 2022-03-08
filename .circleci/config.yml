@@ -6,7 +6,7 @@ workflows:
     jobs:
       - cypress/run:
           name: Install Dependencies
-          command: npm install --legacy-peer-deps
+          command: npm install
 
       # - cypress/run:
       #     name: Testing Project

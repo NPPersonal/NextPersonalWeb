@@ -34,7 +34,7 @@ workflows:
           # requires:
           #   - Building Project
           executor: cypress/base-14
-          attach-workspace: true
+          # attach-workspace: true
           start: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
           command: npm install
           post-steps:

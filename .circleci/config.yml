@@ -4,13 +4,17 @@ orbs:
 workflows:
   build:
     jobs:
+      - cypress/install
       - cypress/run:
           name: Install Dependencies
+          requires:
+            - cypress/install
           attach-workspace: true
           command: npm install
-          post-steps:
+          post-install:
             - run: npm install -g n
             - run: n stable
+          post-steps:
             - run: node -v
             - run: npm -v
 
@@ -37,6 +41,7 @@ workflows:
       - cypress/run:
           name: Alpha Netlify Release
           requires:
+            - cypress/install
             - Install Dependencies
           executor: cypress/base-14
           attach-workspace: true

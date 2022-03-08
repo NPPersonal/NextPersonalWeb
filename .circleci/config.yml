@@ -3,6 +3,7 @@ orbs:
   cypress: cypress-io/cypress@1.29.0
 workflows:
   build:
+    working_directory: ~/my_app
     jobs:
       - cypress/run:
           name: Install Dependencies

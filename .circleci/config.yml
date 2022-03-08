@@ -12,6 +12,7 @@ workflows:
           name: Testing Project
           requires:
             - Install Dependencies
+          executor: cypress/base-14
           debug: "cypress:cli"
           attach-workspace: true
           command: npm run ci-test
@@ -20,6 +21,7 @@ workflows:
           name: Building Project
           requires:
             - Testing Project
+          executor: cypress/base-14
           attach-workspace: true
           command: npm run build
           post-steps:

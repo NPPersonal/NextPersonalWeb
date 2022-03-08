@@ -1,13 +1,17 @@
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@1.29.0
+executors:
+  with-chrome:
+    resource_class: small
+    docker:
+      - image: "cypress/base:16.14.0"
 workflows:
   build:
     jobs:
       - cypress/install:
           post-install:
-            - run: npm install -g n
-            - run: n stable
+            - run: npm install
           post-steps:
             - run: node -v
             - run: npm -v
@@ -36,7 +40,6 @@ workflows:
           name: Alpha Netlify Release
           requires:
             - cypress/install
-          executor: cypress/base-14
           attach-workspace: true
           start: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
           command: npx semantic-release

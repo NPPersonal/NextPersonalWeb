@@ -88,109 +88,69 @@ const LandingPage = (props: ViewProps) => {
   const closeRippleMenu = () => setToggle((state) => !state);
 
   return (
-    <React.Fragment>
-      <PageLayout
-        maxWidth="xl"
-        disableGutters
-        drawerWidth={drawerWidth}
-        drawer={
-          <DrawerColor
-            variant="permanent"
-            anchor="left"
-            color={theme.palette.primary.main}
-            drawerWidth={drawerWidth}
+    <PageLayout
+      maxWidth="xl"
+      disableGutters
+      drawerWidth={drawerWidth}
+      drawer={
+        <DrawerColor
+          variant="permanent"
+          anchor="left"
+          color={theme.palette.primary.main}
+          drawerWidth={drawerWidth}
+        >
+          <Box
+            display="flex"
+            flexDirection="column"
+            justifyContent="space-between"
+            alignItems="center"
+            height="100%"
+            py={2}
           >
-            <Box
-              display="flex"
-              flexDirection="column"
-              justifyContent="space-between"
-              alignItems="center"
-              height="100%"
-              py={2}
-            >
-              <SizeAvatar
-                src="/profile/profile-avatar.png"
-                placeholderSrc="/profile/profile-placeholder.svg"
-                size={avaterSize}
-                ringColor={theme.palette.primary.light}
-                ringWidth={5}
-                caption={
-                  <Typography
-                    variant="h6"
-                    align="center"
-                    style={{ whiteSpace: "pre-line" }}
+            <SizeAvatar
+              src="/profile/profile-avatar.png"
+              placeholderSrc="/profile/profile-placeholder.svg"
+              size={avaterSize}
+              ringColor={theme.palette.primary.light}
+              ringWidth={5}
+              caption={
+                <Typography
+                  variant="h6"
+                  align="center"
+                  style={{ whiteSpace: "pre-line" }}
+                >
+                  <Box
+                    color={theme.palette.primary.contrastText}
+                    whiteSpace="normal"
                   >
-                    <Box
-                      color={theme.palette.primary.contrastText}
-                      whiteSpace="normal"
-                    >
-                      {personName}
-                    </Box>
-                  </Typography>
-                }
-              />
-              <Typography variant="h6">
-                <List>
-                  {links.map((link) => {
-                    return (
-                      <ListItem key={link.id} dense>
-                        <ScrollLink
-                          to={link.id}
-                          spy={true}
-                          smooth={true}
-                          delay={500}
-                          isDynamic={true}
-                          color={theme.palette.primary.contrastText}
-                          activeColor={theme.palette.info.main}
-                        >
-                          {link.title}
-                        </ScrollLink>
-                      </ListItem>
-                    );
-                  })}
-                </List>
-              </Typography>
-              <SocialLinks
-                iconSize="small"
-                socialIcons={[
-                  {
-                    kind: "Github",
-                    link: socialLinks.github,
-                    toolTip: "Github",
-                  },
-                  {
-                    kind: "LinkedIn",
-                    link: socialLinks.linkedIn,
-                    toolTip: "LinkedIn",
-                  },
-                  {
-                    kind: "Medium",
-                    link: socialLinks.medium,
-                    toolTip: "Medium",
-                  },
-                  {
-                    kind: "Facebook",
-                    link: socialLinks.facebook,
-                    toolTip: "Facebook",
-                  },
-                ]}
-              />
-            </Box>
-          </DrawerColor>
-        }
-        navigation={
-          <StickyNav
-            color={theme.palette.primary.main}
-            brand={
-              <LinkTo
-                color={theme.palette.primary.contrastText}
-                linkTo="/"
-                text={<Typography variant="h6">{name.first}</Typography>}
-              />
-            }
-          >
+                    {personName}
+                  </Box>
+                </Typography>
+              }
+            />
+            <Typography variant="h6">
+              <List>
+                {links.map((link) => {
+                  return (
+                    <ListItem key={link.id} dense>
+                      <ScrollLink
+                        to={link.id}
+                        spy={true}
+                        smooth={true}
+                        delay={500}
+                        isDynamic={true}
+                        color={theme.palette.primary.contrastText}
+                        activeColor={theme.palette.info.main}
+                      >
+                        {link.title}
+                      </ScrollLink>
+                    </ListItem>
+                  );
+                })}
+              </List>
+            </Typography>
             <SocialLinks
-              width="fit-content"
+              iconSize="small"
               socialIcons={[
                 {
                   kind: "Github",
@@ -214,60 +174,98 @@ const LandingPage = (props: ViewProps) => {
                 },
               ]}
             />
-            <Typography variant="h6">
-              <RippleMenu
-                ml={2}
-                toggleColor={theme.palette.primary.contrastText}
-                menuColor={theme.palette.primary.main}
-                open={toggle}
-                items={links.map((link) => {
-                  return (
-                    <ScrollLink
-                      to={link.id}
-                      spy={true}
-                      smooth={true}
-                      delay={500}
-                      isDynamic={true}
-                      color={theme.palette.primary.contrastText}
-                      activeColor={theme.palette.info.main}
-                      onClick={closeRippleMenu}
-                    >
-                      {link.title}
-                    </ScrollLink>
-                  );
-                })}
-                onClick={() => setToggle((state) => !state)}
-              />
-            </Typography>
-          </StickyNav>
-        }
-      >
-        <HomeView
-          id="home"
-          bgImageURL={heroBgImageURL}
-          greeting={greeting}
-          country={country}
-          city={city}
-          fullName={name}
-        />
-        <AboutMeView
-          id="about-me"
-          occupation={occupation}
-          brief={brief}
-          personName={personName}
-          age={age}
-          location={location}
-          email={email}
-          experiences={experiences}
-          cvURL={cvURL}
-        />
-        <SkillsView id="skills" group={group} certificates={certificates} />
-        <PortfoliosView id="portfolios" portfolios={portfolios} />
-        <BlogsView id="blog" blog={blog} />
-        <ContactView id="contact" contact={contact} socialLinks={socialLinks} />
-        <FooterView id="footer" personName={personName} />
-      </PageLayout>
-    </React.Fragment>
+          </Box>
+        </DrawerColor>
+      }
+      navigation={
+        <StickyNav
+          color={theme.palette.primary.main}
+          brand={
+            <LinkTo
+              color={theme.palette.primary.contrastText}
+              linkTo="/"
+              text={<Typography variant="h6">{name.first}</Typography>}
+            />
+          }
+        >
+          <SocialLinks
+            width="fit-content"
+            socialIcons={[
+              {
+                kind: "Github",
+                link: socialLinks.github,
+                toolTip: "Github",
+              },
+              {
+                kind: "LinkedIn",
+                link: socialLinks.linkedIn,
+                toolTip: "LinkedIn",
+              },
+              {
+                kind: "Medium",
+                link: socialLinks.medium,
+                toolTip: "Medium",
+              },
+              {
+                kind: "Facebook",
+                link: socialLinks.facebook,
+                toolTip: "Facebook",
+              },
+            ]}
+          />
+          <Typography variant="h6">
+            <RippleMenu
+              ml={2}
+              toggleColor={theme.palette.primary.contrastText}
+              menuColor={theme.palette.primary.main}
+              open={toggle}
+              items={links.map((link) => {
+                return (
+                  <ScrollLink
+                    to={link.id}
+                    spy={true}
+                    smooth={true}
+                    delay={500}
+                    isDynamic={true}
+                    color={theme.palette.primary.contrastText}
+                    activeColor={theme.palette.info.main}
+                    onClick={closeRippleMenu}
+                  >
+                    {link.title}
+                  </ScrollLink>
+                );
+              })}
+              onClick={() => setToggle((state) => !state)}
+            />
+          </Typography>
+        </StickyNav>
+      }
+    >
+      <HomeView
+        id="home"
+        bgImageURL={heroBgImageURL}
+        greeting={greeting}
+        country={country}
+        city={city}
+        fullName={name}
+      />
+      <AboutMeView
+        id="about-me"
+        occupation={occupation}
+        brief={brief}
+        personName={personName}
+        age={age}
+        location={location}
+        email={email}
+        experiences={experiences}
+        cvURL={cvURL}
+      />
+      <SkillsView id="skills" group={group} certificates={certificates} />
+      <PortfoliosView id="portfolios" portfolios={portfolios} />
+      <BlogsView id="blog" blog={blog} />
+      <ContactView id="contact" contact={contact} socialLinks={socialLinks} />
+      <FooterView id="footer" personName={personName} />
+    </PageLayout>
   );
 };
 

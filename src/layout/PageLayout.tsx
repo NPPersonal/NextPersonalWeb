@@ -39,7 +39,17 @@ const PageLayout: React.FC<PageLayoutProps> = (props: PageLayoutProps) => {
 
   return (
     <NoSsr>
-      <Box display="flex" flexDirection={onDrawer ? "row" : "column"}>
+      <Container
+        disableGutters
+        maxWidth={false}
+        sx={[
+          {
+            display: "flex",
+            flexDirection: onDrawer ? "row" : "column",
+            overflowX: "hidden",
+          },
+        ]}
+      >
         {onDrawer ? drawer : navigation}
         <Container
           sx={[
@@ -51,7 +61,7 @@ const PageLayout: React.FC<PageLayoutProps> = (props: PageLayoutProps) => {
         >
           {children}
         </Container>
-      </Box>
+      </Container>
     </NoSsr>
   );
 };

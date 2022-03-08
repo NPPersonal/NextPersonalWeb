@@ -27,19 +27,23 @@ const theme = createTheme({
     tonalOffset: 0.2,
   },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        html: {
+          height: "100vh",
+          width: "100vw",
+        },
+        body: {
+          height: "100vh",
+          width: "100vw",
+        },
+      },
+    },
     // Name of the component ⚛️
     MuiButtonBase: {
       defaultProps: {
         // The properties to apply
         disableRipple: true, // No more ripple, on the whole application 💣!
-      },
-    },
-    MuiCssBaseline: {
-      styleOverrides: {
-        "@global": {
-          html: { height: "100vh" },
-          body: { height: "100%" },
-        },
       },
     },
   },

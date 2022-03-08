@@ -44,6 +44,7 @@ workflows:
             - run: node -v
             - run: npm -v
             - run: npm install -g netlify-cli
+            - run: netlify init
             - run: netlify link --id=$NETLIFY_SITE_ID
             - run: netlify build
             - run: netlify deploy --prod --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID

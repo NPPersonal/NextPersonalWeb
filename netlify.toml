@@ -1,11 +1,11 @@
 [build]
     command = "npm run build"
     functions = "out_functions"
-    publish = "out_publish"
+    publish = ".next"
 
 [dev]
     functions = "out_functions"
-    publish = "out_publish"
+    publish = ".next"
     framework = "#static"
 
 [[plugins]]

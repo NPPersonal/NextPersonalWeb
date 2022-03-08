@@ -58,7 +58,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
-    "@netlify/plugin-nextjs": "^3.0.2",
+    "@netlify/plugin-nextjs": "^4.2.7",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
     "@storybook/addon-actions": "^6.4.19",

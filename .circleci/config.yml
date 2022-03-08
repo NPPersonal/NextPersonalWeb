@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@1.29.0
-executors:
+executors: # for ci run on new node version https://github.com/cypress-io/circleci-orb/issues/368
   with-node:
     resource_class: small
     docker:
@@ -25,17 +25,13 @@ workflows:
       #     attach-workspace: true
       #     command: npm run ci-test
 
-      # - cypress/run:
-      # name: Building Project
-      # requires:
-      #   - Testing Project
-      # attach-workspace: true
-      # command: npm run build
-      # post-steps:
-      #   - persist_to_workspace:
-      #       root: ~/
-      #       paths:
-      #         - project
+      - cypress/run:
+          name: Building Project
+          executor: with-node
+          requires:
+            - cypress/install
+          attach-workspace: true
+          command: npm run build
 
       - cypress/run:
           name: Alpha Netlify Release

@@ -45,7 +45,6 @@ const PageLayout: React.FC<PageLayoutProps> = (props: PageLayoutProps) => {
           {
             display: "flex",
             flexDirection: onDrawer ? "row" : "column",
-            overflowX: "hidden",
           },
         ]}
       >

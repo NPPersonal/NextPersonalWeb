@@ -19,7 +19,8 @@ export default class MyDocument extends Document {
           {/* Inject MUI styles first to match with the prepend: true configuration. */}
           {(this.props as any).emotionStyleTags}
         </Head>
-        <body>
+        {/* fix page has a white space on right while in small screen */}
+        <body style={{ overflowX: "hidden" }}>
           <Main />
           <NextScript />
         </body>
@@ -63,9 +64,9 @@ MyDocument.getInitialProps = async (ctx) => {
   ctx.renderPage = () =>
     originalRenderPage({
       enhanceApp: (App: any) =>
-        (function EnhanceApp(props) {
+        function EnhanceApp(props) {
           return <App emotionCache={cache} {...props} />;
-        }),
+        },
     });
 
   const initialProps = await Document.getInitialProps(ctx);

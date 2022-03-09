@@ -27,18 +27,18 @@ const theme = createTheme({
     tonalOffset: 0.2,
   },
   components: {
-    MuiCssBaseline: {
-      styleOverrides: {
-        html: {
-          height: "100vh",
-          width: "100vw",
-        },
-        body: {
-          height: "100vh",
-          width: "100vw",
-        },
-      },
-    },
+    // MuiCssBaseline: {
+    //   styleOverrides: {
+    //     html: {
+    //       height: "100vh",
+    //       width: "100vw",
+    //     },
+    //     body: {
+    //       height: "100vh",
+    //       width: "100vw",
+    //     },
+    //   },
+    // },
     // Name of the component ⚛️
     MuiButtonBase: {
       defaultProps: {

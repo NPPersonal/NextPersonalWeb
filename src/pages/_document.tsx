@@ -7,7 +7,8 @@ import createEmotionCache from "../createEmotionCache";
 export default class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en">
+      // fix page has a white space on right while in small screen
+      <Html lang="en" style={{ overflowX: "hidden" }}>
         <Head>
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />

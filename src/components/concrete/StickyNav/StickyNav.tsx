@@ -1,9 +1,8 @@
-import AppBar, { AppBarProps } from "@mui/material/AppBar";
+import { AppBarProps } from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import makeStyles from "@mui/styles/makeStyles";
 import Toolbar from "@mui/material/Toolbar";
 import React from "react";
-import style from "./StickyNavStyle";
+import { NavigationBar } from "./StickyNavStyle";
 
 type AppBarWithoutProps = Omit<AppBarProps, "color" | "position">;
 type StickyNavProps = AppBarWithoutProps & {
@@ -15,16 +14,8 @@ type StickyNavProps = AppBarWithoutProps & {
 const StickyNav: React.FC<StickyNavProps> = (props: StickyNavProps) => {
   const { color = "lightblue", brand, children, ...rest } = props;
 
-  const classes = makeStyles(style)({
-    color,
-  });
-
-  const appBarClasses = {
-    root: classes.root,
-  };
-
   return (
-    <AppBar {...rest} classes={appBarClasses} position="sticky">
+    <NavigationBar position="fixed" color={color} {...rest}>
       <Toolbar>
         <Box flexGrow={1}>{brand}</Box>
         <Box
@@ -36,7 +27,7 @@ const StickyNav: React.FC<StickyNavProps> = (props: StickyNavProps) => {
           {children}
         </Box>
       </Toolbar>
-    </AppBar>
+    </NavigationBar>
   );
 };
 

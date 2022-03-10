@@ -10,20 +10,7 @@ export type SLWapperProps = React.ComponentProps<typeof Box> & {
   sx?: SxProps<Theme>;
 };
 export const SLWapper = ({ sx = [], children, ...rest }: SLWapperProps) => (
-  <Box
-    sx={[
-      {
-        "& a:last-of-type": {
-          marginRight: 0,
-        },
-        "& a:first-of-type": {
-          marginLeft: 0,
-        },
-      },
-      ...(Array.isArray(sx) ? sx : [sx]),
-    ]}
-    {...rest}
-  >
+  <Box sx={[...(Array.isArray(sx) ? sx : [sx])]} {...rest}>
     {children}
   </Box>
 );
@@ -62,19 +49,3 @@ export const SLSvgIcon = React.forwardRef<any, SLSvgIconProps>(
     </SvgIcon>
   )
 );
-
-// export type SLTooltipProps = React.ComponentProps<typeof Tooltip> & {
-//   children?: React.ReactNode;
-//   toolTipColor: string;
-//   sx?: SxProps<Theme>;
-// };
-// export const SLTooltip = ({
-//   sx = [],
-//   children,
-//   toolTipColor,
-//   ...rest
-// }: SLTooltipProps) => (
-//   <Tooltip sx={[...(Array.isArray(sx) ? sx : [sx])]} {...rest}>
-//     {children}
-//   </Tooltip>
-// );

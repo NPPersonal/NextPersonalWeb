@@ -6,6 +6,7 @@ import { OverlayCaption, UpperCaseText } from "./OverlapHeaderStyle";
 type HeaderProps = React.ComponentProps<typeof Box> & {
   text: string;
   textColor?: string;
+  textFontWeight?: number;
   caption: string;
   captionColor?: string;
   lineWidth?: string;
@@ -31,6 +32,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
   const {
     text,
     textColor = "#c7c4c3",
+    textFontWeight = 800,
     caption,
     captionColor = "#808080",
     lineWidth = "80px",
@@ -43,13 +45,15 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
   return (
     <Box {...rest}>
       <Box position="relative" textAlign="center">
-        <UpperCaseText variant="h1" noWrap={noWrap}>
-          <Box fontWeight="800" color={textColor}>
-            {text}
-          </Box>
+        <UpperCaseText
+          variant="h2"
+          noWrap={noWrap}
+          sx={{ color: textColor, fontWeight: textFontWeight }}
+        >
+          {text}
         </UpperCaseText>
         <OverlayCaption>
-          <Typography variant="h3" noWrap={noWrap}>
+          <Typography variant="h4" noWrap={noWrap}>
             {caption}
             <Box
               mt={1}

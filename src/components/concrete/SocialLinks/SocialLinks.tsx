@@ -6,8 +6,7 @@ import LinkedInIcon from "../../../assets/icons/linkedin-brands.inline.svg";
 import MediumIcon from "../../../assets/icons/medium-brands.inline.svg";
 import FacebookIcon from "../../../assets/icons/facebook-brands.inline.svg";
 import AppStoreIcon from "../../../assets/icons/appstore-brands.inline.svg";
-import useTheme from "@mui/styles/useTheme";
-import { Tooltip } from "@mui/material";
+import { Tooltip, TooltipProps } from "@mui/material";
 
 type SocialProps = {
   kind: string;
@@ -18,20 +17,9 @@ type SocialLinksProps = React.ComponentProps<typeof Box> & {
   socialIcons: SocialProps[];
   iconSize?: "small" | "inherit" | "large" | "medium";
   iconColor?: string;
-  toolTipPlacement?:
-    | "top"
-    | "right"
-    | "bottom"
-    | "left"
-    | "bottom-end"
-    | "bottom-start"
-    | "left-end"
-    | "left-start"
-    | "right-end"
-    | "right-start"
-    | "top-end"
-    | "top-start";
+  toolTipPlacement?: TooltipProps["placement"];
   toolTipColor?: string;
+  contentLayout?: "space-between" | "space-evenly";
 };
 
 const Icons: { [key: string]: React.ReactNode } = {
@@ -67,23 +55,22 @@ const SocialLinks: React.FC<SocialLinksProps> = (props: SocialLinksProps) => {
     iconColor = "#474B4F",
     toolTipPlacement = "top",
     toolTipColor = "#000",
+    contentLayout = "space-evenly",
     ...rest
   } = props;
 
-  const theme = useTheme();
-
   return (
-    <SLWapper {...rest}>
+    <SLWapper
+      width="100%"
+      display="flex"
+      justifyContent={contentLayout}
+      {...rest}
+    >
       {socialIcons.map((social) => {
         const icon = Icons[social.kind];
 
         return (
-          <a
-            key={social.link}
-            href={social.link}
-            target="_blank"
-            style={{ marginRight: theme.spacing(2) }}
-          >
+          <a key={social.link} href={social.link} target="_blank">
             <Tooltip
               PopperProps={{
                 disablePortal: true,

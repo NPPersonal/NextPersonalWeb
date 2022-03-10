@@ -109,7 +109,7 @@ const LandingPage = (props: ViewProps) => {
           >
             <SizeAvatar
               src="/profile/profile-avatar.png"
-              placeholderSrc="/profile/profile-placeholder.svg"
+              placeholderSrc="/profile/profile-placeholder.png"
               size={avaterSize}
               ringColor={theme.palette.primary.light}
               ringWidth={5}
@@ -189,7 +189,7 @@ const LandingPage = (props: ViewProps) => {
           }
         >
           <SocialLinks
-            width="fit-content"
+            contentLayout="space-evenly"
             socialIcons={[
               {
                 kind: "Github",

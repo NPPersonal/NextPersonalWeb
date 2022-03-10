@@ -1,6 +1,5 @@
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-// import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { useFormik } from "formik";
 import React from "react";
@@ -8,7 +7,6 @@ import ColorButton from "../../units/ColorButton/ColorButton";
 import * as yup from "yup";
 import { FormTextField } from "./ContactFormStyle";
 import { sendContactMail } from "../../../utils/mail/SentMail";
-// import makeStyles from "@mui/styles/makeStyles";
 import LinearProgressColor from "../../units/LinearProgressColor/LinearProgressColor";
 import TickMotion from "../../framer/TickMotion/TickMotion";
 import CrossMotion from "../../framer/CrossMotion/CrossMotion";
@@ -92,13 +90,6 @@ const ContactForm: React.FC<ContactFormProps> = (props: ContactFormProps) => {
   const handleTryAgain = () => {
     setSubmitState({ submitted: false, error: undefined });
   };
-
-  // const classes = makeStyles(style)({
-  //   textColor,
-  //   fieldBgColor,
-  //   fieldFocusColor,
-  //   fieldBorderColor,
-  // });
 
   if (submitState.submitted && !submitState.error) {
     return (

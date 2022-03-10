@@ -93,6 +93,7 @@ const ContactView: React.FC<ContactViewProps> = (props: ContactViewProps) => {
         }
         socialLinks={
           <SocialLinks
+            contentLayout="space-between"
             socialIcons={[
               {
                 kind: "Github",

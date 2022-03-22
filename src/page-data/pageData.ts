@@ -41,13 +41,12 @@ export const getStaticPageData = () => ({
   about: {
     personName: "Ming-Chun Hung",
     occupation: "a Developer",
-    age: "33",
+    age: "35",
     location: "Taiwan",
     email: "tomneo2004@gmail.com",
-    brief: `
-      I help you build brand for your business at an affordable price. Thousands of clients have procured exceptional results while working with our dedicated team. when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+    brief: `I have IT background and experienced in IOS, React and Machine Learning. I am keen to learn new technology and have self-taught IOS, React and Machine Learning. React, React-Native and Machine Learning is my primary at moment. 
 
-      Delivering work within time and budget which meets client’s requirements is our moto. Lorem Ipsum has been the industry's standard dummy text ever when an unknown printer took a galley.
+    Improving life and solving real-life problem through technology is my vision. Machine Learning has opened a number of potential solution to real world problem and I am intrigued about it. With benefit of enhance development speed and cross-platform ability from technology such as React-Native, the last component is idea. These have driven me on learning tirelessly.
       `,
     experiences: [
       {
@@ -66,9 +65,9 @@ export const getStaticPageData = () => ({
         title: "Year React.JS",
       },
       {
-        number: 7,
+        number: 1,
         suffix: "",
-        title: "Years Workout",
+        title: "Years Machine Learning",
       },
     ],
   },
